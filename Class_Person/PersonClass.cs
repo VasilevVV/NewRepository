@@ -3,6 +3,10 @@
 namespace Class_Person
 {
 
+    /// <summary>
+    /// класс персоны
+    /// </summary>
+       
     class Person
     {
         public string name; // имя
@@ -10,18 +14,44 @@ namespace Class_Person
         public int age; //возраст
         public Gender gender; //пол
 
+        /// <summary>
+        /// Имя:Неизвестно Фамилия:Неизвестно Возраст:0 Пол:Неопределен
+        /// </summary>
         public Person() : this("Неизвестно")
         {
         }
+        /// <summary>
+        /// персона
+        /// </summary>
+        /// <param name="name">имя</param>
         public Person(string name) : this(name, "Неизвестно")
         {
         }
+        /// <summary>
+        /// персона
+        /// </summary>
+        /// <param name="name">имя</param>
+        /// <param name="surname">фамилия</param>
         public Person(string name, string surname) : this(name, surname, 0)//пока для неизвестного возраста сделаем 0 лет
         {
         }
+        /// <summary>
+        /// персона
+        /// </summary>
+        /// <param name="name">имя</param>
+        /// <param name="surname">фамилия</param>
+        /// <param name="age">возраст</param>
         public Person(string name, string surname, int age) : this(name, surname, age, Gender.Неопределен)
         {
         }
+
+        /// <summary>
+        /// персона
+        /// </summary>
+        /// <param name="name">имя</param>
+        /// <param name="surname">фамилия</param>
+        /// <param name="age">возраст</param>
+        /// <param name="gender">пол</param>
         public Person(string name, string surname, int age, Gender gender)
         {
             this.name = name;
@@ -35,7 +65,9 @@ namespace Class_Person
             Console.WriteLine($"Имя: {name} Фамилия: {surname}  Возраст: {age} Пол: {gender}");
         }
     }
-
+    /// <summary>
+    /// класс пол персоны
+    /// </summary>
     enum Gender
     {
         Неопределен,
@@ -47,17 +79,13 @@ namespace Class_Person
     {
         static void Main(string[] args)
         {
-            Person Mark = new Person();
+            Person Marta = new Person("Marta", "Swim", -5);
+            Person Mark = new Person("Mark", "Smith", 15, Gender.Мужской);
 
-            Mark.GetInfo();      // Имя: Фамилия: Возраст: 0
+            Mark.GetInfo();      
+            Marta.GetInfo();
 
-            /*Mark.name = "Mark";
-            Mark.surname = "Smith";
-            Mark.age = 31;
-            Mark.GetInfo();  // Имя: Mark Фамилия: Smith Возраст: 34
-            Console.ReadKey();*/
-
-            //Console.WriteLine("Hello World!");
+            
         }
     }
 }
