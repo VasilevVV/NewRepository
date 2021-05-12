@@ -1,4 +1,5 @@
 ﻿using System;
+using Class_Person;
 
 namespace LB1
 {
@@ -6,7 +7,8 @@ namespace LB1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Person Mark = new Person("Mark", "Smith", 15, Gender.Мужской);
+            Mark.GetInfo();
         }
     }
 }
