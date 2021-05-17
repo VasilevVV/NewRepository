@@ -24,15 +24,11 @@ namespace Class_Person
             {
                 if (value < 0)
                 {
-                    
-                    Console.WriteLine("Возраст не может быть отрицательным, присвоено значение 0");//сообщение об ошибке
                     age = 0;
                     return;
                 }
-                else
-                {
-                    age = value;
-                }                
+                age = value;
+                return;        
             }
         }
 
@@ -84,7 +80,7 @@ namespace Class_Person
             this.gender = gender;
         }
 
-        public void GetInfo()
+        public void GetInfo() //в готовом варианте закоментировать полностью
         {
             Console.WriteLine($"Имя: {name} Фамилия: {surname}  Возраст: {age} Пол: {gender}");
         } 
@@ -101,17 +97,31 @@ namespace Class_Person
 
     public class PersonList
     {
+        /// <summary>
+        /// Класс, описывающий абстракцию списка, сожержащего объекты класса Person
+        /// </summary>
         public Person[] PersonArray; // массив персон
 
+        /// <summary>
+        /// Конструктор класса PersonList - возвращает нулевой список
+        /// </summary>
         public PersonList()
         {
             PersonArray = new Person[0];
         }
+
+        /// <summary>
+        /// Конструктор класса PersonList - возвращает заполненый список
+        /// </summary>
+        /// <param name="PersonArray">массив с элементами типа Person, заполняющий список персон</param>
         public PersonList(Person[] PersonArray)
         {
             this.PersonArray = PersonArray;
         }
 
+        /// <summary>
+        /// Количество персон в списке
+        /// </summary>
         public int Number
         {
             get
@@ -120,18 +130,29 @@ namespace Class_Person
             }
         }
 
+        /// <summary>
+        /// Добавляет новую персону в конец списка
+        /// </summary>
+        /// <param name="person">элемент типа Person</param>
         public void AddPerson(Person person)
         {
             Array.Resize<Person>(ref PersonArray, PersonArray.Length + 1);
             PersonArray[PersonArray.Length - 1] = person;
         }
 
+        /// <summary>
+        /// Добавляет новую персону в конец списка по составляющим
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="age">Возраст</param>
+        /// <param name="gender">Пол</param>
         public void AddPerson(string name, string surname, int age, Gender gender)
         {
             AddPerson(new Person(name, surname, age, gender));
         }
-
-        public void GetInfo()
+       
+        public void GetInfo() //в готовом варианте закоментировать полностью
         {
             foreach (Person p in PersonArray)
             {
@@ -139,6 +160,10 @@ namespace Class_Person
             }
         }
 
+        /// <summary>
+        /// Удаляет персону по индексу в списке
+        /// </summary>
+        /// <param name="index">индекс персоны</param>
         public void DeleteByIndex(int index)
         {
             Person[] newArray = new Person[PersonArray.Length];
@@ -147,6 +172,12 @@ namespace Class_Person
             Array.Copy(newArray, index + 1, PersonArray, index, newArray.Length - index - 1);
         }
 
+        //из однофамильных одноименных персон удалит первую в списке 
+        /// <summary>
+        /// Удаляет персону по имени и фамилии
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамиля</param>
         public void DeleteByNameSurname(string name, string surname)
         {
             Person[] newArray = new Person[0];
@@ -161,6 +192,11 @@ namespace Class_Person
             PersonArray = newArray;
         }
 
+        /// <summary>
+        /// Выводит персону по индексу
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>Персона</returns>
         public Person GetPersonByIndex(int index)
         {
             if (index >= 0)
@@ -168,20 +204,18 @@ namespace Class_Person
                 if (index + 1 <= PersonArray.Length)
                 {
                     return PersonArray[index];
-                }
-                else
-                {
-                    Console.WriteLine("Задан неправильный индекс - больше количества элементов, возвращено последнее значение");
-                    return PersonArray[PersonArray.Length - 1];
-                }
-            }
-            else
-            {
-                Console.WriteLine("Задан неправильный индекс - отрицательный, возвращено первое значение");
-                return PersonArray[0];
-            }
+                }                
+                return PersonArray[PersonArray.Length - 1];                
+            }            
+            return PersonArray[0];
         }
 
+        /// <summary>
+        /// Осуществляет поиск индекса персоны по имени и фамилии
+        /// </summary>
+        /// <param name="name">имя</param>
+        /// <param name="surname">фамилия</param>
+        /// <returns>Индекс</returns>
         public int FindPersonIndex(string name, string surname)
         {            
             for (int i = 0; i < PersonArray.Length; i++)
@@ -190,11 +224,13 @@ namespace Class_Person
                 {                    
                     return i;
                 }
-
             }
             return -1;            
         }
 
+        /// <summary>
+        /// Очищает список персон
+        /// </summary>
         public void Clear()
         {
             Array.Resize<Person>(ref PersonArray, 0);
