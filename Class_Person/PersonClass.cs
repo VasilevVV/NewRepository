@@ -11,27 +11,8 @@ namespace Class_Person
     public class Person
     {
         public string name { get; set; } // имя
-        public string surname { get; set; } //фамилия
-      
-        private int age; //возраст
-        public int AGE //гетер и сетер для возраста
-        {
-            get
-            {
-                return age;
-            }
-            set
-            {
-                if (value < 0)
-                {
-                    age = 0;
-                    return;
-                }
-                age = value;
-                return;        
-            }
-        }
-
+        public string surname { get; set; } //фамилия      
+        public int age { get; set; } //возраст       
         public Gender gender { get; set; } //пол
 
         /// <summary>
@@ -76,7 +57,7 @@ namespace Class_Person
         {
             this.name = name;
             this.surname = surname;
-            this.AGE = age;
+            this.age = age;
             this.gender = gender;
         }
 
@@ -156,7 +137,7 @@ namespace Class_Person
         {
             foreach (Person p in PersonArray)
             {
-                Console.WriteLine($"Имя: {p.name} Фамилия: {p.surname}  Возраст: {p.AGE} Пол: {p.gender}");
+                Console.WriteLine($"Имя: {p.name} Фамилия: {p.surname}  Возраст: {p.age} Пол: {p.gender}");
             }
         }
 
@@ -193,21 +174,16 @@ namespace Class_Person
         }
 
         /// <summary>
-        /// Выводит персону по индексу
+        /// Ищет персону по индексу
         /// </summary>
         /// <param name="index"></param>
         /// <returns>Персона</returns>
+        /// <exception cref="System.IndexOutOfRangeException">
+        /// Возникает при указании индекса вне границ массива.
+        /// </exception>
         public Person GetPersonByIndex(int index)
         {
-            if (index >= 0)
-                {
-                if (index + 1 <= PersonArray.Length)
-                {
-                    return PersonArray[index];
-                }                
-                return PersonArray[PersonArray.Length - 1];                
-            }            
-            return PersonArray[0];
+            return PersonArray[index];                       
         }
 
         /// <summary>
@@ -280,7 +256,7 @@ namespace Class_Person
             ListArray.GetInfo();
             Console.WriteLine(ListArray.Number);
             Console.WriteLine();
-            Person second = ListArray.GetPersonByIndex(2);
+            Person second = ListArray.GetPersonByIndex(1);
             second.GetInfo();
             Console.WriteLine();
             Console.WriteLine("ИНДЕКС");
