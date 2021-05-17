@@ -61,10 +61,10 @@ namespace Class_Person
             this.gender = gender;
         }
 
-        public void GetInfo() //в готовом варианте закоментировать полностью
+        /*public void GetInfo() //в готовом варианте закоментировать полностью
         {
             Console.WriteLine($"Имя: {name} Фамилия: {surname}  Возраст: {age} Пол: {gender}");
-        } 
+        } */
     }
     /// <summary>
     /// класс пол персоны
@@ -133,13 +133,13 @@ namespace Class_Person
             AddPerson(new Person(name, surname, age, gender));
         }
        
-        public void GetInfo() //в готовом варианте закоментировать полностью
+        /*public void GetInfo() //в готовом варианте закоментировать полностью
         {
             foreach (Person p in PersonArray)
             {
                 Console.WriteLine($"Имя: {p.name} Фамилия: {p.surname}  Возраст: {p.age} Пол: {p.gender}");
             }
-        }
+        }*/
 
         /// <summary>
         /// Удаляет персону по индексу в списке
@@ -219,53 +219,7 @@ namespace Class_Person
     {
         static void Main(string[] args)
         {
-            Person Marta = new Person("Marta", "Swim", -5);
-            Person Mark = new Person("Mark", "Smith", 15, Gender.Мужской);
-
-            Console.WriteLine(Mark.name);      
-            Marta.GetInfo();
-
-            Console.WriteLine();
-            Console.WriteLine();
-
-            Person[] list = new Person[2];
-            list[0] = Marta;
-            list[1] = Mark;
-
-            PersonList ListArray = new PersonList(list);
-
             
-            ListArray.GetInfo();
-            Console.WriteLine();
-            Console.WriteLine(ListArray.Number);
-            Console.WriteLine();
-            Person Kent = new Person("Kent", "Klark", 35, Gender.Мужской);
-            ListArray.AddPerson(Kent);
-            ListArray.GetInfo();
-            Console.WriteLine();
-            ListArray.AddPerson("Gloria", "Loli", 14, Gender.Женский);
-            ListArray.AddPerson("Gloria", "Lokerenta", 60, Gender.Женский);
-            ListArray.GetInfo();
-            Console.WriteLine(ListArray.Number);
-            Console.WriteLine();
-            ListArray.DeleteByIndex(2);
-            ListArray.GetInfo();
-            Console.WriteLine(ListArray.Number);
-            Console.WriteLine();
-            ListArray.DeleteByNameSurname("Gloria", "Loli");
-            ListArray.GetInfo();
-            Console.WriteLine(ListArray.Number);
-            Console.WriteLine();
-            Person second = ListArray.GetPersonByIndex(1);
-            second.GetInfo();
-            Console.WriteLine();
-            Console.WriteLine("ИНДЕКС");
-            Console.WriteLine(ListArray.FindPersonIndex("Gloria", "Lokerena"));
-            Console.WriteLine();
-            Console.WriteLine("Очищение");
-            ListArray.Clear();
-            ListArray.GetInfo();
-            Console.WriteLine("Очищение");
         }
     }
 }
