@@ -1,5 +1,6 @@
 ﻿using System;
 using PersonLibrary;
+using System.Text.RegularExpressions;
 
 namespace LB1
 {
@@ -45,26 +46,26 @@ namespace LB1
         public static Person ReadPerson(Person PersonRead)
         {
             Console.WriteLine("Введите имя");
-            PersonRead.name = Console.ReadLine();
+            PersonRead.Name = Console.ReadLine();
 
             Console.WriteLine("Введите фамилию");
-            PersonRead.surname = Console.ReadLine();
+            PersonRead.Surname = Console.ReadLine();
 
             Console.WriteLine("Введите возраст");
-            PersonRead.age = Convert.ToInt32(Console.ReadLine());
+            PersonRead.Аge = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Введите пол Мужской/Женский");
             if (Console.ReadLine() == "Мужской")
             {
-                PersonRead.gender = Gender.Мужской;
+                PersonRead.Gender = Gender.Мужской;
             }
             else if (Console.ReadLine() == "Женский")
             {
-                PersonRead.gender = Gender.Женский;
+                PersonRead.Gender = Gender.Женский;
             }
             else
             {
-                PersonRead.gender = Gender.Неопределен;
+                PersonRead.Gender = Gender.Неопределен;
             }            
             return PersonRead;
         }
@@ -76,7 +77,7 @@ namespace LB1
         /// <returns>Выведенная персона</returns>
         public static Person WritePerson(Person PersonWritten)
         {
-            Console.WriteLine($"Имя: {PersonWritten.name} Фамилия: {PersonWritten.surname}  Возраст: {PersonWritten.age} Пол: {PersonWritten.gender}");
+            Console.WriteLine($"Имя: {PersonWritten.Name} Фамилия: {PersonWritten.Surname}  Возраст: {PersonWritten.Аge} Пол: {PersonWritten.Gender}");
 
             return PersonWritten;
         }
@@ -87,6 +88,7 @@ namespace LB1
 
         static void Main(string[] args)
         {
+            /*
             Console.WriteLine("Создайте  программно  два  списка  персон,  в  каждом  из  которых будет по три человека");
             Step();
 
@@ -199,6 +201,17 @@ namespace LB1
 
 
             Console.WriteLine("нажмите любую клавишу, чтобы закончить");
+            Step();
+
+            */
+
+            Person ConsolePerson = new Person();
+            ConsolePerson.Name = "aS-fAS";
+
+            WritePerson(ConsolePerson);
+
+            Console.WriteLine(ConsolePerson.Name.IndexOf("-"));
+
             Step();
         }
 

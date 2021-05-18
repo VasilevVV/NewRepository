@@ -64,13 +64,6 @@ namespace PersonLibrary
             AddPerson(new Person(name, surname, age, gender));
         }
 
-        /*public void GetInfo() //в готовом варианте закоментировать полностью
-        {
-            foreach (Person p in PersonArray)
-            {
-                Console.WriteLine($"Имя: {p.name} Фамилия: {p.surname}  Возраст: {p.age} Пол: {p.gender}");
-            }
-        }*/
 
         /// <summary>
         /// Удаляет персону по индексу в списке
@@ -95,7 +88,7 @@ namespace PersonLibrary
             Person[] newArray = new Person[0];
             for (int i = 0; i < PersonArray.Length; i++)
             {
-                if (!((PersonArray[i].name == name) && (PersonArray[i].surname == surname)))
+                if (!((PersonArray[i].Name == name) && (PersonArray[i].Surname == surname)))
                 {
                     Array.Resize<Person>(ref newArray, newArray.Length + 1);
                     newArray[newArray.Length - 1] = PersonArray[i];
@@ -127,7 +120,7 @@ namespace PersonLibrary
         {
             for (int i = 0; i < PersonArray.Length; i++)
             {
-                if ((PersonArray[i].name == name) && (PersonArray[i].surname == surname))
+                if ((PersonArray[i].Name == name) && (PersonArray[i].Surname == surname))
                 {
                     return i;
                 }
