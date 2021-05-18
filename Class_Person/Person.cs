@@ -28,7 +28,6 @@ namespace PersonLibrary
             {
                 NameChecker(value);
                 _name = RegisterChanger(value);
-
             }
         }
 
@@ -51,7 +50,6 @@ namespace PersonLibrary
             {
                 NameChecker(value);
                 _surname = RegisterChanger(value);
-
             }
         }
      
@@ -73,8 +71,6 @@ namespace PersonLibrary
 
             set
             {
-
-
                 if (value > 0 && value < 120)
                 {
                     _age = value;
@@ -88,6 +84,7 @@ namespace PersonLibrary
          
         
         public Gender Gender { get; set; } //пол
+
 
         /// <summary>
         /// персона
@@ -135,7 +132,11 @@ namespace PersonLibrary
             this.Gender = gender;
         }
 
-
+        /// <summary>
+        /// Меняет регистр букв имен и фамилий на правильный
+        /// </summary>
+        /// <param name="Name">Имя или фамилия</param>
+        /// <returns>Имя или фамилия с правильным регистром</returns>
         private static string RegisterChanger(string Name)
         {
             if (Name.IndexOf("-") > 0)
@@ -155,6 +156,10 @@ namespace PersonLibrary
             
         }
 
+        /// <summary>
+        /// Проверяет имя или фамилию
+        /// </summary>
+        /// <param name="Name">Проверяемое имя или фамилия</param>
         private void NameChecker (string Name)
         {
             if (!Regex.IsMatch(Name, @"^(\p{L}+\p{Pd}?\p{L}+$)", RegexOptions.Multiline))

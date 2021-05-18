@@ -1,6 +1,6 @@
 ﻿using System;
 using PersonLibrary;
-using System.Text.RegularExpressions;
+
 
 namespace LB1
 {
@@ -45,28 +45,69 @@ namespace LB1
         /// <returns>Считанная персона</returns>
         public static Person ReadPerson(Person PersonRead)
         {
-            Console.WriteLine("Введите имя");
-            PersonRead.Name = Console.ReadLine();
+            Console.WriteLine("Введите имя");            
+            while (true)
+            {
+                try
+                {
+                    PersonRead.Name = Console.ReadLine();
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
+                }
+            }
 
             Console.WriteLine("Введите фамилию");
-            PersonRead.Surname = Console.ReadLine();
+            while (true)
+            {
+                try
+                {
+                    PersonRead.Surname = Console.ReadLine();
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
+                }
+            }
+            
 
             Console.WriteLine("Введите возраст");
-            PersonRead.Аge = Convert.ToInt32(Console.ReadLine());
+            while (true)
+            {
+                try
+                {
+                    PersonRead.Аge = Convert.ToInt32(Console.ReadLine());
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
+                }
+            }            
 
             Console.WriteLine("Введите пол Мужской/Женский");
-            if (Console.ReadLine() == "Мужской")
+            while (true)
             {
-                PersonRead.Gender = Gender.Мужской;
+                string gender = Console.ReadLine();
+                if (gender == "Мужской")
+                {
+                    PersonRead.Gender = Gender.Мужской;
+                    break;
+                }
+                else if (gender == "Женский")
+                {
+                    PersonRead.Gender = Gender.Женский;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Попробуйте снова. Мужской/Женский");
+                }
             }
-            else if (Console.ReadLine() == "Женский")
-            {
-                PersonRead.Gender = Gender.Женский;
-            }
-            else
-            {
-                PersonRead.Gender = Gender.Неопределен;
-            }            
+                         
             return PersonRead;
         }
 
@@ -85,10 +126,13 @@ namespace LB1
 
 
 
-
+        /// <summary>
+        /// Программа проверки классов
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            /*
+            
             Console.WriteLine("Создайте  программно  два  списка  персон,  в  каждом  из  которых будет по три человека");
             Step();
 
@@ -203,16 +247,8 @@ namespace LB1
             Console.WriteLine("нажмите любую клавишу, чтобы закончить");
             Step();
 
-            */
+            
 
-            Person ConsolePerson = new Person();
-            ConsolePerson.Name = "aS-fAS";
-
-            WritePerson(ConsolePerson);
-
-            Console.WriteLine(ConsolePerson.Name.IndexOf("-"));
-
-            Step();
         }
 
         
