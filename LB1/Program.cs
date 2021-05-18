@@ -1,5 +1,5 @@
 ﻿using System;
-using Class_Person;
+using PersonLibrary;
 
 namespace LB1
 {
@@ -15,24 +15,72 @@ namespace LB1
             Console.WriteLine("Список 1");
             foreach (Person person in List1.PersonArray)
             {
-                Console.WriteLine($"Имя: {person.name} Фамилия: {person.surname}  Возраст: {person.age} Пол: {person.gender}");
+                WritePerson(person);
             }
             Console.WriteLine();
 
             Console.WriteLine("Список 2");
             foreach (Person person in List2.PersonArray)
             {
-                Console.WriteLine($"Имя: {person.name} Фамилия: {person.surname}  Возраст: {person.age} Пол: {person.gender}");
+                WritePerson(person);
             }
             Console.WriteLine();
         }
 
+        /// <summary>
+        /// Шаг выполняемый по нажатию любой клавиши
+        /// </summary>
         private static void Step()
         {
             Console.WriteLine();
             Console.ReadKey();
             Console.WriteLine();
         }
+
+        /// <summary>
+        /// Считывает персону, вводимую с клавиатуры в консоле
+        /// </summary>
+        /// <param name="PersonRead">Персона</param>
+        /// <returns>Считанная персона</returns>
+        public static Person ReadPerson(Person PersonRead)
+        {
+            Console.WriteLine("Введите имя");
+            PersonRead.name = Console.ReadLine();
+
+            Console.WriteLine("Введите фамилию");
+            PersonRead.surname = Console.ReadLine();
+
+            Console.WriteLine("Введите возраст");
+            PersonRead.age = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите пол Мужской/Женский");
+            if (Console.ReadLine() == "Мужской")
+            {
+                PersonRead.gender = Gender.Мужской;
+            }
+            else if (Console.ReadLine() == "Женский")
+            {
+                PersonRead.gender = Gender.Женский;
+            }
+            else
+            {
+                PersonRead.gender = Gender.Неопределен;
+            }            
+            return PersonRead;
+        }
+
+        /// <summary>
+        /// Выводит персону в консоль
+        /// </summary>
+        /// <param name="PersonWritten">Выводимая персона</param>
+        /// <returns>Выведенная персона</returns>
+        public static Person WritePerson(Person PersonWritten)
+        {
+            Console.WriteLine($"Имя: {PersonWritten.name} Фамилия: {PersonWritten.surname}  Возраст: {PersonWritten.age} Пол: {PersonWritten.gender}");
+
+            return PersonWritten;
+        }
+
 
 
 
@@ -115,14 +163,46 @@ namespace LB1
             List2.Clear();
             PrintPersonLists(List1, List2);
 
+            Step();            
+            
+
+
+            Console.WriteLine("Чтение персоны с клавиатуры");
+            Person ConsolePerson = new Person();
+            ReadPerson(ConsolePerson);
+                        
+            Step();
+
+            Console.WriteLine("Вывод считанной персоны");
+            WritePerson(ConsolePerson);
+            
+            Step();
+
+
+            Console.WriteLine("Работа рандомайзера персон.");
+            Console.WriteLine("Переназначает один и тот же экземпляр класса Person разными данными");
+
+            ConsolePerson = RandomPerson.GetRNDperson();
+            WritePerson(ConsolePerson);
+
+            ConsolePerson = RandomPerson.GetRNDperson();
+            WritePerson(ConsolePerson);
+
+            ConsolePerson = RandomPerson.GetRNDperson();
+            WritePerson(ConsolePerson);
+
+            ConsolePerson = RandomPerson.GetRNDperson();
+            WritePerson(ConsolePerson);
+
             Step();
 
 
 
-
-            Console.WriteLine("SSS");
-
-
+            Console.WriteLine("нажмите любую клавишу, чтобы закончить");
+            Step();
         }
+
+        
+
     }
 }
