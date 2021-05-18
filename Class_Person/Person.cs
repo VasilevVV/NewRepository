@@ -77,13 +77,16 @@ namespace PersonLibrary
                 }
                 else
                 {
-                    throw new ArgumentException("Указан неправильный возраст");
+                    throw new ArgumentException("Указан "
+                        + "неправильный возраст");
                 }
             }
         }
          
-        
-        public Gender Gender { get; set; } //пол
+        /// <summary>
+        /// Пол персоны
+        /// </summary>
+        public Gender Gender { get; set; }
 
 
         /// <summary>
@@ -104,7 +107,8 @@ namespace PersonLibrary
         /// </summary>
         /// <param name="name">имя</param>
         /// <param name="surname">фамилия</param>
-        public Person(string name, string surname) : this(name, surname, 1)//пока для неизвестного возраста сделаем 1 год
+        public Person(string name, string surname) : 
+            this(name, surname, 1) // пока для неизвестного возраста сделаем 1 год
         {
         }
         /// <summary>
@@ -113,10 +117,10 @@ namespace PersonLibrary
         /// <param name="name">имя</param>
         /// <param name="surname">фамилия</param>
         /// <param name="age">возраст</param>
-        public Person(string name, string surname, int age) : this(name, surname, age, Gender.Неопределен)
+        public Person(string name, string surname, int age) : 
+            this(name, surname, age, Gender.Неопределен)
         {
         }
-
         /// <summary>
         /// персона
         /// </summary>
@@ -129,8 +133,9 @@ namespace PersonLibrary
             Name = name;
             Surname = surname;
             Аge = age;
-            this.Gender = gender;
+            Gender = gender;
         }
+
 
         /// <summary>
         /// Меняет регистр букв имен и фамилий на правильный
@@ -156,23 +161,34 @@ namespace PersonLibrary
             
         }
 
+
         /// <summary>
         /// Проверяет имя или фамилию
         /// </summary>
         /// <param name="Name">Проверяемое имя или фамилия</param>
         private void NameChecker (string Name)
         {
-            if (!Regex.IsMatch(Name, @"^(\p{L}+\p{Pd}?\p{L}+$)", RegexOptions.Multiline))
+            if (!Regex.IsMatch(Name, @"^(\p{L}+\p{Pd}?\p{L}+$)",
+                RegexOptions.Multiline))
             {
-                throw new ArgumentException("Имя и фамилия должны быть написаны только"
-                    + "буквенными символами английского или русского алфавитов. "
-                    + "Двойные имена и двойные фамилии пишутся через один дефис посередине");
+                throw new ArgumentException("Имя и фамилия должны быть "
+                    + "написаны только буквенными символами английского "
+                    + "или русского алфавитов. Двойные имена и двойные "
+                    + "фамилии пишутся через один дефис посередине");
             } 
+        }
+
+        /// <summary>
+        /// цикл для точки входа
+        /// </summary>
+        /// <param name="args"></param>
+        static void Main(string[] args)
+        {
         }
     }
 
     /// <summary>
-    /// класс пол персоны
+    /// класс пола персоны
     /// </summary>
     public enum Gender
     {
@@ -181,5 +197,5 @@ namespace PersonLibrary
         Женский
     }
 
-
-}
+    
+ }

@@ -73,15 +73,18 @@ namespace PersonLibrary
         {
             Person person = new Person();
 
-            person.Gender = (Gender)RNDnumber.Next(1, Enum.GetNames(typeof(Gender)).Length);
+            person.Gender = (Gender)RNDnumber.Next(1,
+                Enum.GetNames(typeof(Gender)).Length);
 
             if (person.Gender == Gender.Женский)
             {
-                person.Name = NamesFemale[RNDnumber.Next(NamesFemale.Length)];
+                person.Name = 
+                    NamesFemale[RNDnumber.Next(NamesFemale.Length)];
             }
             else if (person.Gender == Gender.Мужской)
             {
-                person.Name = NamesMale[RNDnumber.Next(NamesMale.Length)];
+                person.Name = 
+                    NamesMale[RNDnumber.Next(NamesMale.Length)];
             }
 
             person.Аge = RNDnumber.Next(1, 100);

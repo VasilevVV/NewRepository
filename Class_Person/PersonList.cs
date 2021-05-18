@@ -5,7 +5,8 @@ using System.Text;
 namespace PersonLibrary
 {
     /// <summary>
-    /// Класс, описывающий абстракцию списка, сожержащего объекты класса Person
+    /// Класс, описывающий абстракцию списка, 
+    /// сожержащего объекты класса Person
     /// </summary>
     public class PersonList
     {
@@ -15,7 +16,8 @@ namespace PersonLibrary
         public Person[] PersonArray; // массив персон
 
         /// <summary>
-        /// Конструктор класса PersonList - возвращает нулевой список
+        /// Конструктор класса PersonList - 
+        /// возвращает нулевой список
         /// </summary>
         public PersonList()
         {
@@ -23,9 +25,11 @@ namespace PersonLibrary
         }
 
         /// <summary>
-        /// Конструктор класса PersonList - возвращает заполненый список
+        /// Конструктор класса PersonList - 
+        /// возвращает заполненый список
         /// </summary>
-        /// <param name="PersonArray">массив с элементами типа Person, заполняющий список персон</param>
+        /// <param name="PersonArray">массив с элементами типа 
+        /// Person, заполняющий список персон</param>
         public PersonList(Person[] PersonArray)
         {
             this.PersonArray = PersonArray;
@@ -59,7 +63,8 @@ namespace PersonLibrary
         /// <param name="surname">Фамилия</param>
         /// <param name="age">Возраст</param>
         /// <param name="gender">Пол</param>
-        public void AddPerson(string name, string surname, int age, Gender gender)
+        public void AddPerson(string name, string surname, 
+            int age, Gender gender)
         {
             AddPerson(new Person(name, surname, age, gender));
         }
@@ -74,7 +79,8 @@ namespace PersonLibrary
             Person[] newArray = new Person[PersonArray.Length];
             Array.Copy(PersonArray, newArray, PersonArray.Length);
             Array.Resize<Person>(ref PersonArray, PersonArray.Length - 1);
-            Array.Copy(newArray, index + 1, PersonArray, index, newArray.Length - index - 1);
+            Array.Copy(newArray, index + 1, PersonArray, index,
+                newArray.Length - index - 1);
         }
 
         //из однофамильных одноименных персон удалит первую в списке 
@@ -88,7 +94,8 @@ namespace PersonLibrary
             Person[] newArray = new Person[0];
             for (int i = 0; i < PersonArray.Length; i++)
             {
-                if (!((PersonArray[i].Name == name) && (PersonArray[i].Surname == surname)))
+                if (!((PersonArray[i].Name == name) && 
+                    (PersonArray[i].Surname == surname)))
                 {
                     Array.Resize<Person>(ref newArray, newArray.Length + 1);
                     newArray[newArray.Length - 1] = PersonArray[i];
@@ -120,7 +127,8 @@ namespace PersonLibrary
         {
             for (int i = 0; i < PersonArray.Length; i++)
             {
-                if ((PersonArray[i].Name == name) && (PersonArray[i].Surname == surname))
+                if ((PersonArray[i].Name == name) && 
+                    (PersonArray[i].Surname == surname))
                 {
                     return i;
                 }

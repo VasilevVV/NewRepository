@@ -11,7 +11,8 @@ namespace LB1
         /// </summary>
         /// <param name="List1">Первый список</param>
         /// <param name="List2">Второй список</param>
-        private static void PrintPersonLists(PersonList List1, PersonList List2)
+        private static void PrintPersonLists(PersonList List1, 
+            PersonList List2)
         {
             Console.WriteLine("Список 1");
             foreach (Person person in List1.PersonArray)
@@ -118,7 +119,10 @@ namespace LB1
         /// <returns>Выведенная персона</returns>
         public static Person WritePerson(Person PersonWritten)
         {
-            Console.WriteLine($"Имя: {PersonWritten.Name} Фамилия: {PersonWritten.Surname}  Возраст: {PersonWritten.Аge} Пол: {PersonWritten.Gender}");
+            Console.WriteLine($"Имя: {PersonWritten.Name} " +
+                $"Фамилия: {PersonWritten.Surname}  " +
+                $"Возраст: {PersonWritten.Аge} " +
+                $"Пол: {PersonWritten.Gender}");
 
             return PersonWritten;
         }
@@ -133,7 +137,8 @@ namespace LB1
         static void Main(string[] args)
         {
             
-            Console.WriteLine("Создайте  программно  два  списка  персон,  в  каждом  из  которых будет по три человека");
+            Console.WriteLine("Создайте  программно  два  списка  персон," +
+                "  в  каждом  из  которых будет по три человека");
             Step();
 
             PersonList List1 = new PersonList();
@@ -151,7 +156,8 @@ namespace LB1
 
 
 
-            Console.WriteLine("Выведите  содержимое  каждого  списка  на  экран  с соответствующими подписями списков");
+            Console.WriteLine("Выведите  содержимое  каждого  списка" +
+                "  на  экран  с соответствующими подписями списков");
             Step();
 
             PrintPersonLists(List1, List2);
@@ -170,8 +176,10 @@ namespace LB1
 
 
 
-            Console.WriteLine("Скопируйте второго человека из первого списка в конец второго списка.");
-            Console.WriteLine("Покажите, что один и тот же человек находится в обоих списках.");
+            Console.WriteLine("Скопируйте второго человека" +
+                " из первого списка в конец второго списка.");
+            Console.WriteLine("Покажите, что один и тот же" +
+                " человек находится в обоих списках.");
             Step();
 
             List2.AddPerson(List1.GetPersonByIndex(1));
@@ -184,8 +192,12 @@ namespace LB1
                 {
                     if (person1 == person2)
                     {
-                        Console.WriteLine($"Индекс того же человека в 1 списке: {List1.FindPersonIndex(person1.name, person1.surname)}");
-                        Console.WriteLine($"Индекс того же человека во 2 списке: {List2.FindPersonIndex(person2.name, person2.surname)}");
+                        Console.WriteLine($"Индекс того же человека" +
+                            $" в 1 списке: " +
+                            $"{List1.FindPersonIndex(person1.Name, person1.Surname)}");
+                        Console.WriteLine($"Индекс того же человека во" +
+                            $" 2 списке: " +
+                            $"{List2.FindPersonIndex(person2.Name, person2.Surname)}");
                     }
                 }
             }
@@ -194,8 +206,10 @@ namespace LB1
 
 
 
-            Console.WriteLine("Удалите второго человека  из  первого  списка.");
-            Console.WriteLine("Покажите, что удаление человека из первого списка не привело к уничтожению этого же человека во втором списке.");
+            Console.WriteLine("Удалите второго человека  из " +
+                " первого  списка.");
+            Console.WriteLine("Покажите, что удаление человека из первого" +
+                " списка не привело к уничтожению этого же человека во втором списке.");
             Step();
 
             List1.DeleteByIndex(1);
@@ -226,7 +240,8 @@ namespace LB1
 
 
             Console.WriteLine("Работа рандомайзера персон.");
-            Console.WriteLine("Переназначает один и тот же экземпляр класса Person разными данными");
+            Console.WriteLine("Переназначает один и тот же экземпляр" +
+                " класса Person разными данными");
 
             ConsolePerson = RandomPerson.GetRNDperson();
             WritePerson(ConsolePerson);
