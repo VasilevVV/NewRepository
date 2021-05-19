@@ -1,5 +1,5 @@
 ﻿using System;
-using PersonLibrary;
+using TPU.LB1.PersonLibrary;
 
 
 namespace LB1
@@ -15,17 +15,17 @@ namespace LB1
             PersonList List2)
         {
             Console.WriteLine("Список 1");
-            foreach (Person person in List1.PersonArray)
+            for (int i = 0; i < List1.Number; i++)
             {
-                WritePerson(person);
-            }
+                WritePerson(List1.GetPersonByIndex(i));
+            }            
             Console.WriteLine();
 
             Console.WriteLine("Список 2");
-            foreach (Person person in List2.PersonArray)
+            for (int i = 0; i < List2.Number; i++)
             {
-                WritePerson(person);
-            }
+                WritePerson(List2.GetPersonByIndex(i));
+            }            
             Console.WriteLine();
         }
 
@@ -184,24 +184,24 @@ namespace LB1
 
             List2.AddPerson(List1.GetPersonByIndex(1));
 
-            PrintPersonLists(List1, List2);                      
+            PrintPersonLists(List1, List2);
 
-            foreach (Person person1 in List1.PersonArray)
+            for (int i = 0; i < List1.Number; i++)
             {
-                foreach (Person person2 in List2.PersonArray)
+                for (int j = 0; j < List2.Number; j++)
                 {
-                    if (person1 == person2)
+                    if (List1.GetPersonByIndex(i) == List2.GetPersonByIndex(j))
                     {
-                        Console.WriteLine($"Индекс того же человека" +
-                            $" в 1 списке: " +
-                            $"{List1.FindPersonIndex(person1.Name, person1.Surname)}");
-                        Console.WriteLine($"Индекс того же человека во" +
-                            $" 2 списке: " +
-                            $"{List2.FindPersonIndex(person2.Name, person2.Surname)}");
+                        Console.WriteLine($"Индекс того же человека " +
+                            $"в 1 списке: " +
+                            $"{List1.FindPersonIndex(List1.GetPersonByIndex(i).Name, List1.GetPersonByIndex(i).Surname)}");
+                        Console.WriteLine($"Индекс того же человека " +
+                            $"во 2 списке: " +
+                            $"{List2.FindPersonIndex(List2.GetPersonByIndex(j).Name, List2.GetPersonByIndex(j).Surname)}");
                     }
                 }
             }
-
+            
             Step();
 
 
