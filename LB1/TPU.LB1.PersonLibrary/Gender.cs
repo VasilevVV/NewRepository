@@ -11,8 +11,8 @@ namespace TPU.LB1.PersonLibrary
     /// </summary>
     public enum Gender
     {
-        Неопределен,
-        Мужской,
-        Женский
+        Unknow,
+        Male,
+        Female
     }
 }

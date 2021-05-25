@@ -46,70 +46,66 @@ namespace LB1
         /// <returns>Считанная персона</returns>
         public static Person ReadPerson(Person PersonRead)
         {
-            Console.WriteLine("Введите имя");            
-            while (true)
-            {
-                try
+            //TODO: Дубли убрать (V)
+            Action[] ActionsArray = new Action[4];
+
+            ActionsArray[0] =
+                () =>
                 {
+                    Console.WriteLine("Введите имя");
                     PersonRead.Name = Console.ReadLine();
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
-                }
-            }
+                };
 
-            Console.WriteLine("Введите фамилию");
-            while (true)
-            {
-                try
+            ActionsArray[1] =
+                () =>
                 {
+                    Console.WriteLine("Введите фамилию");
                     PersonRead.Surname = Console.ReadLine();
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
-                }
-            }
-            
+                };
 
-            Console.WriteLine("Введите возраст");
-            while (true)
-            {
-                try
+            ActionsArray[2] =
+                () =>
                 {
+                    Console.WriteLine("Введите возраст");
                     PersonRead.Аge = Convert.ToInt32(Console.ReadLine());
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
-                }
-            }            
+                };
 
-            Console.WriteLine("Введите пол Мужской/Женский");
-            while (true)
+            ActionsArray[3] =
+                () =>
+                {
+                    Console.WriteLine("Введите пол м/ж");
+                    string gender = Console.ReadLine();
+
+                    //TODO: switch-case               
+                    switch (gender)
+                    {
+                        case "м":
+                            PersonRead.Gender = Gender.Male;
+                            break;
+                        case "ж":
+                            PersonRead.Gender = Gender.Female;
+                            break;
+                        default:
+                            throw new ArgumentException("Некорректно введён пол.");                                                     
+                    }
+                };
+
+            foreach (var Action in ActionsArray)
             {
-                string gender = Console.ReadLine();
-                if (gender == "Мужской")
+                while (true)
                 {
-                    PersonRead.Gender = Gender.Мужской;
-                    break;
-                }
-                else if (gender == "Женский")
-                {
-                    PersonRead.Gender = Gender.Женский;
-                    break;
-                }
-                else
-                {
-                    Console.WriteLine("Попробуйте снова. Мужской/Женский");
+                    try
+                    {
+                        Action();
+                        break;
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"{ex.Message}\nПопробуйте снова.");
+                    }
                 }
             }
-                         
-            return PersonRead;
+            return PersonRead;            
         }
 
         /// <summary>
@@ -128,33 +124,28 @@ namespace LB1
         }
 
 
-
-
         /// <summary>
         /// Программа проверки классов
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            
             Console.WriteLine("Создайте  программно  два  списка  персон," +
                 "  в  каждом  из  которых будет по три человека");
             Step();
 
             PersonList List1 = new PersonList();
-            List1.AddPerson("Mark", "Smith", 15, Gender.Мужской);
-            List1.AddPerson("Marta", "Swim", 35, Gender.Женский);
-            List1.AddPerson("Мэттью", "Макконахи", 50, Gender.Мужской);
+            List1.AddPerson("Mark", "Smith", 15, Gender.Male);
+            List1.AddPerson("Marta", "Swim", 35, Gender.Female);
+            List1.AddPerson("Мэттью", "Макконахи", 50, Gender.Male);
             
             PersonList List2 = new PersonList();
-            List2.AddPerson("Pitter", "Parker", 22, Gender.Мужской);
-            List2.AddPerson("Kate", "Grow", 10, Gender.Женский);
-            List2.AddPerson("Анна", "Иановна", 32, Gender.Женский);
+            List2.AddPerson("Pitter", "Parker", 22, Gender.Male);
+            List2.AddPerson("Kate", "Grow", 10, Gender.Female);
+            List2.AddPerson("Анна", "Иановна", 32, Gender.Female);
 
             Console.WriteLine("Списки созданы");
             Step();
-
-
 
             Console.WriteLine("Выведите  содержимое  каждого  списка" +
                 "  на  экран  с соответствующими подписями списков");
@@ -162,19 +153,15 @@ namespace LB1
 
             PrintPersonLists(List1, List2);
 
-            Step(); ;
-
-
+            Step(); 
 
             Console.WriteLine("Добавьте нового человека в первый список");
             Step();
 
-            List1.AddPerson("Новый", "Человек", 1, Gender.Мужской);
+            List1.AddPerson("Новый", "Человек", 1, Gender.Male);
 
             Console.WriteLine("Новый человек добавлен");
             Step();
-
-
 
             Console.WriteLine("Скопируйте второго человека" +
                 " из первого списка в конец второго списка.");
@@ -192,19 +179,21 @@ namespace LB1
                 {
                     if (List1.GetPersonByIndex(i) == List2.GetPersonByIndex(j))
                     {
-                        Console.WriteLine($"Индекс того же человека " +
-                            $"в 1 списке: " +
-                            $"{List1.FindPersonIndex(List1.GetPersonByIndex(i).Name, List1.GetPersonByIndex(i).Surname)}");
-                        Console.WriteLine($"Индекс того же человека " +
-                            $"во 2 списке: " +
-                            $"{List2.FindPersonIndex(List2.GetPersonByIndex(j).Name, List2.GetPersonByIndex(j).Surname)}");
+                        Console.WriteLine($"Индекс того же человека в 1 списке: " +
+                            //TODO: RSDN (V)
+                            $"{0}", List1.FindPersonIndex(
+                                List1.GetPersonByIndex(i).Name, 
+                            List1.GetPersonByIndex(i).Surname));
+                        Console.WriteLine($"Индекс того же человека во 2 списке: " +
+                            //TODO: RSDN (V)
+                            $"{0}", List2.FindPersonIndex(
+                                List2.GetPersonByIndex(j).Name,
+                            List2.GetPersonByIndex(j).Surname));
                     }
                 }
             }
             
             Step();
-
-
 
             Console.WriteLine("Удалите второго человека  из " +
                 " первого  списка.");
@@ -223,12 +212,10 @@ namespace LB1
             List2.Clear();
             PrintPersonLists(List1, List2);
 
-            Step();            
+            Step();           
             
-
-
             Console.WriteLine("Чтение персоны с клавиатуры");
-            Person ConsolePerson = new Person();
+            Person ConsolePerson = new Person();            
             ReadPerson(ConsolePerson);
                         
             Step();
@@ -237,7 +224,6 @@ namespace LB1
             WritePerson(ConsolePerson);
             
             Step();
-
 
             Console.WriteLine("Работа рандомайзера персон.");
             Console.WriteLine("Переназначает один и тот же экземпляр" +
@@ -257,16 +243,8 @@ namespace LB1
 
             Step();
 
-
-
-            Console.WriteLine("нажмите любую клавишу, чтобы закончить");
+            Console.WriteLine("Нажмите любую клавишу, чтобы закончить");
             Step();
-
-            
-
         }
-
-        
-
     }
 }

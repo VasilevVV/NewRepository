@@ -15,7 +15,7 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Массив, содержащий объекты класса Person
         /// </summary>
-        private Person[] PersonArray; // массив персон
+        private Person[] _personArray; // массив персон
 
         /// <summary>
         /// Конструктор класса PersonList - 
@@ -23,7 +23,7 @@ namespace TPU.LB1.PersonLibrary
         /// </summary>
         public PersonList()
         {
-            PersonArray = new Person[0];
+            _personArray = new Person[0];
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace TPU.LB1.PersonLibrary
         /// Person, заполняющий список персон</param>
         public PersonList(Person[] PersonArray)
         {
-            this.PersonArray = PersonArray;
+            this._personArray = PersonArray;
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace TPU.LB1.PersonLibrary
         {
             get
             {
-                return PersonArray.Length;
+                return _personArray.Length;
             }
         }
 
@@ -54,8 +54,8 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="person">элемент типа Person</param>
         public void AddPerson(Person person)
         {
-            Array.Resize<Person>(ref PersonArray, PersonArray.Length + 1);
-            PersonArray[PersonArray.Length - 1] = person;
+            Array.Resize<Person>(ref _personArray, _personArray.Length + 1);
+            _personArray[_personArray.Length - 1] = person;
         }
 
         /// <summary>
@@ -71,17 +71,16 @@ namespace TPU.LB1.PersonLibrary
             AddPerson(new Person(name, surname, age, gender));
         }
 
-
         /// <summary>
         /// Удаляет персону по индексу в списке
         /// </summary>
         /// <param name="index">индекс персоны</param>
         public void DeleteByIndex(int index)
         {
-            Person[] newArray = new Person[PersonArray.Length];
-            Array.Copy(PersonArray, newArray, PersonArray.Length);
-            Array.Resize<Person>(ref PersonArray, PersonArray.Length - 1);
-            Array.Copy(newArray, index + 1, PersonArray, index,
+            Person[] newArray = new Person[_personArray.Length];
+            Array.Copy(_personArray, newArray, _personArray.Length);
+            Array.Resize<Person>(ref _personArray, _personArray.Length - 1);
+            Array.Copy(newArray, index + 1, _personArray, index,
                 newArray.Length - index - 1);
         }
 
@@ -94,16 +93,16 @@ namespace TPU.LB1.PersonLibrary
         public void DeleteByNameSurname(string name, string surname)
         {
             Person[] newArray = new Person[0];
-            for (int i = 0; i < PersonArray.Length; i++)
+            for (int i = 0; i < _personArray.Length; i++)
             {
-                if (!((PersonArray[i].Name == name) &&
-                    (PersonArray[i].Surname == surname)))
+                if (!((_personArray[i].Name == name) &&
+                    (_personArray[i].Surname == surname)))
                 {
                     Array.Resize<Person>(ref newArray, newArray.Length + 1);
-                    newArray[newArray.Length - 1] = PersonArray[i];
+                    newArray[newArray.Length - 1] = _personArray[i];
                 }
             }
-            PersonArray = newArray;
+            _personArray = newArray;
         }
 
         /// <summary>
@@ -116,7 +115,7 @@ namespace TPU.LB1.PersonLibrary
         /// </exception>
         public Person GetPersonByIndex(int index)
         {
-            return PersonArray[index];
+            return _personArray[index];
         }
 
         /// <summary>
@@ -127,10 +126,10 @@ namespace TPU.LB1.PersonLibrary
         /// <returns>Индекс</returns>
         public int FindPersonIndex(string name, string surname)
         {
-            for (int i = 0; i < PersonArray.Length; i++)
+            for (int i = 0; i < _personArray.Length; i++)
             {
-                if ((PersonArray[i].Name == name) &&
-                    (PersonArray[i].Surname == surname))
+                if ((_personArray[i].Name == name) &&
+                    (_personArray[i].Surname == surname))
                 {
                     return i;
                 }
@@ -143,7 +142,7 @@ namespace TPU.LB1.PersonLibrary
         /// </summary>
         public void Clear()
         {
-            Array.Resize<Person>(ref PersonArray, 0);
+            Array.Resize<Person>(ref _personArray, 0);
         }
 
     }

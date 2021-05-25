@@ -33,7 +33,6 @@ namespace TPU.LB1.PersonLibrary
             }
         }
 
-
         /// <summary>
         /// приватное поле для фамилии
         /// </summary>
@@ -54,7 +53,6 @@ namespace TPU.LB1.PersonLibrary
                 _surname = RegisterChanger(value);
             }
         }
-
 
         /// <summary>
         /// приватное поле для возраста
@@ -79,8 +77,9 @@ namespace TPU.LB1.PersonLibrary
                 }
                 else
                 {
+                    //TOOD: Добавить диапазон? (V)
                     throw new ArgumentException("Указан "
-                        + "неправильный возраст");
+                        + "неправильный возраст. Укажите от 1 до 119");
                 }
             }
         }
@@ -89,7 +88,6 @@ namespace TPU.LB1.PersonLibrary
         /// Пол персоны
         /// </summary>
         public Gender Gender { get; set; }
-
 
         /// <summary>
         /// персона
@@ -110,7 +108,8 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="name">имя</param>
         /// <param name="surname">фамилия</param>
         public Person(string name, string surname) :
-            this(name, surname, 1) // пока для неизвестного возраста сделаем 1 год
+            this(name, surname, 1) // пока для неизвестного возраста
+                                   // сделаем 1 год
         {
         }
         /// <summary>
@@ -120,7 +119,7 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="surname">фамилия</param>
         /// <param name="age">возраст</param>
         public Person(string name, string surname, int age) :
-            this(name, surname, age, Gender.Неопределен)
+            this(name, surname, age, Gender.Unknow)
         {
         }
         /// <summary>
@@ -137,7 +136,6 @@ namespace TPU.LB1.PersonLibrary
             Аge = age;
             Gender = gender;
         }
-
 
         /// <summary>
         /// Меняет регистр букв имен и фамилий на правильный
@@ -162,7 +160,6 @@ namespace TPU.LB1.PersonLibrary
             }
 
         }
-
 
         /// <summary>
         /// Проверяет имя или фамилию

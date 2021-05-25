@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LB1", "LB1.csproj", "{F70A0333-F31D-4719-8317-DD91CC941D89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPU.LB1.PersonLibrary", "..\TPU.LB1.PersonLibrary\TPU.LB1.PersonLibrary.csproj", "{9956A162-3033-411B-9749-5217AF692437}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPU.LB1.PersonLibrary", "TPU.LB1.PersonLibrary\TPU.LB1.PersonLibrary.csproj", "{9956A162-3033-411B-9749-5217AF692437}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

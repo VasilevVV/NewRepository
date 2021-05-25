@@ -57,12 +57,12 @@ namespace TPU.LB1.PersonLibrary
             person.Gender = (Gender)RNDnumber.Next(1,
                 Enum.GetNames(typeof(Gender)).Length);
 
-            if (person.Gender == Gender.Женский)
+            if (person.Gender == Gender.Female)
             {
                 person.Name =
                     NamesFemale[RNDnumber.Next(NamesFemale.Length)];
             }
-            else if (person.Gender == Gender.Мужской)
+            else if (person.Gender == Gender.Male)
             {
                 person.Name =
                     NamesMale[RNDnumber.Next(NamesMale.Length)];
