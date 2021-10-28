@@ -23,7 +23,7 @@ namespace TPU.LB1.PersonLibrary
 
         public string Job { get; set; }
 
-
+ 
 
         public Adult(string firstName, string lastName, int age,
             Gender gender, int passportNumber) : base(firstName, lastName, age, gender)
