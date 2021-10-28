@@ -1,4 +1,5 @@
 ﻿using System;
+using TPU.LB1.PersonLibrary;
 
 namespace LB2
 {
@@ -6,7 +7,16 @@ namespace LB2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
+            Person aaa = new Person();
+            Adult nnnn = new Adult();
+            Child ddd = new Child();
+            nnnn.Job = "d";
+           
+            Console.WriteLine(aaa.Infomation);
+            Console.WriteLine(nnnn.Infomation);
+            Console.WriteLine(ddd.Infomation);
+            Console.ReadKey();
         }
     }
 }

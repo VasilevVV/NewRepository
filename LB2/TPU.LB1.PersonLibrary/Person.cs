@@ -68,19 +68,10 @@ namespace TPU.LB1.PersonLibrary
             {
                 return _age;
             }
-
             set
             {
-                if (value > 0 && value < 120)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    //TOOD: Добавить диапазон? (V)
-                    throw new ArgumentException("Указан "
-                        + "неправильный возраст. Укажите от 1 до 119");
-                }
+                AgeChecker(value);
+                _age = value;
             }
         }
 
@@ -174,6 +165,44 @@ namespace TPU.LB1.PersonLibrary
                     + "написаны только буквенными символами английского "
                     + "или русского алфавитов. Двойные имена и двойные "
                     + "фамилии пишутся через один дефис посередине");
+            }
+        }
+
+        /// <summary>
+        /// Информации о персоне
+        /// </summary>
+        public virtual string Infomation
+        {
+            get
+            {
+                return $"{Name} {Surname}\n" +
+                    $"пол: {Gender}\n" +
+                    $"возраст: {Аge}\n";
+            }
+        }
+
+
+        /// <summary>
+        /// Наименьший допустимый возраст персоны.
+        /// </summary>
+        public const int MinAge = 0;
+
+        /// <summary>
+        /// Наибольший допустимый возраст персоны.
+        /// </summary>
+        public const int MaxAge = 120;
+
+        /// <summary>
+        /// Проверка правильности возраста
+        /// </summary>
+        /// <param name="Age"></param>
+        public virtual void AgeChecker(int Age)
+        {
+            if (Age <= MinAge || Age > MaxAge)
+            {
+                throw new ArgumentException($"Указан "
+                    + $"неправильный возраст. Укажите от {MinAge + 1} до {MaxAge - 1}" +
+                    $" включительно");
             }
         }
     }
