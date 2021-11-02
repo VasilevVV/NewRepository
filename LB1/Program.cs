@@ -4,28 +4,32 @@ using TPU.LB1.PersonLibrary;
 
 namespace LB1
 {
+    //TODO: RSDN (V)
+    /// <summary>
+    /// Программа проверки
+    /// </summary>
     class Program
     {
         /// <summary>
         /// Вывод на консоль двух списков персон
         /// </summary>
-        /// <param name="List1">Первый список</param>
-        /// <param name="List2">Второй список</param>
-        private static void PrintPersonLists(PersonList List1, 
-            PersonList List2)
+        /// <param name="list1">Первый список</param>
+        /// <param name="list2">Второй список</param>
+        private static void PrintPersonLists(PersonList list1,
+            PersonList list2)
         {
             Console.WriteLine("Список 1");
-            for (int i = 0; i < List1.Number; i++)
+            for (int i = 0; i < list1.Number; i++)
             {
-                WritePerson(List1.GetPersonByIndex(i));
-            }            
+                WritePerson(list1.GetPersonByIndex(i));
+            }
             Console.WriteLine();
 
             Console.WriteLine("Список 2");
-            for (int i = 0; i < List2.Number; i++)
+            for (int i = 0; i < list2.Number; i++)
             {
-                WritePerson(List2.GetPersonByIndex(i));
-            }            
+                WritePerson(list2.GetPersonByIndex(i));
+            }
             Console.WriteLine();
         }
 
@@ -39,64 +43,59 @@ namespace LB1
             Console.WriteLine();
         }
 
+        //TODO: RSDN (V)
         /// <summary>
         /// Считывает персону, вводимую с клавиатуры в консоле
         /// </summary>
-        /// <param name="PersonRead">Персона</param>
+        /// <param name="personRead">Персона</param>
         /// <returns>Считанная персона</returns>
-        public static Person ReadPerson(Person PersonRead)
+        public static Person ReadPerson(Person personRead)
         {
-            //TODO: Дубли убрать (V)
-            Action[] ActionsArray = new Action[4];
-
-            ActionsArray[0] =
+            //TODO: RSDN (V)
+            Action[] actionsArray = new Action[]
+            {
                 () =>
                 {
                     Console.WriteLine("Введите имя");
-                    PersonRead.Name = Console.ReadLine();
-                };
-
-            ActionsArray[1] =
+                    personRead.Name = Console.ReadLine();
+                },
                 () =>
                 {
                     Console.WriteLine("Введите фамилию");
-                    PersonRead.Surname = Console.ReadLine();
-                };
-
-            ActionsArray[2] =
+                    personRead.Surname = Console.ReadLine();
+                },
                 () =>
                 {
                     Console.WriteLine("Введите возраст");
-                    PersonRead.Аge = Convert.ToInt32(Console.ReadLine());
-                };
-
-            ActionsArray[3] =
+                    personRead.Аge = Convert.ToInt32(Console.ReadLine());
+                },
                 () =>
                 {
                     Console.WriteLine("Введите пол м/ж");
                     string gender = Console.ReadLine();
-
-                    //TODO: switch-case               
                     switch (gender)
                     {
                         case "м":
-                            PersonRead.Gender = Gender.Male;
+                            personRead.Gender = Gender.Male;
                             break;
                         case "ж":
-                            PersonRead.Gender = Gender.Female;
+                            personRead.Gender = Gender.Female;
                             break;
                         default:
-                            throw new ArgumentException("Некорректно введён пол.");                                                     
+                            throw new ArgumentException("Некорректно" +
+                                " введён пол.");
                     }
-                };
+                }
+            };
 
-            foreach (var Action in ActionsArray)
+            //TODO: RSDN (V)
+            foreach (var action in actionsArray)
             {
                 while (true)
                 {
                     try
                     {
-                        Action();
+                        action();
                         break;
                     }
                     catch (Exception ex)
@@ -105,7 +104,7 @@ namespace LB1
                     }
                 }
             }
-            return PersonRead;            
+            return personRead;
         }
 
         /// <summary>
@@ -134,15 +133,17 @@ namespace LB1
                 "  в  каждом  из  которых будет по три человека");
             Step();
 
-            PersonList List1 = new PersonList();
-            List1.AddPerson("Mark", "Smith", 15, Gender.Male);
-            List1.AddPerson("Marta", "Swim", 35, Gender.Female);
-            List1.AddPerson("Мэттью", "Макконахи", 50, Gender.Male);
-            
-            PersonList List2 = new PersonList();
-            List2.AddPerson("Pitter", "Parker", 22, Gender.Male);
-            List2.AddPerson("Kate", "Grow", 10, Gender.Female);
-            List2.AddPerson("Анна", "Иановна", 32, Gender.Female);
+            //TODO: RSDN (V)
+            PersonList list1 = new PersonList();
+            list1.AddPerson("Mark", "Smith", 15, Gender.Male);
+            list1.AddPerson("Marta", "Swim", 35, Gender.Female);
+            list1.AddPerson("Мэттью", "Макконахи", 50, Gender.Male);
+
+            //TODO: RSDN (V)
+            PersonList list2 = new PersonList();
+            list2.AddPerson("Pitter", "Parker", 22, Gender.Male);
+            list2.AddPerson("Kate", "Grow", 10, Gender.Female);
+            list2.AddPerson("Анна", "Иановна", 32, Gender.Female);
 
             Console.WriteLine("Списки созданы");
             Step();
@@ -151,14 +152,14 @@ namespace LB1
                 "  на  экран  с соответствующими подписями списков");
             Step();
 
-            PrintPersonLists(List1, List2);
+            PrintPersonLists(list1, list2);
 
-            Step(); 
+            Step();
 
             Console.WriteLine("Добавьте нового человека в первый список");
             Step();
 
-            List1.AddPerson("Новый", "Человек", 1, Gender.Male);
+            list1.AddPerson("Новый", "Человек", 1, Gender.Male);
 
             Console.WriteLine("Новый человек добавлен");
             Step();
@@ -169,30 +170,28 @@ namespace LB1
                 " человек находится в обоих списках.");
             Step();
 
-            List2.AddPerson(List1.GetPersonByIndex(1));
+            list2.AddPerson(list1.GetPersonByIndex(1));
 
-            PrintPersonLists(List1, List2);
+            PrintPersonLists(list1, list2);
 
-            for (int i = 0; i < List1.Number; i++)
+            for (int i = 0; i < list1.Number; i++)
             {
-                for (int j = 0; j < List2.Number; j++)
+                for (int j = 0; j < list2.Number; j++)
                 {
-                    if (List1.GetPersonByIndex(i) == List2.GetPersonByIndex(j))
+                    if (list1.GetPersonByIndex(i) == list2.GetPersonByIndex(j))
                     {
                         Console.WriteLine($"Индекс того же человека в 1 списке: " +
-                            //TODO: RSDN (V)
-                            $"{0}", List1.FindPersonIndex(
-                                List1.GetPersonByIndex(i).Name, 
-                            List1.GetPersonByIndex(i).Surname));
+                            $"{0}", list1.FindPersonIndex(
+                                list1.GetPersonByIndex(i).Name,
+                            list1.GetPersonByIndex(i).Surname));
                         Console.WriteLine($"Индекс того же человека во 2 списке: " +
-                            //TODO: RSDN (V)
-                            $"{0}", List2.FindPersonIndex(
-                                List2.GetPersonByIndex(j).Name,
-                            List2.GetPersonByIndex(j).Surname));
+                            $"{0}", list2.FindPersonIndex(
+                                list2.GetPersonByIndex(j).Name,
+                            list2.GetPersonByIndex(j).Surname));
                     }
                 }
             }
-            
+
             Step();
 
             Console.WriteLine("Удалите второго человека  из " +
@@ -201,28 +200,28 @@ namespace LB1
                 " списка не привело к уничтожению этого же человека во втором списке.");
             Step();
 
-            List1.DeleteByIndex(1);
-            PrintPersonLists(List1, List2);
+            list1.DeleteByIndex(1);
+            PrintPersonLists(list1, list2);
 
             Step();
 
             Console.WriteLine("Очистите второй список.");
             Step();
 
-            List2.Clear();
-            PrintPersonLists(List1, List2);
+            list2.Clear();
+            PrintPersonLists(list1, list2);
 
-            Step();           
-            
+            Step();
+
             Console.WriteLine("Чтение персоны с клавиатуры");
-            Person ConsolePerson = new Person();            
+            Person ConsolePerson = new Person();
             ReadPerson(ConsolePerson);
-                        
+
             Step();
 
             Console.WriteLine("Вывод считанной персоны");
             WritePerson(ConsolePerson);
-            
+
             Step();
 
             Console.WriteLine("Работа рандомайзера персон.");

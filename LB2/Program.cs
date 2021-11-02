@@ -12,7 +12,7 @@ namespace LB2
             Adult nnnn = new Adult();
             Child ddd = new Child();
             nnnn.Job = "d";
-           
+            aaa.
             Console.WriteLine(aaa.Infomation);
             Console.WriteLine(nnnn.Infomation);
             Console.WriteLine(ddd.Infomation);

@@ -70,7 +70,7 @@ namespace TPU.LB1.PersonLibrary
             }
             set
             {
-                AgeChecker(value);
+                AgeCheck(value);
                 _age = value;
             }
         }
@@ -131,23 +131,23 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Меняет регистр букв имен и фамилий на правильный
         /// </summary>
-        /// <param name="Name">Имя или фамилия</param>
+        /// <param name="name">Имя или фамилия</param>
         /// <returns>Имя или фамилия с правильным регистром</returns>
-        private static string RegisterChanger(string Name)
+        private static string RegisterChanger(string name)
         {
-            if (Name.IndexOf("-") > 0)
+            if (name.IndexOf("-") > 0)
             {
-                Name = Name.Substring(0, 1).ToUpper()
-                    + Name.Substring(1, Name.IndexOf("-")).ToLower()
-                    + Name.Substring(Name.IndexOf("-") + 1, 1).ToUpper()
-                    + Name.Remove(0, Name.IndexOf("-") + 2).ToLower();
-                return Name;
+                name = name.Substring(0, 1).ToUpper()
+                    + name.Substring(1, name.IndexOf("-")).ToLower()
+                    + name.Substring(name.IndexOf("-") + 1, 1).ToUpper()
+                    + name.Remove(0, name.IndexOf("-") + 2).ToLower();
+                return name;
             }
             else
             {
-                Name = Name.Substring(0, 1).ToUpper()
-                    + Name.Remove(0, 1).ToLower();
-                return Name;
+                name = name.Substring(0, 1).ToUpper()
+                    + name.Remove(0, 1).ToLower();
+                return name;
             }
 
         }
@@ -155,10 +155,10 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Проверяет имя или фамилию
         /// </summary>
-        /// <param name="Name">Проверяемое имя или фамилия</param>
-        private void NameChecker(string Name)
+        /// <param name="name">Проверяемое имя или фамилия</param>
+        private void NameChecker(string name)
         {
-            if (!Regex.IsMatch(Name, @"^(\p{L}+\p{Pd}?\p{L}+$)",
+            if (!Regex.IsMatch(name, @"^(\p{L}+\p{Pd}?\p{L}+$)",
                 RegexOptions.Multiline))
             {
                 throw new ArgumentException("Имя и фамилия должны быть "
@@ -195,10 +195,10 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Проверка правильности возраста
         /// </summary>
-        /// <param name="Age"></param>
-        public virtual void AgeChecker(int Age)
+        /// <param name="age"></param>
+        public virtual void AgeCheck(int age)
         {
-            if (Age <= MinAge || Age > MaxAge)
+            if (age <= MinAge || age > MaxAge)
             {
                 throw new ArgumentException($"Указан "
                     + $"неправильный возраст. Укажите от {MinAge + 1} до {MaxAge - 1}" +

@@ -117,10 +117,10 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// проверка правильности возраста
         /// </summary>
-        /// <param name="Age">возраст</param>
-        public override void AgeChecker(int Age)
+        /// <param name="age">возраст</param>
+        public override void AgeCheck(int age)
         {
-            if ((Age >= MaxAge) || (Age < MinAdultAge))
+            if ((age >= MaxAge) || (age < MinAdultAge))
             {
                 throw new ArgumentException($"Возраст взрослого должен " +
                     $"быть от {MinAdultAge + 1} до {MaxAge - 1} включительно");

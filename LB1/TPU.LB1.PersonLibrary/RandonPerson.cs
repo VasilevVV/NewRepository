@@ -52,10 +52,13 @@ namespace TPU.LB1.PersonLibrary
         /// <returns>Рандомная персона</returns>
         public static Person GetRNDperson()
         {
-            Person person = new Person();
-
-            person.Gender = (Gender)RNDnumber.Next(1,
-                Enum.GetNames(typeof(Gender)).Length);
+            Person person = new Person
+            {
+                Gender = (Gender)RNDnumber.Next(1,
+                Enum.GetNames(typeof(Gender)).Length),
+                Аge = RNDnumber.Next(Person.MinAge, Person.MaxAge - 1),
+                Surname = Surnames[RNDnumber.Next(Surnames.Length)]
+            };
 
             if (person.Gender == Gender.Female)
             {
@@ -67,10 +70,6 @@ namespace TPU.LB1.PersonLibrary
                 person.Name =
                     NamesMale[RNDnumber.Next(NamesMale.Length)];
             }
-
-            person.Аge = RNDnumber.Next(1, 100);
-
-            person.Surname = Surnames[RNDnumber.Next(Surnames.Length)];
 
             return person;
         }

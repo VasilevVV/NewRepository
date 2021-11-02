@@ -59,6 +59,8 @@ namespace TPU.LB1.PersonLibrary
         /// </summary>
         private int _age;
 
+
+
         /// <summary>
         /// публичный парметр для возраста 
         /// </summary>
@@ -71,16 +73,9 @@ namespace TPU.LB1.PersonLibrary
 
             set
             {
-                if (value > 0 && value < 120)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    //TOOD: Добавить диапазон? (V)
-                    throw new ArgumentException("Указан "
-                        + "неправильный возраст. Укажите от 1 до 119");
-                }
+                //TODO: to const (V)
+                AgeCheck(value);
+                _age = value;
             }
         }
 
@@ -89,41 +84,19 @@ namespace TPU.LB1.PersonLibrary
         /// </summary>
         public Gender Gender { get; set; }
 
+
+        //зачем столько конструкторов? Оставить только нужные. (V)
+        //оставил
         /// <summary>
-        /// персона
+        /// конструктор персоны для чтения с клавиатуры
         /// </summary>
-        public Person() : this("Неизвестно")
-        {
-        }
+        public Person()
+            : this("Неизвестно", "Неизвестно", 1, Gender.Unknow)
+        // пока для неизвестного возраста сделаем 1 год
+        { }
+
         /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        public Person(string name) : this(name, "Неизвестно")
-        {
-        }
-        /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        /// <param name="surname">фамилия</param>
-        public Person(string name, string surname) :
-            this(name, surname, 1) // пока для неизвестного возраста
-                                   // сделаем 1 год
-        {
-        }
-        /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        /// <param name="surname">фамилия</param>
-        /// <param name="age">возраст</param>
-        public Person(string name, string surname, int age) :
-            this(name, surname, age, Gender.Unknow)
-        {
-        }
-        /// <summary>
-        /// персона
+        /// конструктор персоны используемый в PersonList
         /// </summary>
         /// <param name="name">имя</param>
         /// <param name="surname">фамилия</param>
@@ -140,23 +113,23 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Меняет регистр букв имен и фамилий на правильный
         /// </summary>
-        /// <param name="Name">Имя или фамилия</param>
+        /// <param name="name">Имя или фамилия</param>
         /// <returns>Имя или фамилия с правильным регистром</returns>
-        private static string RegisterChanger(string Name)
+        private static string RegisterChanger(string name)
         {
-            if (Name.IndexOf("-") > 0)
+            if (name.IndexOf("-") > 0)
             {
-                Name = Name.Substring(0, 1).ToUpper()
-                    + Name.Substring(1, Name.IndexOf("-")).ToLower()
-                    + Name.Substring(Name.IndexOf("-") + 1, 1).ToUpper()
-                    + Name.Remove(0, Name.IndexOf("-") + 2).ToLower();
-                return Name;
+                name = name.Substring(0, 1).ToUpper()
+                    + name.Substring(1, name.IndexOf("-")).ToLower()
+                    + name.Substring(name.IndexOf("-") + 1, 1).ToUpper()
+                    + name.Remove(0, name.IndexOf("-") + 2).ToLower();
+                return name;
             }
             else
             {
-                Name = Name.Substring(0, 1).ToUpper()
-                    + Name.Remove(0, 1).ToLower();
-                return Name;
+                name = name.Substring(0, 1).ToUpper()
+                    + name.Remove(0, 1).ToLower();
+                return name;
             }
 
         }
@@ -164,16 +137,40 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Проверяет имя или фамилию
         /// </summary>
-        /// <param name="Name">Проверяемое имя или фамилия</param>
-        private void NameChecker(string Name)
+        /// <param name="name">Проверяемое имя или фамилия</param>
+        private void NameChecker(string name)
         {
-            if (!Regex.IsMatch(Name, @"^(\p{L}+\p{Pd}?\p{L}+$)",
+            if (!Regex.IsMatch(name, @"^(\p{L}+\p{Pd}?\p{L}+$)",
                 RegexOptions.Multiline))
             {
                 throw new ArgumentException("Имя и фамилия должны быть "
                     + "написаны только буквенными символами английского "
                     + "или русского алфавитов. Двойные имена и двойные "
                     + "фамилии пишутся через один дефис посередине");
+            }
+        }
+
+        /// <summary>
+        /// Наименьший допустимый возраст персоны.
+        /// </summary>
+        public const int MinAge = 0;
+
+        /// <summary>
+        /// Наибольший допустимый возраст персоны.
+        /// </summary>
+        public const int MaxAge = 120;
+
+        /// <summary>
+        /// Проверка правильности возраста
+        /// </summary>
+        /// <param name="age"></param>
+        public virtual void AgeCheck(int age)
+        {
+            if (age <= MinAge || age > MaxAge)
+            {
+                throw new ArgumentException($"Указан "
+                    + $"неправильный возраст. Укажите от {MinAge + 1} до {MaxAge - 1}" +
+                    $" включительно");
             }
         }
     }

@@ -15,27 +15,23 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Массив, содержащий объекты класса Person
         /// </summary>
-        private Person[] _personArray; // массив персон
+        private Person[] _personArray;
+
 
         /// <summary>
         /// Конструктор класса PersonList - 
-        /// возвращает нулевой список
+        /// возвращает нулевой список.
+        /// Используется в Program в начале void Main
         /// </summary>
         public PersonList()
         {
             _personArray = new Person[0];
         }
 
-        /// <summary>
-        /// Конструктор класса PersonList - 
-        /// возвращает заполненый список
-        /// </summary>
-        /// <param name="PersonArray">массив с элементами типа 
-        /// Person, заполняющий список персон</param>
-        public PersonList(Person[] PersonArray)
-        {
-            this._personArray = PersonArray;
-        }
+
+        //TODO: RSDN (V)
+        //TODO: не используется (V)
+        //неиспользуемый конструктор удален
 
         /// <summary>
         /// Количество персон в списке

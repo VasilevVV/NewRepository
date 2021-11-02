@@ -76,5 +76,29 @@ namespace TPU.LB1.PersonLibrary
         }
 
 
+        public static Child GetRNDchild()
+        {
+            Child child = new Child();
+
+            child.Gender = (Gender)RNDnumber.Next(1,
+                Enum.GetNames(typeof(Gender)).Length);
+
+            if (child.Gender == Gender.Female)
+            {
+                child.Name =
+                    NamesFemale[RNDnumber.Next(NamesFemale.Length)];
+            }
+            else if (child.Gender == Gender.Male)
+            {
+                child.Name =
+                    NamesMale[RNDnumber.Next(NamesMale.Length)];
+            }
+
+            child.Аge = RNDnumber.Next(1, 18);
+
+            child.Surname = Surnames[RNDnumber.Next(Surnames.Length)];
+
+            return child;
+        }
     }
 }
