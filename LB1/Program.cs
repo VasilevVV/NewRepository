@@ -4,7 +4,6 @@ using TPU.LB1.PersonLibrary;
 
 namespace LB1
 {
-    //TODO: RSDN (V)
     /// <summary>
     /// Программа проверки
     /// </summary>
@@ -43,7 +42,6 @@ namespace LB1
             Console.WriteLine();
         }
 
-        //TODO: RSDN (V)
         /// <summary>
         /// Считывает персону, вводимую с клавиатуры в консоле
         /// </summary>
@@ -51,7 +49,6 @@ namespace LB1
         /// <returns>Считанная персона</returns>
         public static Person ReadPerson(Person personRead)
         {
-            //TODO: RSDN (V)
             Action[] actionsArray = new Action[]
             {
                 () =>
@@ -88,7 +85,6 @@ namespace LB1
                 }
             };
 
-            //TODO: RSDN (V)
             foreach (var action in actionsArray)
             {
                 while (true)
@@ -133,13 +129,11 @@ namespace LB1
                 "  в  каждом  из  которых будет по три человека");
             Step();
 
-            //TODO: RSDN (V)
             PersonList list1 = new PersonList();
             list1.AddPerson("Mark", "Smith", 15, Gender.Male);
             list1.AddPerson("Marta", "Swim", 35, Gender.Female);
             list1.AddPerson("Мэттью", "Макконахи", 50, Gender.Male);
 
-            //TODO: RSDN (V)
             PersonList list2 = new PersonList();
             list2.AddPerson("Pitter", "Parker", 22, Gender.Male);
             list2.AddPerson("Kate", "Grow", 10, Gender.Female);
@@ -228,16 +222,16 @@ namespace LB1
             Console.WriteLine("Переназначает один и тот же экземпляр" +
                 " класса Person разными данными");
 
-            ConsolePerson = RandomPerson.GetRNDperson();
+            ConsolePerson = RandomPerson.GetRandomPerson();
             WritePerson(ConsolePerson);
 
-            ConsolePerson = RandomPerson.GetRNDperson();
+            ConsolePerson = RandomPerson.GetRandomPerson();
             WritePerson(ConsolePerson);
 
-            ConsolePerson = RandomPerson.GetRNDperson();
+            ConsolePerson = RandomPerson.GetRandomPerson();
             WritePerson(ConsolePerson);
 
-            ConsolePerson = RandomPerson.GetRNDperson();
+            ConsolePerson = RandomPerson.GetRandomPerson();
             WritePerson(ConsolePerson);
 
             Step();

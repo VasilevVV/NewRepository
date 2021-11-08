@@ -73,7 +73,6 @@ namespace TPU.LB1.PersonLibrary
 
             set
             {
-                //TODO: to const (V)
                 AgeCheck(value);
                 _age = value;
             }

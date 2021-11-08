@@ -28,11 +28,6 @@ namespace TPU.LB1.PersonLibrary
             _personArray = new Person[0];
         }
 
-
-        //TODO: RSDN (V)
-        //TODO: не используется (V)
-        //неиспользуемый конструктор удален
-
         /// <summary>
         /// Количество персон в списке
         /// </summary>

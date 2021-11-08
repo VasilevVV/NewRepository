@@ -1,22 +1,27 @@
 ﻿using System;
 using TPU.LB1.PersonLibrary;
 
+
 namespace LB2
 {
     class Program
     {
         static void Main(string[] args)
         {
-            
+            /*
             Person aaa = new Person();
-            Adult nnnn = new Adult();
-            Child ddd = new Child();
+            AdultPerson nnnn = new AdultPerson();
+            ChildPerson ddd = new ChildPerson();
             nnnn.Job = "d";
-            aaa.
+            
             Console.WriteLine(aaa.Infomation);
             Console.WriteLine(nnnn.Infomation);
             Console.WriteLine(ddd.Infomation);
-            Console.ReadKey();
+            Console.ReadKey();*/
+
+            ChildPerson dddsss = RandomPerson.GetRandomChild();
+
+            Console.WriteLine(dddsss.Infomation);
         }
     }
 }

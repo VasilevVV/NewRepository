@@ -4,17 +4,17 @@ using System.Text;
 
 namespace TPU.LB1.PersonLibrary
 {
-    public class Child : Person
+    public class ChildPerson : Person
     {
         /// <summary>
         /// публичный парметр о матери
         /// </summary>
-        public Adult Mother { get; set; }
+        public AdultPerson Mother { get; set; }
 
         /// <summary>
         /// публичный парметр об отце
         /// </summary>
-        public Adult Father { get; set; }
+        public AdultPerson Father { get; set; }
 
         /// <summary>
         /// публичный парметр о месте учебы
@@ -30,7 +30,7 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="age">возраст</param>
         /// <param name="gender">пол</param>
         /// <param name="education">место учебы</param>
-        public Child(string name, string surname, int age,
+        public ChildPerson(string name, string surname, int age,
             Gender gender, string education) : base(name, surname, age, gender)
         {
             Education = education;
@@ -46,8 +46,8 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="mother">мать</param>
         /// <param name="father">отец</param>
         /// <param name="education">место учебы</param>
-        public Child(string name, string surname, int age,
-            Gender gender, Adult mother, Adult father,
+        public ChildPerson(string name, string surname, int age,
+            Gender gender, AdultPerson mother, AdultPerson father,
             string education) : base(name, surname, age, gender)
         {
             Mother = mother;
@@ -58,7 +58,7 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// конструктор ребенка
         /// </summary>
-        public Child() : base()
+        public ChildPerson() : base()
         {
         }
 

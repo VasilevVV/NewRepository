@@ -9,7 +9,7 @@ namespace TPU.LB1.PersonLibrary
     /// <summary>
     /// класс взрослой персоны
     /// </summary>
-    public class Adult : Person
+    public class AdultPerson : Person
     {
         /// <summary>
         /// публичный парметр для номера паспорта
@@ -19,7 +19,7 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// публичный парметр партнера по браку
         /// </summary>
-        public Adult Partner { get; set; }
+        public AdultPerson Partner { get; set; }
 
         /// <summary>
         /// публичный парметр о состоянии брака
@@ -40,7 +40,7 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// публичный парметр о детях
         /// </summary>
-        public Child Child { get; set; }
+        public ChildPerson Child { get; set; }
 
         /// <summary>
         /// конструктор взрослой персоны
@@ -50,7 +50,7 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="age">возраст</param>
         /// <param name="gender">пол</param>
         /// <param name="passportNumber">номер паспорта</param>
-        public Adult(string name, string surname, int age,
+        public AdultPerson(string name, string surname, int age,
             Gender gender, uint passportNumber) : base(name, surname, age, gender)
         {
             PassportNumber = passportNumber;
@@ -60,7 +60,7 @@ namespace TPU.LB1.PersonLibrary
         /// конструктор взрослой персоны
         /// </summary>
         /// <param name="passportNumber">номер паспорта</param>
-        public Adult(uint passportNumber) : base()
+        public AdultPerson(uint passportNumber) : base()
         {
             PassportNumber = passportNumber;
         }
@@ -68,7 +68,7 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// конструктор взрослой персоны
         /// </summary>
-        public Adult() : base()
+        public AdultPerson() : base()
         {
         }
 
@@ -79,7 +79,7 @@ namespace TPU.LB1.PersonLibrary
         /// <param name="surname">фамилия</param>
         /// <param name="age">возраст</param>
         /// <param name="gender">пол</param>
-        public Adult(string name, string surname, int age, Gender gender) 
+        public AdultPerson(string name, string surname, int age, Gender gender) 
             : this(name, surname, age, gender, 0)
         {
         }

@@ -44,31 +44,31 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// рандомайзер
         /// </summary>
-        private static Random RNDnumber = new Random();
+        private static Random RandomNumber = new Random();
 
         /// <summary>
         /// Статический метод, возвращающий рандомную персону
         /// </summary>
         /// <returns>Рандомная персона</returns>
-        public static Person GetRNDperson()
+        public static Person GetRandomPerson()
         {
             Person person = new Person
             {
-                Gender = (Gender)RNDnumber.Next(1,
+                Gender = (Gender)RandomNumber.Next(1,
                 Enum.GetNames(typeof(Gender)).Length),
-                Аge = RNDnumber.Next(Person.MinAge, Person.MaxAge - 1),
-                Surname = Surnames[RNDnumber.Next(Surnames.Length)]
+                Аge = RandomNumber.Next(Person.MinAge, Person.MaxAge - 1),
+                Surname = Surnames[RandomNumber.Next(Surnames.Length)]
             };
 
             if (person.Gender == Gender.Female)
             {
                 person.Name =
-                    NamesFemale[RNDnumber.Next(NamesFemale.Length)];
+                    NamesFemale[RandomNumber.Next(NamesFemale.Length)];
             }
             else if (person.Gender == Gender.Male)
             {
                 person.Name =
-                    NamesMale[RNDnumber.Next(NamesMale.Length)];
+                    NamesMale[RandomNumber.Next(NamesMale.Length)];
             }
 
             return person;

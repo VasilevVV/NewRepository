@@ -50,7 +50,7 @@ namespace TPU.LB1.PersonLibrary
         /// Статический метод, возвращающий рандомную персону
         /// </summary>
         /// <returns>Рандомная персона</returns>
-        public static Person GetRNDperson()
+        public static Person GetRandomPerson()
         {
             Person person = new Person();
 
@@ -68,7 +68,7 @@ namespace TPU.LB1.PersonLibrary
                     NamesMale[RNDnumber.Next(NamesMale.Length)];
             }
 
-            person.Аge = RNDnumber.Next(1, 100);
+            person.Аge = RNDnumber.Next(Person.MinAge, Person.MaxAge);
 
             person.Surname = Surnames[RNDnumber.Next(Surnames.Length)];
 
@@ -76,29 +76,71 @@ namespace TPU.LB1.PersonLibrary
         }
 
 
-        public static Child GetRNDchild()
+        public static ChildPerson GetRandomChild()
         {
-            Child child = new Child();
+            ChildPerson childPerson = new ChildPerson();
 
-            child.Gender = (Gender)RNDnumber.Next(1,
+            childPerson.Gender = (Gender)RNDnumber.Next(1,
                 Enum.GetNames(typeof(Gender)).Length);
 
-            if (child.Gender == Gender.Female)
+            if (childPerson.Gender == Gender.Female)
             {
-                child.Name =
+                childPerson.Name =
                     NamesFemale[RNDnumber.Next(NamesFemale.Length)];
             }
-            else if (child.Gender == Gender.Male)
+            else if (childPerson.Gender == Gender.Male)
             {
-                child.Name =
+                childPerson.Name =
                     NamesMale[RNDnumber.Next(NamesMale.Length)];
             }
 
-            child.Аge = RNDnumber.Next(1, 18);
+            childPerson.Аge = RNDnumber.Next(ChildPerson.MinAge, ChildPerson.MaxAge);
 
-            child.Surname = Surnames[RNDnumber.Next(Surnames.Length)];
+            childPerson.Surname = Surnames[RNDnumber.Next(Surnames.Length)];
 
-            return child;
+            childPerson.Father = GetRandomFather(childPerson);
+
+
+
+            return childPerson;
         }
+
+
+        public static AdultPerson GetRandomFather(ChildPerson childPerson)
+        {
+            AdultPerson father = new AdultPerson();
+
+            father.Gender = Gender.Male;
+
+            father.Name =
+                    NamesMale[RNDnumber.Next(NamesMale.Length)];
+
+            father.Аge = RNDnumber.Next(AdultPerson.MinAge + childPerson.Аge, AdultPerson.MaxAge);
+
+            father.Surname = childPerson.Surname;
+
+            father.Partner = GetRandomMather(childPerson, father);
+
+            return father;
+        }
+
+        public static AdultPerson GetRandomMather(ChildPerson childPerson, AdultPerson father)
+        {
+            AdultPerson mather = new AdultPerson();
+
+            father.Gender = Gender.Female;
+
+            father.Name =
+                    NamesFemale[RNDnumber.Next(NamesFemale.Length)];
+
+            father.Аge = RNDnumber.Next(AdultPerson.MinAge + childPerson.Аge, AdultPerson.MaxAge);
+
+            father.Surname = childPerson.Surname;
+
+            father.Partner = father;
+
+            return father;
+        }
+
     }
 }
