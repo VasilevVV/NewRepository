@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TPU.LB1.PersonLibrary
+namespace TPU.LB2.PersonLibrary
 {
     /// <summary>
     /// Класс, описывающий абстракцию списка, 
@@ -15,26 +15,17 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Массив, содержащий объекты класса Person
         /// </summary>
-        private Person[] _personArray; // массив персон
+        private Person[] _personArray;
+
 
         /// <summary>
         /// Конструктор класса PersonList - 
-        /// возвращает нулевой список
+        /// возвращает нулевой список.
+        /// Используется в Program в начале void Main
         /// </summary>
         public PersonList()
         {
             _personArray = new Person[0];
-        }
-
-        /// <summary>
-        /// Конструктор класса PersonList - 
-        /// возвращает заполненый список
-        /// </summary>
-        /// <param name="PersonArray">массив с элементами типа 
-        /// Person, заполняющий список персон</param>
-        public PersonList(Person[] PersonArray)
-        {
-            this._personArray = PersonArray;
         }
 
         /// <summary>
@@ -56,19 +47,6 @@ namespace TPU.LB1.PersonLibrary
         {
             Array.Resize<Person>(ref _personArray, _personArray.Length + 1);
             _personArray[_personArray.Length - 1] = person;
-        }
-
-        /// <summary>
-        /// Добавляет новую персону в конец списка по составляющим
-        /// </summary>
-        /// <param name="name">Имя</param>
-        /// <param name="surname">Фамилия</param>
-        /// <param name="age">Возраст</param>
-        /// <param name="gender">Пол</param>
-        public void AddPerson(string name, string surname,
-            int age, Gender gender)
-        {
-            AddPerson(new Person(name, surname, age, gender));
         }
 
         /// <summary>

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace TPU.LB1.PersonLibrary
+namespace TPU.LB2.PersonLibrary
 {
     /// <summary>
     /// класс персоны
     /// </summary>
-    public class Person
+    public abstract class Person
     {
         /// <summary>
         /// приватное поле для имени
@@ -81,52 +81,10 @@ namespace TPU.LB1.PersonLibrary
         public Gender Gender { get; set; }
 
         /// <summary>
-        /// персона
+        /// конструктор персоны для чтения с клавиатуры
         /// </summary>
-        public Person() : this("Неизвестно")
-        {
-        }
-        /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        public Person(string name) : this(name, "Неизвестно")
-        {
-        }
-        /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        /// <param name="surname">фамилия</param>
-        public Person(string name, string surname) :
-            this(name, surname, 1) // пока для неизвестного возраста
-                                   // сделаем 1 год
-        {
-        }
-        /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        /// <param name="surname">фамилия</param>
-        /// <param name="age">возраст</param>
-        public Person(string name, string surname, int age) :
-            this(name, surname, age, Gender.Unknow)
-        {
-        }
-        /// <summary>
-        /// персона
-        /// </summary>
-        /// <param name="name">имя</param>
-        /// <param name="surname">фамилия</param>
-        /// <param name="age">возраст</param>
-        /// <param name="gender">пол</param>
-        public Person(string name, string surname, int age, Gender gender)
-        {
-            Name = name;
-            Surname = surname;
-            Аge = age;
-            Gender = gender;
-        }
+        protected Person()
+        { }
 
         /// <summary>
         /// Меняет регистр букв имен и фамилий на правильный
@@ -175,7 +133,13 @@ namespace TPU.LB1.PersonLibrary
         {
             get
             {
-                return $"{Name} {Surname}\n" +
+                string name = Name != null
+                    ? $"{Name}"
+                    : "Неизвестно";
+                string surname = Surname != null
+                    ? $"{Surname}"
+                    : "Неизвестно";
+                return $"имя фамилия: {name} {surname}\n" +
                     $"пол: {Gender}\n" +
                     $"возраст: {Аge}\n";
             }
@@ -185,7 +149,7 @@ namespace TPU.LB1.PersonLibrary
         /// <summary>
         /// Наименьший допустимый возраст персоны.
         /// </summary>
-        public const int MinAge = 0;
+        public const int MinAge = 1;
 
         /// <summary>
         /// Наибольший допустимый возраст персоны.
@@ -196,13 +160,13 @@ namespace TPU.LB1.PersonLibrary
         /// Проверка правильности возраста
         /// </summary>
         /// <param name="age"></param>
-        public virtual void AgeCheck(int age)
+        protected virtual void AgeCheck(int age)
         {
-            if (age <= MinAge || age > MaxAge)
+            if (age < MinAge || age >= MaxAge)
             {
-                throw new ArgumentException($"Указан "
-                    + $"неправильный возраст. Укажите от {MinAge + 1} до {MaxAge - 1}" +
-                    $" включительно");
+                throw new ArgumentException($"Указан " +
+                    $"неправильный возраст. Укажите от {MinAge} до " +
+                    $"{MaxAge - 1} включительно");
             }
         }
     }
