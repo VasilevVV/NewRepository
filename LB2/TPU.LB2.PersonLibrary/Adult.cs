@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace TPU.LB2.PersonLibrary
 {
+    //TODO: RSDN (V)
     /// <summary>
     /// класс взрослой персоны
     /// </summary>
-    public class AdultPerson : Person
-    {
+    public class Adult : PersonBase
+{
         /// <summary>
         /// приватное поле номера паспорта
         /// </summary>
@@ -36,7 +37,7 @@ namespace TPU.LB2.PersonLibrary
         /// <summary>
         /// публичный парметр партнера по браку
         /// </summary>
-        public AdultPerson Partner { get; set; }
+        public Adult Partner { get; set; }
 
         /// <summary>
         /// публичный парметр о состоянии брака
@@ -57,27 +58,25 @@ namespace TPU.LB2.PersonLibrary
         /// <summary>
         /// приватный массив, содержащий детей
         /// </summary>
-        private ChildPerson[] _children = new ChildPerson[0];
+        private PersonList _children;
+
 
         /// <summary>
         /// публичный парметр о детях
         /// </summary>
-        public ChildPerson[] Children
+        public PersonList Children //new PersonList();
         {
             get
             {
                 return _children;
             }
-            set
-            {
-                _children = value;
-            }
         }
         
+
         /// <summary>
         /// конструктор взрослой персоны
         /// </summary>
-        public AdultPerson() : base()
+        public Adult() : base()
         { }
                
         /// <summary>
@@ -88,12 +87,15 @@ namespace TPU.LB2.PersonLibrary
             get
             {
                 string children = "";
-                if ((Children != null) && (Children.Length != 0))
+                if ((_children != null) && (_children.Number != 0))
                 {
-                    children = $"{Children[0].Name} {Children[0].Surname}";
-                    for (int i = 1; i < Children.Length; i++)
-                        children += $", {Children[i].Name} " +
-                                    $"{Children[i].Surname}";
+                    children = $"{_children.GetPersonByIndex(0).Name} " +
+                               $"{_children.GetPersonByIndex(0).Surname}";
+                    for (int i = 1; i < _children.Number; i++)
+                    {
+                        children += $", {_children.GetPersonByIndex(i).Name} " +
+                                    $"{_children.GetPersonByIndex(i).Surname}";
+                    }
                 }
                 else
                 {
@@ -157,60 +159,103 @@ namespace TPU.LB2.PersonLibrary
             }
         }
 
+        //TODO: Зачем этот метод? (V)
+        //Чтобы добавить ребенка,
+        //прописать ему отца и мать,
+        //и фамилию родителей
         /// <summary>
-        /// Добавление ребенка в массив детей
+        /// Добавление одного ребенка в массив детей
+        /// прописать ему отца и мать
+        /// и фамилию родителей
         /// </summary>
         /// <param name="child">ребенок</param>
-        public void AddСhild(ChildPerson child)
+        public void AddСhild(Child child)
         {
-            child.Surname = this.Surname;
-            if (this.Gender == Gender.Female)
+            if (_children == null)
             {
-                child.Mother = this;
-                child.Father = this.Partner;
+                _children = new PersonList();
             }
-            else if (this.Gender == Gender.Male)
+            child.Surname = Surname;
+            switch (Gender)
             {
-                child.Father = this;
-                child.Mother = this.Partner;
+                case Gender.Female:
+                    {
+                        child.Mother = this;
+                        child.Father = Partner;
+                        break;
+                    }
+                case Gender.Male:
+                    {
+                        child.Father = this;
+                        child.Mother = Partner;
+                        break;
+                    }
             }
-            Array.Resize<ChildPerson>(ref _children, _children.Length + 1);
-            _children[_children.Length - 1] = child;
+            _children.AddPerson(child);
         }
 
+
         /// <summary>
-        /// Добавление ребенка в массив детей
+        /// Добавление массива детей 
+        /// при бракосочетании
         /// </summary>
-        /// <param name="child">ребенок</param>
-        public void AddСhildren(ChildPerson[] childArray)
+        /// <param name="childList"></param>
+        public void AddСhildren(PersonList childList)
         {
-            for (int i = 0; i < childArray.Length; i++)
-                AddСhild(childArray[i]);
+            if (childList != null)
+            {
+                if (_children == null)
+                {
+                    _children = new PersonList();
+                }
+                //TODO: скобочки (V)
+                for (int i = 0; i < childList.Number; i++)
+                {
+                    AddСhild((Child)childList.GetPersonByIndex(i));
+                }
+            }
         }
+        
 
         /// <summary>
         /// Бракосочетание
         /// </summary>
         /// <param name="partner">Жених/невеста</param>
-        public void GetMarried(AdultPerson partner)
+        public void GetMarried(Adult partner)
         {
-            if (this.Gender == Gender.Female)
+            //TODO: switch-case (V)
+            switch (Gender)
             {
-                this.Partner = partner;
-                partner.Partner = this;
-                this.Surname = partner.Surname;
-                for (int i = 0; i < this.Children.Length; i++)
-                    this.Children[i].Surname = partner.Surname;
-                this.AddСhildren(partner.Children);
-                partner.Children = this.Children;
-            }
-            else if (this.Gender == Gender.Male)
-            {
-                this.Partner = partner;
-                partner.Partner = this;
-                partner.Surname = this.Surname;
-                this.AddСhildren(partner.Children);
-                partner.Children = this.Children;
+                case Gender.Female:
+                    {
+                        Partner = partner;
+                        partner.Partner = this;
+                        Surname = partner.Surname;
+                        if (_children != null)
+                        {
+                            //TODO: скобочки (V)
+                            for (int i = 0; i < _children.Number; i++)
+                            {
+                                _children.GetPersonByIndex(0).Surname =
+                                                        partner.Surname;
+                            }
+                            AddСhildren(partner._children);
+                            partner._children = _children;
+                        }
+                        break;
+                    }
+                case Gender.Male:
+                    {
+                        Partner = partner;
+                        partner.Partner = this;
+                        partner.Surname = Surname;
+                        if (_children != null)
+                        {
+                            AddСhildren(partner._children);
+                            partner._children = _children;
+                        }
+                        break;
+                    }
             }
         }
 
@@ -222,8 +267,8 @@ namespace TPU.LB2.PersonLibrary
         /// <returns>Сообщение о месте работы</returns>
         public string GetJob(string job)
         {
-            this.Job = job;
-            return $"Теперь {Name} {Surname} работает в {Job}";
+            Job = job;
+            return $"Теперь у {Name} {Surname} место работы: {Job}";
         }
     }
 }

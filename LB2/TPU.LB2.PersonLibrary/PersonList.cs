@@ -15,8 +15,7 @@ namespace TPU.LB2.PersonLibrary
         /// <summary>
         /// Массив, содержащий объекты класса Person
         /// </summary>
-        private Person[] _personArray;
-
+        private PersonBase[] _personArray;
 
         /// <summary>
         /// Конструктор класса PersonList - 
@@ -25,7 +24,7 @@ namespace TPU.LB2.PersonLibrary
         /// </summary>
         public PersonList()
         {
-            _personArray = new Person[0];
+            _personArray = new PersonBase[0];
         }
 
         /// <summary>
@@ -43,9 +42,9 @@ namespace TPU.LB2.PersonLibrary
         /// Добавляет новую персону в конец списка
         /// </summary>
         /// <param name="person">элемент типа Person</param>
-        public void AddPerson(Person person)
+        public void AddPerson(PersonBase person)
         {
-            Array.Resize<Person>(ref _personArray, _personArray.Length + 1);
+            Array.Resize<PersonBase>(ref _personArray, _personArray.Length + 1);
             _personArray[_personArray.Length - 1] = person;
         }
 
@@ -55,9 +54,9 @@ namespace TPU.LB2.PersonLibrary
         /// <param name="index">индекс персоны</param>
         public void DeleteByIndex(int index)
         {
-            Person[] newArray = new Person[_personArray.Length];
+            PersonBase[] newArray = new PersonBase[_personArray.Length];
             Array.Copy(_personArray, newArray, _personArray.Length);
-            Array.Resize<Person>(ref _personArray, _personArray.Length - 1);
+            Array.Resize<PersonBase>(ref _personArray, _personArray.Length - 1);
             Array.Copy(newArray, index + 1, _personArray, index,
                 newArray.Length - index - 1);
         }
@@ -70,13 +69,13 @@ namespace TPU.LB2.PersonLibrary
         /// <param name="surname">Фамиля</param>
         public void DeleteByNameSurname(string name, string surname)
         {
-            Person[] newArray = new Person[0];
+            PersonBase[] newArray = new PersonBase[0];
             for (int i = 0; i < _personArray.Length; i++)
             {
                 if (!((_personArray[i].Name == name) &&
                     (_personArray[i].Surname == surname)))
                 {
-                    Array.Resize<Person>(ref newArray, newArray.Length + 1);
+                    Array.Resize<PersonBase>(ref newArray, newArray.Length + 1);
                     newArray[newArray.Length - 1] = _personArray[i];
                 }
             }
@@ -91,7 +90,7 @@ namespace TPU.LB2.PersonLibrary
         /// <exception cref="System.IndexOutOfRangeException">
         /// Возникает при указании индекса вне границ массива.
         /// </exception>
-        public Person GetPersonByIndex(int index)
+        public PersonBase GetPersonByIndex(int index)
         {
             return _personArray[index];
         }
@@ -120,7 +119,7 @@ namespace TPU.LB2.PersonLibrary
         /// </summary>
         public void Clear()
         {
-            Array.Resize<Person>(ref _personArray, 0);
+            Array.Resize<PersonBase>(ref _personArray, 0);
         }
 
     }

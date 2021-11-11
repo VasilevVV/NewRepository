@@ -4,17 +4,21 @@ using System.Text;
 
 namespace TPU.LB2.PersonLibrary
 {
-    public class ChildPerson : Person
+    //TODO: RSDN (V)
+    /// <summary>
+    /// класс ребенка
+    /// </summary>
+    public class Child : PersonBase
     {
         /// <summary>
         /// публичный параметр о матери
         /// </summary>
-        public AdultPerson Mother { get; set; }
+        public Adult Mother { get; set; }
 
         /// <summary>
         /// публичный параметр об отце
         /// </summary>
-        public AdultPerson Father { get; set; }
+        public Adult Father { get; set; }
 
         /// <summary>
         /// публичный параметр о месте учебы
@@ -25,7 +29,7 @@ namespace TPU.LB2.PersonLibrary
         /// <summary>
         /// конструктор ребенка
         /// </summary>
-        public ChildPerson() : base()
+        public Child() : base()
         { }
 
         /// <summary>
@@ -90,11 +94,16 @@ namespace TPU.LB2.PersonLibrary
         /// <returns>School of Kindergarten</returns>
         public string GetSimpleEducation()
         {
-            if (this.Аge >= 7)
-                this.Education = "School";
-            else if (this.Аge < 7 && this.Аge > 3)
-                this.Education = "Kindergarten";
-            return this.Education;
+            //TODO: скобочки (V)
+            if (Аge >= 7)
+            {
+                Education = "School";
+            }
+            else if (Аge < 7 && Аge > 3)
+            {
+                Education = "Kindergarten";
+            }
+            return Education;
         }
 
         /// <summary>
@@ -106,7 +115,7 @@ namespace TPU.LB2.PersonLibrary
         public string GetEducation(string education)
         {
             this.Education = education;
-            return $"Теперь {Name} {Surname} учится в {Education}";
+            return $"Теперь у {Name} {Surname} место учёбы: {Education}";
         }
     }
 }

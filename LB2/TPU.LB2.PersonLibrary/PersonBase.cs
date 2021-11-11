@@ -7,10 +7,11 @@ using System.Text.RegularExpressions;
 
 namespace TPU.LB2.PersonLibrary
 {
+    //TODO: RSDN (V)
     /// <summary>
     /// класс персоны
     /// </summary>
-    public abstract class Person
+    public abstract class PersonBase
     {
         /// <summary>
         /// приватное поле для имени
@@ -83,7 +84,7 @@ namespace TPU.LB2.PersonLibrary
         /// <summary>
         /// конструктор персоны для чтения с клавиатуры
         /// </summary>
-        protected Person()
+        protected PersonBase()
         { }
 
         /// <summary>

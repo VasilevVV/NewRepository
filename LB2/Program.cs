@@ -4,9 +4,17 @@ using TPU.LB2.PersonLibrary;
 
 namespace LB2
 {
-    class Program
+    //TODO: RSDN (V)
+    /// <summary>
+    /// Программа
+    /// </summary>
+    public class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// Демонтстрация работы новых классов
+        /// </summary>
+        /// <param name="args"></param>
+        public static void Main(string[] args)
         {
             Console.WriteLine("a. Создание списка PersonList, " +
                               "состоящий из семи человек, среди " + 
@@ -15,7 +23,8 @@ namespace LB2
             Console.ReadLine();
             PersonList people = new PersonList();
             Random randomNum = new Random();
-            int peopleNum = 7;
+            //TODO: const (V)
+            const int peopleNum = 7;
             for (int i = 0; i < peopleNum; i++)
             {
                 int personType = randomNum.Next(0, 4);
@@ -68,7 +77,7 @@ namespace LB2
             Console.ReadLine();
             switch (people.GetPersonByIndex(3))
             {
-                case AdultPerson adult:
+                case Adult adult:
                     {
                         Console.WriteLine("Тип четвёртого человека " +
                             "в списке - Adult");
@@ -76,7 +85,7 @@ namespace LB2
                             GetJob("Преподаватель ТПУ"));
                         break;
                     }
-                case ChildPerson child:
+                case Child child:
                     {
                         Console.WriteLine("Тип четвёртого человека " +
                             "в списке - Child");
@@ -85,8 +94,6 @@ namespace LB2
                         break;
                     }
             }
-
-
 
             Console.ReadKey();
         }

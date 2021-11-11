@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace TPU.LB2.PersonLibrary
 {
     /// <summary>
-    /// Статический класс рандомайзера персон
+    /// Статический класс рандомайзера
     /// </summary>
     public static class RandomChildAndAdult
     {
@@ -57,7 +57,7 @@ namespace TPU.LB2.PersonLibrary
             "accountant", "butcher", "baker", "banker",
             "bus driver", "cook", "doctor", "engineer",
             "programmer", "mechanic", "vet", "journalist",
-            "pilot", "teacher", "policeman", "driver",
+            "pilot", "teacher", "policeman", "driver"
         };
                 
         /// <summary>
@@ -65,27 +65,43 @@ namespace TPU.LB2.PersonLibrary
         /// </summary>
         private static Random _randomNumber = new Random();
 
+        private static void GetRandomName(PersonBase person)
+        {
+            switch (person.Gender)
+            {
+                case Gender.Female:
+                    {
+                        person.Name = _namesFemale[_randomNumber.
+                                      Next(_namesFemale.Length)];
+                        break;
+                    }
+                case Gender.Male:
+                    {
+                        person.Name = _namesMale[_randomNumber.
+                                      Next(_namesMale.Length)];
+                        break;
+                    }
+            }
+        }
+
+
         /// <summary>
         /// Статический метод, возвращающий рандомного ребенка без родителей
         /// </summary>
         /// <returns>Рандомный ребенк без родителей</returns>
-        public static ChildPerson GetRandomSingleChild()
+        public static Child GetRandomSingleChild()
         {
-            ChildPerson singleChil = new ChildPerson
+            Child singleChil = new Child
             {
                 Gender = (Gender)_randomNumber.
                           Next(1,Enum.GetNames(typeof(Gender)).Length),
-                Аge = _randomNumber.Next(Person.MinAge, 
-                                         ChildPerson.MaxChildAge),
+                Аge = _randomNumber.Next(PersonBase.MinAge, 
+                                         Child.MaxChildAge),
                 Surname = _surnames[_randomNumber.Next(_surnames.Length)],
             };
 
-            if (singleChil.Gender == Gender.Female)
-                singleChil.Name = _namesFemale[_randomNumber.
-                                  Next(_namesFemale.Length)];
-            else if (singleChil.Gender == Gender.Male)
-                singleChil.Name = _namesMale[_randomNumber.
-                                  Next(_namesMale.Length)];
+            //TODO: switch-case (V)
+            GetRandomName(singleChil);
 
             singleChil.Education = singleChil.GetSimpleEducation();
 
@@ -98,22 +114,22 @@ namespace TPU.LB2.PersonLibrary
         /// с обоими родителями
         /// </summary>
         /// <returns>Рандомный ребёнок с обоими родителями</returns>
-        public static ChildPerson GetRandomFullFamilyChild()
+        public static Child GetRandomFullFamilyChild()
         {
-            ChildPerson fullFamilyChild = new ChildPerson
+            Child fullFamilyChild = new Child
             {
                 Gender = (Gender)_randomNumber.
                          Next(1, Enum.GetNames(typeof(Gender)).Length),
                 Аge = _randomNumber.
-                      Next(Person.MinAge, ChildPerson.MaxChildAge),
+                      Next(PersonBase.MinAge, Child.MaxChildAge),
                 Surname = _surnames[_randomNumber.Next(_surnames.Length)],
-                Father = new AdultPerson
+                Father = new Adult
                 {
                     Gender = Gender.Male,
                     Name = _namesMale[_randomNumber.Next(_namesMale.Length)],
                     Job = _jobs[_randomNumber.Next(_jobs.Length)],
                     PassportNumber = GetRandomPassportNumber(),
-                    Partner = new AdultPerson
+                    Partner = new Adult
                     {
                         Gender = Gender.Female,
                         Name = _namesFemale[_randomNumber.
@@ -123,20 +139,12 @@ namespace TPU.LB2.PersonLibrary
                     }
                 }
             };
-            if (fullFamilyChild.Gender == Gender.Female)
-            {
-                fullFamilyChild.Name = _namesFemale[_randomNumber.
-                                       Next(_namesFemale.Length)];
-            }
-            else if (fullFamilyChild.Gender == Gender.Male)
-            {
-                fullFamilyChild.Name = _namesMale[_randomNumber.
-                                       Next(_namesMale.Length)];
-            }
+            //TODO: switch-case (V)
+            GetRandomName(fullFamilyChild);
             fullFamilyChild.Education = fullFamilyChild.GetSimpleEducation();
             fullFamilyChild.Father.Аge = _randomNumber.
-                Next(AdultPerson.MinAdultAge + fullFamilyChild.Аge, 
-                AdultPerson.MaxAdultAgeForChild + fullFamilyChild.Аge);
+                Next(Adult.MinAdultAge + fullFamilyChild.Аge, 
+                Adult.MaxAdultAgeForChild + fullFamilyChild.Аge);
             fullFamilyChild.Mother = fullFamilyChild.Father.Partner;
             fullFamilyChild.Mother.Аge = _randomNumber.
                 Next(fullFamilyChild.Father.Аge - 5, 
@@ -169,9 +177,9 @@ namespace TPU.LB2.PersonLibrary
         /// Статический метод, возвращающий рандомного взрослого одиночку
         /// </summary>
         /// <returns>Рандомный взрослый без детей и партнера</returns>
-        public static AdultPerson GetRandomSingleAdult()
+        public static Adult GetRandomSingleAdult()
         {
-            AdultPerson singleAdult = new AdultPerson
+            Adult singleAdult = new Adult
             {
                 Gender = (Gender)_randomNumber.
                          Next(1, Enum.GetNames(typeof(Gender)).Length),
@@ -179,20 +187,11 @@ namespace TPU.LB2.PersonLibrary
                 Job = _jobs[_randomNumber.Next(_jobs.Length)],
                 PassportNumber = GetRandomPassportNumber(),
                 Аge = _randomNumber.
-                      Next(AdultPerson.MinAdultAge, 
-                           AdultPerson.MaxAdultAgeForChild),
+                      Next(Adult.MinAdultAge, 
+                           Adult.MaxAdultAgeForChild),
             };
-
-            if (singleAdult.Gender == Gender.Female)
-            {
-                singleAdult.Name = _namesFemale[_randomNumber.
-                                   Next(_namesFemale.Length)];
-            }
-            else if (singleAdult.Gender == Gender.Male)
-            {
-                singleAdult.Name = _namesMale[_randomNumber.
-                                   Next(_namesMale.Length)];
-            }
+            //TODO: switch-case (V)
+            GetRandomName(singleAdult);
 
             return singleAdult;
         }
@@ -202,9 +201,9 @@ namespace TPU.LB2.PersonLibrary
         /// с партнером и одним ребенком
         /// </summary>
         /// <returns>Рандомный семейный взрослый</returns>
-        public static AdultPerson GetRandomFullFamilyAdult()
+        public static Adult GetRandomFullFamilyAdult()
         {
-            AdultPerson fullFamilyAdult = GetRandomSingleAdult();
+            Adult fullFamilyAdult = GetRandomSingleAdult();
             fullFamilyAdult.GetMarried(GetRandomSingleAdult());
             fullFamilyAdult.AddСhild(GetRandomSingleChild());
             
