@@ -9,7 +9,7 @@ namespace LB2
         static void Main(string[] args)
         {
             Console.WriteLine("a. Создание списка PersonList, " +
-                              "состоящий из семи человек, среди " +
+                              "состоящий из семи человек, среди " + 
                               "которых - взрослые и дети " +
                               "в случайном порядке.");
             Console.ReadLine();
