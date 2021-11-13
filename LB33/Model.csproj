@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="CertificateDiscountForever.cs" />
     <Compile Include="CertificateDiscountForPeriod.cs" />
-    <Compile Include="ThingToBuy.cs" />
     <Compile Include="ProcentDiscountForPeriod.cs" />
     <Compile Include="DiscountPeriod.cs" />
     <Compile Include="ProcentDiscountForever.cs" />
