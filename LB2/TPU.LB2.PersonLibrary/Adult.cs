@@ -58,7 +58,7 @@ namespace TPU.LB2.PersonLibrary
         /// <summary>
         /// приватный массив, содержащий детей
         /// </summary>
-        private PersonList _children;
+        private PersonList _children = new PersonList();
 
 
         /// <summary>
@@ -171,10 +171,6 @@ namespace TPU.LB2.PersonLibrary
         /// <param name="child">ребенок</param>
         public void AddСhild(Child child)
         {
-            if (_children == null)
-            {
-                _children = new PersonList();
-            }
             child.Surname = Surname;
             switch (Gender)
             {
@@ -211,7 +207,10 @@ namespace TPU.LB2.PersonLibrary
                 //TODO: скобочки (V)
                 for (int i = 0; i < childList.Number; i++)
                 {
-                    AddСhild((Child)childList.GetPersonByIndex(i));
+                    if (childList.GetPersonByIndex(i) is Child child)
+                    {
+                        AddСhild(child);
+                    }
                 }
             }
         }
