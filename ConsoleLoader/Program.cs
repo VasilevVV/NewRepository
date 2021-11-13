@@ -36,7 +36,6 @@ namespace ConsoleLoader
             };
 
             MakeActions(actionsArray);
-
             return readDiscount;
         }
 
