@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// класс описывающий скидку по сертификату без срока действия
+    /// абстрактный класс скидок
     /// </summary>
-    public class CertificateDiscountForever : IDiscount
+    public abstract class DiscountBase
     {
         /// <summary>
-        /// приватное поле величина скидки по сертификату
+        /// величина скидки
         /// </summary>
         private float _discountValue;
 
         /// <summary>
-        /// публичный параметр величина скидки по сертификату
+        /// величина скидки
         /// </summary>
         public float DiscountValue
         {
@@ -27,7 +27,7 @@ namespace Model
             }
             set
             {
-                CheckDiscountCertificate(value);
+                CheckDiscount(value);
                 _discountValue = value;
             }
         }
@@ -40,7 +40,7 @@ namespace Model
         /// <summary>
         /// публичный параметр магазин, предоставляющий скидку
         /// </summary>
-        public string Company
+        public string Shop
         {
             get
             {
@@ -53,13 +53,7 @@ namespace Model
         }
 
         /// <summary>
-        /// конструктор прост чтобы был
-        /// </summary>
-        public CertificateDiscountForever()
-        { }
-
-        /// <summary>
-        /// расчет цены товара со скидкой по сертификату
+        /// расчет цены товара со скидкой
         /// </summary>
         /// <param name="fullPrice">исходная цена товара</param>
         /// <returns>цена товара после применения скидки</returns>
@@ -78,19 +72,22 @@ namespace Model
                 return price;
             }
         }
+        
 
         /// <summary>
-        /// проверка величины скидки по сертификату
+        /// проверка величины скидки
         /// </summary>
         /// <param name="discountCertificate">величина скидки</param>
-        private void CheckDiscountCertificate(float discountCertificate)
+        private protected virtual void CheckDiscount(float discount)
         {
-            if (discountCertificate <= 0)
+            if (discount < 0)
             {
                 throw new ArgumentException($"Величина скидки " +
-                    $"по сертификату {discountCertificate} " +
-                    $"должна быть положительным числом");
+                    $"{discount} должна быть положительным числом");
             }
         }
+
+
+
     }
 }

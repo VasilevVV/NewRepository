@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace DiscountsNamespace
 {
     /// <summary>
     /// класс описывающий период действия скидки
@@ -118,6 +118,41 @@ namespace Model
             }
         }
 
+        /// <summary>
+        /// Показывает срок действия скидки в строке
+        /// </summary>
+        /// <returns>Срок действия скидки в строке</returns>
+        public override string ToString()
+        {
+            string dateTimeEmergence = DateTimeEmergence.ToString();
+            string dateTimeDiscountStart = DateTimeDiscountStart != DateTime.MinValue
+                ? DateTimeDiscountStart.ToString()
+                : "неизвестно";
+            string dateTimeDiscountEnd = DateTimeDiscountEnd != DateTime.MinValue
+                ? DateTimeDiscountEnd.ToString()
+                : "неизвестно";
+
+            return $"срок действия с {dateTimeDiscountStart} " +
+                   $"по {dateTimeDiscountEnd}. " +
+                   $"Скидка создана {dateTimeEmergence}.";
+        }
+
+
+        /// <summary>
+        /// Проверяет возможность уменьшения цены 
+        /// согласно периоду действия скидки
+        /// </summary>
+        /// <param name="priceDecreaser">Уменьшатор цены</param>
+        /// <returns>Тот же самый уменьшатор цены, 
+        /// если метод вызывается в срок действия скидки</returns>
+        internal void ChekPriceDecreaserForPeriod(ref float priceDecreaser)
+        {
+            if ((DateTimeDiscountStart > DateTime.Now) ||
+                (DateTime.Now > DateTimeDiscountEnd))
+            {
+                priceDecreaser = 0.0f;
+            }
+        }
 
     }
 }

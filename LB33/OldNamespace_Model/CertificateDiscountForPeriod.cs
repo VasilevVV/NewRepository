@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 namespace Model
 {
     /// <summary>
-    /// класс описывающий процентную скидку 
+    /// класс описывающий скидку  по сертификату
     /// действующую в ограниченном периоде времени
     /// </summary>
-    public class ProcentDiscountForPeriod : ProcentDiscountForever
+    public class CertificateDiscountForPeriod : DiscountBase
     {
         /// <summary>
         /// конструктор для создания композиции с DiscountPeriod
         /// </summary>
-        public ProcentDiscountForPeriod() : base()
+        public CertificateDiscountForPeriod()
         {
             Period = new DiscountPeriod();
         }
@@ -41,7 +41,7 @@ namespace Model
         }
 
         /// <summary>
-        /// расчет цены товара с процентной скидкой
+        /// расчет цены товара со скидкой по сертификату
         /// цена товара остается прежней,
         /// если применить скидку вне периода ее действия
         /// </summary>
@@ -52,6 +52,7 @@ namespace Model
             if ((_period.DateTimeDiscountStart <= DateTime.Now) &&
                 (DateTime.Now <= _period.DateTimeDiscountEnd))
             {
+                //TODO: duplicate (V)
                 return base.GetPrice(fullPrice);
             }
             else
@@ -59,5 +60,8 @@ namespace Model
                 return fullPrice;
             }
         }
+
+            //TODO: duplicate (V)
+            
     }
 }

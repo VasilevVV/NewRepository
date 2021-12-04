@@ -50,7 +50,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LB33\Model.csproj">
+    <ProjectReference Include="..\..\LB33\Model.csproj">
       <Project>{48b7ddc9-fd1b-43fa-a17f-a33a1a708225}</Project>
       <Name>Model</Name>
     </ProjectReference>

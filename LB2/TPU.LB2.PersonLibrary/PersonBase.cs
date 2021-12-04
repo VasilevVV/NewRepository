@@ -7,19 +7,18 @@ using System.Text.RegularExpressions;
 
 namespace TPU.LB2.PersonLibrary
 {
-    //TODO: RSDN (V)
     /// <summary>
     /// класс персоны
     /// </summary>
     public abstract class PersonBase
     {
         /// <summary>
-        /// приватное поле для имени
+        /// имя
         /// </summary>
         private string _name;
 
         /// <summary>
-        /// публичный параметр для имени 
+        /// имя
         /// </summary>
         public string Name
         {
@@ -35,12 +34,12 @@ namespace TPU.LB2.PersonLibrary
         }
 
         /// <summary>
-        /// приватное поле для фамилии
+        /// фамилия
         /// </summary>
         private string _surname;
 
         /// <summary>
-        /// публичный параметр для фамилии 
+        /// фамилия
         /// </summary>
         public string Surname
         {
@@ -56,12 +55,12 @@ namespace TPU.LB2.PersonLibrary
         }
 
         /// <summary>
-        /// приватное поле для возраста
+        /// возраст
         /// </summary>
         private int _age;
 
         /// <summary>
-        /// публичный парметр для возраста 
+        /// возраст 
         /// </summary>
         public int Аge
         {
@@ -82,11 +81,11 @@ namespace TPU.LB2.PersonLibrary
         public Gender Gender { get; set; }
 
         /// <summary>
-        /// конструктор персоны для чтения с клавиатуры
+        /// конструктор персоны
         /// </summary>
         protected PersonBase()
         { }
-
+        
         /// <summary>
         /// Меняет регистр букв имен и фамилий на правильный
         /// </summary>
@@ -108,7 +107,6 @@ namespace TPU.LB2.PersonLibrary
                     + name.Remove(0, 1).ToLower();
                 return name;
             }
-
         }
 
         /// <summary>

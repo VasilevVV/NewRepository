@@ -41,13 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CertificateDiscountForever.cs" />
-    <Compile Include="CertificateDiscountForPeriod.cs" />
-    <Compile Include="ProcentDiscountForPeriod.cs" />
-    <Compile Include="DiscountPeriod.cs" />
-    <Compile Include="ProcentDiscountForever.cs" />
-    <Compile Include="IDiscount.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\DiscountBase.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\DiscountNoPeriod.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\DiscountPeriod.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\DiscountWithPeriod.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\IDiscountСalculator.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\IDiscountWithPeriod.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\ProcentDiscountNoPeriod.cs" />
+    <Compile Include="NewNamespace_DiscountsNamespace\ProcentDiscountWithPeriod.cs" />
+    <Compile Include="OldNamespace_Model\CertificateDiscountForever.cs" />
+    <Compile Include="OldNamespace_Model\CertificateDiscountForPeriod.cs" />
+    <Compile Include="OldNamespace_Model\DiscountBase.cs" />
+    <Compile Include="OldNamespace_Model\DiscountPeriod.cs" />
+    <Compile Include="OldNamespace_Model\ProcentDiscountForever.cs" />
+    <Compile Include="OldNamespace_Model\ProcentDiscountForPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -65,6 +65,10 @@ namespace TPU.LB2.PersonLibrary
         /// </summary>
         private static Random _randomNumber = new Random();
 
+        /// <summary>
+        /// рандомайзер имен
+        /// </summary>
+        /// <param name="person">Взрослый или ребенок</param>
         private static void GetRandomName(PersonBase person)
         {
             switch (person.Gender)
@@ -86,7 +90,7 @@ namespace TPU.LB2.PersonLibrary
 
 
         /// <summary>
-        /// Статический метод, возвращающий рандомного ребенка без родителей
+        /// возвращающает рандомного ребенка без родителей
         /// </summary>
         /// <returns>Рандомный ребенк без родителей</returns>
         public static Child GetRandomSingleChild()
@@ -100,17 +104,16 @@ namespace TPU.LB2.PersonLibrary
                 Surname = _surnames[_randomNumber.Next(_surnames.Length)],
             };
 
-            //TODO: switch-case (V)
             GetRandomName(singleChil);
 
-            singleChil.Education = singleChil.GetSimpleEducation();
+            singleChil.Education = GetSimpleEducation(singleChil);
 
             return singleChil;
         }
 
 
         /// <summary>
-        /// Статический метод, возвращающий рандомного ребенка
+        /// возвращающает рандомного ребенка
         /// с обоими родителями
         /// </summary>
         /// <returns>Рандомный ребёнок с обоими родителями</returns>
@@ -139,9 +142,9 @@ namespace TPU.LB2.PersonLibrary
                     }
                 }
             };
-            //TODO: switch-case (V)
+
             GetRandomName(fullFamilyChild);
-            fullFamilyChild.Education = fullFamilyChild.GetSimpleEducation();
+            fullFamilyChild.Education = GetSimpleEducation(fullFamilyChild);
             fullFamilyChild.Father.Аge = _randomNumber.
                 Next(Adult.MinAdultAge + fullFamilyChild.Аge, 
                 Adult.MaxAdultAgeForChild + fullFamilyChild.Аge);
@@ -159,7 +162,7 @@ namespace TPU.LB2.PersonLibrary
         }
 
         /// <summary>
-        /// Статический метод, возвращающий рандомный номер паспорта
+        /// возвращающает рандомный номер паспорта
         /// </summary>
         /// <returns>номер паспорта</returns>
         public static string GetRandomPassportNumber()
@@ -174,7 +177,7 @@ namespace TPU.LB2.PersonLibrary
         }
 
         /// <summary>
-        /// Статический метод, возвращающий рандомного взрослого одиночку
+        /// возвращающает рандомного взрослого одиночку
         /// </summary>
         /// <returns>Рандомный взрослый без детей и партнера</returns>
         public static Adult GetRandomSingleAdult()
@@ -190,14 +193,13 @@ namespace TPU.LB2.PersonLibrary
                       Next(Adult.MinAdultAge, 
                            Adult.MaxAdultAgeForChild),
             };
-            //TODO: switch-case (V)
             GetRandomName(singleAdult);
 
             return singleAdult;
         }
 
         /// <summary>
-        /// Статический метод, возвращающий рандомного взрослого
+        /// возвращающает рандомного взрослого
         /// с партнером и одним ребенком
         /// </summary>
         /// <returns>Рандомный семейный взрослый</returns>
@@ -208,6 +210,23 @@ namespace TPU.LB2.PersonLibrary
             fullFamilyAdult.AddСhild(GetRandomSingleChild());
             
             return fullFamilyAdult;
+        }
+
+        /// <summary>
+        /// Добавление традиционного места учебы ребенку
+        /// </summary>
+        /// <returns>School of Kindergarten</returns>
+        public static string GetSimpleEducation(Child child)
+        {
+            if (child.Аge >= 7)
+            {
+                child.Education = "School";
+            }
+            else if (child.Аge < 7 && child.Аge > 3)
+            {
+                child.Education = "Kindergarten";
+            }
+            return child.Education;
         }
     }
 }

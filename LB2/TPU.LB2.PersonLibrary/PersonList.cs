@@ -19,8 +19,7 @@ namespace TPU.LB2.PersonLibrary
 
         /// <summary>
         /// Конструктор класса PersonList - 
-        /// возвращает нулевой список.
-        /// Используется в Program в начале void Main
+        /// возвращает нулевой список
         /// </summary>
         public PersonList()
         {
@@ -61,9 +60,9 @@ namespace TPU.LB2.PersonLibrary
                 newArray.Length - index - 1);
         }
 
-        //из однофамильных одноименных персон удалит первую в списке 
         /// <summary>
-        /// Удаляет персону по имени и фамилии
+        /// Удаляет персону по имени и фамилии,
+        /// из однофамильных одноименных персон удалит первую в списке 
         /// </summary>
         /// <param name="name">Имя</param>
         /// <param name="surname">Фамиля</param>

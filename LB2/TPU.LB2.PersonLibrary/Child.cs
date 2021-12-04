@@ -4,24 +4,23 @@ using System.Text;
 
 namespace TPU.LB2.PersonLibrary
 {
-    //TODO: RSDN (V)
     /// <summary>
     /// класс ребенка
     /// </summary>
     public class Child : PersonBase
     {
         /// <summary>
-        /// публичный параметр о матери
+        /// мать
         /// </summary>
         public Adult Mother { get; set; }
 
         /// <summary>
-        /// публичный параметр об отце
+        /// отец
         /// </summary>
         public Adult Father { get; set; }
 
         /// <summary>
-        /// публичный параметр о месте учебы
+        /// место учебы
         /// </summary>
         public string Education { get; set; }
 
@@ -88,23 +87,6 @@ namespace TPU.LB2.PersonLibrary
             }
         }
 
-        /// <summary>
-        /// Добавление традиционного места учебы ребенку
-        /// </summary>
-        /// <returns>School of Kindergarten</returns>
-        public string GetSimpleEducation()
-        {
-            //TODO: скобочки (V)
-            if (Аge >= 7)
-            {
-                Education = "School";
-            }
-            else if (Аge < 7 && Аge > 3)
-            {
-                Education = "Kindergarten";
-            }
-            return Education;
-        }
 
         /// <summary>
         /// Добавление заданного места учебы ребенку

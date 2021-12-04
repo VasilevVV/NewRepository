@@ -4,7 +4,6 @@ using TPU.LB2.PersonLibrary;
 
 namespace LB2
 {
-    //TODO: RSDN (V)
     /// <summary>
     /// Программа
     /// </summary>
@@ -23,7 +22,6 @@ namespace LB2
             Console.ReadLine();
             PersonList people = new PersonList();
             Random randomNum = new Random();
-            //TODO: const (V)
             const int peopleNum = 7;
             for (int i = 0; i < peopleNum; i++)
             {

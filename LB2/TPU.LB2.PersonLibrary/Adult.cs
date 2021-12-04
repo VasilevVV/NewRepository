@@ -7,19 +7,18 @@ using System.Threading.Tasks;
 
 namespace TPU.LB2.PersonLibrary
 {
-    //TODO: RSDN (V)
     /// <summary>
     /// класс взрослой персоны
     /// </summary>
     public class Adult : PersonBase
 {
         /// <summary>
-        /// приватное поле номера паспорта
+        /// номер паспорта
         /// </summary>
         private string _passportNumber;
 
         /// <summary>
-        /// публичный парметр для номера паспорта
+        /// номер паспорта
         /// </summary>
         public string PassportNumber 
         {
@@ -35,12 +34,12 @@ namespace TPU.LB2.PersonLibrary
         }
         
         /// <summary>
-        /// публичный парметр партнера по браку
+        /// партнер по браку
         /// </summary>
         public Adult Partner { get; set; }
 
         /// <summary>
-        /// публичный парметр о состоянии брака
+        /// состояние брака
         /// </summary>
         public bool IsMarried
         {
@@ -51,20 +50,20 @@ namespace TPU.LB2.PersonLibrary
         }
 
         /// <summary>
-        /// публичный парметр о работе
+        /// работа
         /// </summary>
         public string Job { get; set; }
 
         /// <summary>
-        /// приватный массив, содержащий детей
+        /// дети
         /// </summary>
         private PersonList _children = new PersonList();
 
 
         /// <summary>
-        /// публичный парметр о детях
+        /// дети
         /// </summary>
-        public PersonList Children //new PersonList();
+        public PersonList Children 
         {
             get
             {
@@ -159,13 +158,9 @@ namespace TPU.LB2.PersonLibrary
             }
         }
 
-        //TODO: Зачем этот метод? (V)
-        //Чтобы добавить ребенка,
-        //прописать ему отца и мать,
-        //и фамилию родителей
         /// <summary>
-        /// Добавление одного ребенка в массив детей
-        /// прописать ему отца и мать
+        /// Добавление одного ребенка в список детей,
+        /// чтобы прописать ему отца и мать
         /// и фамилию родителей
         /// </summary>
         /// <param name="child">ребенок</param>
@@ -204,7 +199,6 @@ namespace TPU.LB2.PersonLibrary
                 {
                     _children = new PersonList();
                 }
-                //TODO: скобочки (V)
                 for (int i = 0; i < childList.Number; i++)
                 {
                     if (childList.GetPersonByIndex(i) is Child child)
@@ -222,7 +216,6 @@ namespace TPU.LB2.PersonLibrary
         /// <param name="partner">Жених/невеста</param>
         public void GetMarried(Adult partner)
         {
-            //TODO: switch-case (V)
             switch (Gender)
             {
                 case Gender.Female:
@@ -232,7 +225,6 @@ namespace TPU.LB2.PersonLibrary
                         Surname = partner.Surname;
                         if (_children != null)
                         {
-                            //TODO: скобочки (V)
                             for (int i = 0; i < _children.Number; i++)
                             {
                                 _children.GetPersonByIndex(0).Surname =
