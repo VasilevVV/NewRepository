@@ -50,6 +50,7 @@
     <Compile Include="DiscountsNamespace\ProcentDiscountNoPeriod.cs" />
     <Compile Include="DiscountsNamespace\ProcentDiscountWithPeriod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomDiscount.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

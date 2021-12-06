@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<ArrayOfDiscountBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <DiscountBase xsi:type="ProcentDiscountWithPeriod">
+    <DiscountValue>42</DiscountValue>
+    <Shop>SunShop</Shop>
+    <Period>
+      <DateTimeDiscountStart>2021-12-06T13:56:31.0060536+07:00</DateTimeDiscountStart>
+      <DateTimeDiscountEnd>2022-02-17T11:16:22.986</DateTimeDiscountEnd>
+    </Period>
+  </DiscountBase>
+  <DiscountBase xsi:type="SertificateDiscountNoPeriod">
+    <DiscountValue>337</DiscountValue>
+    <Shop>SunShop</Shop>
+  </DiscountBase>
+  <DiscountBase xsi:type="ProcentDiscountNoPeriod">
+    <DiscountValue>23</DiscountValue>
+    <Shop>DailyShop</Shop>
+  </DiscountBase>
+  <DiscountBase xsi:type="ProcentDiscountNoPeriod">
+    <DiscountValue>48</DiscountValue>
+    <Shop>SunShop</Shop>
+  </DiscountBase>
+  <DiscountBase xsi:type="ProcentDiscountWithPeriod">
+    <DiscountValue>31</DiscountValue>
+    <Shop>DailyShop</Shop>
+    <Period>
+      <DateTimeDiscountStart>2021-12-06T13:56:31.5317377+07:00</DateTimeDiscountStart>
+      <DateTimeDiscountEnd>2022-08-24T06:11:32.424</DateTimeDiscountEnd>
+    </Period>
+  </DiscountBase>
+  <DiscountBase xsi:type="ProcentDiscountWithPeriod">
+    <DiscountValue>5</DiscountValue>
+    <Shop>DreamShop</Shop>
+    <Period>
+      <DateTimeDiscountStart>2021-12-06T13:56:31.6479055+07:00</DateTimeDiscountStart>
+      <DateTimeDiscountEnd>2022-01-11T23:14:39.277</DateTimeDiscountEnd>
+    </Period>
+  </DiscountBase>
+  <DiscountBase xsi:type="SertificateDiscountWithPeriod">
+    <DiscountValue>1453</DiscountValue>
+    <Shop>ShopLab</Shop>
+    <Period>
+      <DateTimeDiscountStart>2021-12-06T13:56:31.7640729+07:00</DateTimeDiscountStart>
+      <DateTimeDiscountEnd>2022-08-29T16:38:27.709</DateTimeDiscountEnd>
+    </Period>
+  </DiscountBase>
+</ArrayOfDiscountBase>
