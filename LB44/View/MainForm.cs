@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using DiscountsNamespace;
 
 namespace View
@@ -32,6 +32,10 @@ namespace View
             DropFilterButton.Enabled = false;
             CalculateButton.Enabled = false;
             PriceTextBox.TextChanged += ShowCalculateButton;
+
+            #if !DEBUG
+            RandomDiscountButton.Visible = false;
+            #endif
         }
 
         /// <summary>
@@ -49,8 +53,8 @@ namespace View
         /// <summary>
         /// Для файлов
         /// </summary>
-        private readonly XmlSerializer _serializer =
-            new XmlSerializer(typeof(BindingList<DiscountBase>));
+        private readonly BinaryFormatter _serializer =
+            new BinaryFormatter();
 
         /// <summary>
         /// Загрузка формы
@@ -110,7 +114,7 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        public void AddSearchFigureEvent(object sender, DiscountEventArgs e)
+        private void AddSearchFigureEvent(object sender, DiscountEventArgs e)
         {
             _listForSearch.Add(e.SendingDiscount);
             DataGridTools.CreateTable(_listForSearch, DiscountDataGridView);
@@ -174,7 +178,7 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void сохранитьToolStripMenuItem_Click
+        private void SaveToolStripMenuItem_Click
             (object sender, EventArgs e)
         {
             if (_discountList.Count == 0)
@@ -196,21 +200,10 @@ namespace View
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = saveFileDialog.FileName.ToString();
-
-                BindingList<DiscountBase> discountBaseList = 
-                    new BindingList<DiscountBase>();
-                foreach (IDiscount discount in _discountList)
-                {
-                    if (discount is DiscountBase discountBase)
-                    {
-                        discountBaseList.Add(discountBase);
-                    }
-                }
-
                 using (FileStream fileStream = new FileStream(path,
-                    FileMode.OpenOrCreate))
+                    FileMode.Create))
                 {
-                    _serializer.Serialize(fileStream, discountBaseList);
+                    _serializer.Serialize(fileStream, _discountList);
                 }
                 MessageBox.Show("Файл успешно сохранён.", 
                     "Сохранение завершено",
@@ -234,35 +227,18 @@ namespace View
 
             if (openFileDialog.ShowDialog() != DialogResult.OK) return;
 
-            string path = openFileDialog.FileName.ToString();
-
-
-            BindingList<DiscountBase> discountBaseList =
-                    new BindingList<DiscountBase>();
-
-            using (FileStream fileStream = new FileStream(path,
-                FileMode.OpenOrCreate))
-            {
-                discountBaseList = (BindingList<DiscountBase>)_serializer.
-                    Deserialize(fileStream);
-            }
-
-            foreach (DiscountBase discount in discountBaseList)
-            {
-                if (discount is IDiscount discountBase)
-                {
-                    _discountList.Add(discountBase);
-                }
-            }
-
-            DataGridTools.CreateTable(_discountList, DiscountDataGridView);
-
-            MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-
             try
             {
-                
+                string path = openFileDialog.FileName.ToString();
+                using (FileStream fileStream = new FileStream(path,
+                    FileMode.OpenOrCreate))
+                {
+                    _discountList = (BindingList<IDiscount>)_serializer.
+                        Deserialize(fileStream);
+                }
+                DataGridTools.CreateTable(_discountList, DiscountDataGridView);
+                MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception)
             {
@@ -271,5 +247,6 @@ namespace View
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
     }
 }

@@ -9,6 +9,7 @@ namespace DiscountsNamespace
     /// <summary>
     /// Класс описывающий период действия скидки
     /// </summary>
+    [Serializable]
     public class DiscountPeriod
     {
         /// <summary>
@@ -25,29 +26,6 @@ namespace DiscountsNamespace
             get
             {
                 return _dateTimeEmergence;
-            }
-        }
-
-        /// <summary>
-        /// приватное поле дата начала действия скидки
-        /// </summary>
-        private DateTime _dateTimeDiscountStart;
-
-        /// <summary>
-        /// публичный параметр дата начала действия скидки
-        /// не может быть меньше даты появления скидки
-        /// не может быть больше даты окончания действия скидки
-        /// </summary>
-        public DateTime DateTimeDiscountStart
-        {
-            get
-            {
-                return _dateTimeDiscountStart;
-            }
-            set
-            {
-                CheckDiscountStart(value);
-                _dateTimeDiscountStart = value;
             }
         }
 
@@ -71,6 +49,29 @@ namespace DiscountsNamespace
             {
                 CheckDiscountEnd(value);
                 _dateTimeDiscountEnd = value;
+            }
+        }
+
+        /// <summary>
+        /// приватное поле дата начала действия скидки
+        /// </summary>
+        private DateTime _dateTimeDiscountStart;
+
+        /// <summary>
+        /// публичный параметр дата начала действия скидки
+        /// не может быть меньше даты появления скидки
+        /// не может быть больше даты окончания действия скидки
+        /// </summary>
+        public DateTime DateTimeDiscountStart
+        {
+            get
+            {
+                return _dateTimeDiscountStart;
+            }
+            set
+            {
+                CheckDiscountStart(value);
+                _dateTimeDiscountStart = value;
             }
         }
 

@@ -11,10 +11,6 @@ namespace DiscountsNamespace
 	/// абстрактный класс скидок
 	/// </summary>
 	[Serializable]
-	[XmlInclude(typeof(SertificateDiscountNoPeriod))]
-	[XmlInclude(typeof(SertificateDiscountWithPeriod))]
-	[XmlInclude(typeof(ProcentDiscountNoPeriod))]
-	[XmlInclude(typeof(ProcentDiscountWithPeriod))]
 	public abstract class DiscountBase
 	{
 		/// <summary>

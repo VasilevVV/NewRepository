@@ -48,10 +48,12 @@ namespace View
             this.CalculateButton = new System.Windows.Forms.Button();
             this.PriceLabel = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.СontrolGroupBox = new System.Windows.Forms.GroupBox();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountDataGridView)).BeginInit();
             this.DiscountGridGroupBox.SuspendLayout();
             this.CalculateGroupBox.SuspendLayout();
+            this.СontrolGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -60,7 +62,7 @@ namespace View
             this.FileToolStripMenuItem});
             this.MainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MainMenuStrip.Name = "MainMenuStrip";
-            this.MainMenuStrip.Size = new System.Drawing.Size(399, 24);
+            this.MainMenuStrip.Size = new System.Drawing.Size(397, 24);
             this.MainMenuStrip.TabIndex = 0;
             this.MainMenuStrip.Text = "menuStrip1";
             // 
@@ -76,16 +78,16 @@ namespace View
             // OpenToolStripMenuItem
             // 
             this.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem";
-            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.OpenToolStripMenuItem.Text = "Открыть";
             this.OpenToolStripMenuItem.Click += new System.EventHandler(this.OpenToolStripMenuItem_Click);
             // 
             // SaveToolStripMenuItem
             // 
             this.SaveToolStripMenuItem.Name = "SaveToolStripMenuItem";
-            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.SaveToolStripMenuItem.Text = "Сохранить";
-            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.сохранитьToolStripMenuItem_Click);
+            this.SaveToolStripMenuItem.Click += new System.EventHandler(this.SaveToolStripMenuItem_Click);
             // 
             // DiscountDataGridView
             // 
@@ -109,7 +111,7 @@ namespace View
             // 
             // AddDiscountButton
             // 
-            this.AddDiscountButton.Location = new System.Drawing.Point(18, 324);
+            this.AddDiscountButton.Location = new System.Drawing.Point(6, 19);
             this.AddDiscountButton.Name = "AddDiscountButton";
             this.AddDiscountButton.Size = new System.Drawing.Size(112, 23);
             this.AddDiscountButton.TabIndex = 3;
@@ -119,7 +121,7 @@ namespace View
             // 
             // DeleteDiscountButton
             // 
-            this.DeleteDiscountButton.Location = new System.Drawing.Point(18, 353);
+            this.DeleteDiscountButton.Location = new System.Drawing.Point(6, 48);
             this.DeleteDiscountButton.Name = "DeleteDiscountButton";
             this.DeleteDiscountButton.Size = new System.Drawing.Size(112, 23);
             this.DeleteDiscountButton.TabIndex = 4;
@@ -129,7 +131,7 @@ namespace View
             // 
             // RandomDiscountButton
             // 
-            this.RandomDiscountButton.Location = new System.Drawing.Point(18, 382);
+            this.RandomDiscountButton.Location = new System.Drawing.Point(18, 409);
             this.RandomDiscountButton.Name = "RandomDiscountButton";
             this.RandomDiscountButton.Size = new System.Drawing.Size(112, 23);
             this.RandomDiscountButton.TabIndex = 5;
@@ -139,7 +141,7 @@ namespace View
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(138, 324);
+            this.SearchButton.Location = new System.Drawing.Point(126, 19);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(112, 23);
             this.SearchButton.TabIndex = 6;
@@ -149,7 +151,7 @@ namespace View
             // 
             // DropFilterButton
             // 
-            this.DropFilterButton.Location = new System.Drawing.Point(138, 353);
+            this.DropFilterButton.Location = new System.Drawing.Point(126, 48);
             this.DropFilterButton.Name = "DropFilterButton";
             this.DropFilterButton.Size = new System.Drawing.Size(112, 23);
             this.DropFilterButton.TabIndex = 7;
@@ -221,20 +223,29 @@ namespace View
             this.toolTip1.InitialDelay = 200;
             this.toolTip1.ReshowDelay = 100;
             // 
+            // СontrolGroupBox
+            // 
+            this.СontrolGroupBox.Controls.Add(this.AddDiscountButton);
+            this.СontrolGroupBox.Controls.Add(this.DeleteDiscountButton);
+            this.СontrolGroupBox.Controls.Add(this.DropFilterButton);
+            this.СontrolGroupBox.Controls.Add(this.SearchButton);
+            this.СontrolGroupBox.Location = new System.Drawing.Point(12, 324);
+            this.СontrolGroupBox.Name = "СontrolGroupBox";
+            this.СontrolGroupBox.Size = new System.Drawing.Size(242, 79);
+            this.СontrolGroupBox.TabIndex = 10;
+            this.СontrolGroupBox.TabStop = false;
+            this.СontrolGroupBox.Text = "Управление";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(399, 469);
+            this.ClientSize = new System.Drawing.Size(397, 469);
+            this.Controls.Add(this.СontrolGroupBox);
             this.Controls.Add(this.CalculateGroupBox);
-            this.Controls.Add(this.DropFilterButton);
-            this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.RandomDiscountButton);
-            this.Controls.Add(this.DeleteDiscountButton);
-            this.Controls.Add(this.AddDiscountButton);
             this.Controls.Add(this.DiscountGridGroupBox);
             this.Controls.Add(this.MainMenuStrip);
-            this.MainMenuStrip = this.MainMenuStrip;
             this.Name = "MainForm";
             this.Text = "СКИДКИ!";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -244,6 +255,7 @@ namespace View
             this.DiscountGridGroupBox.ResumeLayout(false);
             this.CalculateGroupBox.ResumeLayout(false);
             this.CalculateGroupBox.PerformLayout();
+            this.СontrolGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,6 +281,7 @@ namespace View
         private System.Windows.Forms.Label PriceLabel;
         private System.Windows.Forms.TextBox ResultPriceTextBox;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.GroupBox СontrolGroupBox;
     }
 }
 

@@ -8,6 +8,7 @@ namespace DiscountsNamespace
 	/// <summary>
 	/// класс описывающий процентную скидку без срока действия
 	/// </summary>
+	[Serializable]
 	public class ProcentDiscountNoPeriod : DiscountBase, IDiscount
 	{
 

@@ -9,6 +9,7 @@ namespace DiscountsNamespace
 	/// класс описывающий скидку  (по сертификату)
 	/// действующую в ограниченном периоде времени
 	/// </summary>
+	[Serializable]
 	public class SertificateDiscountWithPeriod : SertificateDiscountNoPeriod , IDiscountWithPeriod
 	{
 		/// <summary>
