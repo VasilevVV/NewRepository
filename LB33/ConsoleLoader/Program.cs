@@ -84,11 +84,10 @@ namespace ConsoleLoader
             const string dataFormats = ("ДД.ММ.ГГГГ ЧЧ:ММ:СС\n" +
                                   "ДД.ММ.ГГГГ ЧЧ:ММ\n" +
                                   "ДД.ММ");
-            Action[] actionsArray = new Action[]
+            var actionsArray = new Action[]
             {
                 () =>
                 {
-                    //TODO: duplicate (V)
                     Console.WriteLine("Введите дату начала действия " +
                                       "скидки в форматах:\n" +
                                       dataFormats +
@@ -120,17 +119,6 @@ namespace ConsoleLoader
             return discountPeriod;
         }
 
-        struct Person
-        {
-            public string name;
-            public int age;
-
-            public void Print()
-            {
-                Console.WriteLine($"Имя: {name}  Возраст: {age}");
-            }
-        }
-
         /// <summary>
         /// процедура проверки программы
         /// </summary>
@@ -143,7 +131,7 @@ namespace ConsoleLoader
                "И НА ТУ, И НА ЭТУ, И НА ВОН ТУ!!!");
            DoAgainConsoleMessage();
 
-           List<IDiscount> discounts = new List<IDiscount>();
+           var discounts = new List<IDiscount>();
 
            while (true)
            {
@@ -171,6 +159,7 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "бессрочная процентная скидка");
+                            //TODO: 
                             ProcentDiscount discount = 
                                                new ProcentDiscount();
                             discount = 
@@ -185,10 +174,8 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "временная процентная скидка");
-                            ProcentDiscount discount = 
-                                             new ProcentDiscount();
-                            discount = (ProcentDiscount)
-                                       ReadDiscount(discount);
+                            var discount = (ProcentDiscount)
+                                       ReadDiscount(new ProcentDiscount());
                             Console.WriteLine("");
                             discount.Period = 
                                       GetPeriodForDiscount(discount.Period);
@@ -201,6 +188,7 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "бессрочная скидка по сертификату");
+                            //TODO: 
                             SertificateDiscount discount = 
                                            new SertificateDiscount();
                             discount = (SertificateDiscount)
@@ -245,9 +233,14 @@ namespace ConsoleLoader
                                                      $"Попробуйте снова.");
                                }
                            }
-                           float priceAllDiscounts = originalPrice;
-                           List<IDiscount>.Enumerator listEnumerator = 
-                                discounts.GetEnumerator();
+
+                           var priceAllDiscounts = originalPrice;
+                           var listEnumerator = discounts.GetEnumerator();
+                           //TODO: RSDN
+                           //for (int i = 0; i < discounts.Count; i++)
+                           //{
+                           //    discounts[i].
+                           //}
                            int Counter = 0;
                            while (listEnumerator.MoveNext())
                            {
