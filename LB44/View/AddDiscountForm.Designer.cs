@@ -236,7 +236,9 @@ namespace View
             this.Controls.Add(this.OkAddDiscountButton);
             this.Controls.Add(this.DiscountChoiseGroupBox);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(320, 419);
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(320, 419);
             this.Name = "AddDiscountForm";
             this.Text = "Добавить";
             this.AddFormToolTip.SetToolTip(this, "Для активации кнопки ОК должны быть корректно заполнены все поля");

@@ -120,7 +120,9 @@ namespace DiscountsNamespace
         public virtual float GetPrice(float fullPrice)
         {
 			Period.ChekPriceDecreaserForPeriod(ref _priceDecreaser);
-			return fullPrice - _priceDecreaser;
+			float result = fullPrice - _priceDecreaser;
+			_priceDecreaser = DiscountValue;
+			return result;
 		}
 
 		/// <summary>

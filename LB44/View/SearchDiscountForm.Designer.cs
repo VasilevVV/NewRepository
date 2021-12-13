@@ -30,14 +30,14 @@ namespace View
         private void InitializeComponent()
         {
             this.DiscountSearchGroupBox = new System.Windows.Forms.GroupBox();
+            this.ShopComboBox = new System.Windows.Forms.ComboBox();
+            this.DiscountValueTextBox = new System.Windows.Forms.TextBox();
+            this.ShopCheckBox = new System.Windows.Forms.CheckBox();
+            this.ValueCheckBox = new System.Windows.Forms.CheckBox();
             this.SertificateDiscountNoPeriodСheckBox = new System.Windows.Forms.CheckBox();
+            this.ProcentDiscountWithPeriodСheckBox = new System.Windows.Forms.CheckBox();
             this.SertificateDiscountWithPeriodСheckBox = new System.Windows.Forms.CheckBox();
             this.ProcentDiscountNoPeriodСheckBox = new System.Windows.Forms.CheckBox();
-            this.ProcentDiscountWithPeriodСheckBox = new System.Windows.Forms.CheckBox();
-            this.ValueCheckBox = new System.Windows.Forms.CheckBox();
-            this.ShopCheckBox = new System.Windows.Forms.CheckBox();
-            this.DiscountValueTextBox = new System.Windows.Forms.TextBox();
-            this.ShopComboBox = new System.Windows.Forms.ComboBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.DiscountSearchGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,44 @@ namespace View
             this.DiscountSearchGroupBox.TabStop = false;
             this.DiscountSearchGroupBox.Text = "Найти скидку";
             // 
+            // ShopComboBox
+            // 
+            this.ShopComboBox.FormattingEnabled = true;
+            this.ShopComboBox.Location = new System.Drawing.Point(82, 142);
+            this.ShopComboBox.Name = "ShopComboBox";
+            this.ShopComboBox.Size = new System.Drawing.Size(163, 21);
+            this.ShopComboBox.TabIndex = 1;
+            // 
+            // DiscountValueTextBox
+            // 
+            this.DiscountValueTextBox.Location = new System.Drawing.Point(164, 119);
+            this.DiscountValueTextBox.Name = "DiscountValueTextBox";
+            this.DiscountValueTextBox.Size = new System.Drawing.Size(81, 20);
+            this.DiscountValueTextBox.TabIndex = 1;
+            this.DiscountValueTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DiscountValueTextBox_KeyPress);
+            // 
+            // ShopCheckBox
+            // 
+            this.ShopCheckBox.AutoSize = true;
+            this.ShopCheckBox.Location = new System.Drawing.Point(6, 144);
+            this.ShopCheckBox.Name = "ShopCheckBox";
+            this.ShopCheckBox.Size = new System.Drawing.Size(70, 17);
+            this.ShopCheckBox.TabIndex = 1;
+            this.ShopCheckBox.Text = "Магазин";
+            this.ShopCheckBox.UseVisualStyleBackColor = true;
+            this.ShopCheckBox.CheckedChanged += new System.EventHandler(this.ShopCheckBox_CheckedChanged);
+            // 
+            // ValueCheckBox
+            // 
+            this.ValueCheckBox.AutoSize = true;
+            this.ValueCheckBox.Location = new System.Drawing.Point(6, 121);
+            this.ValueCheckBox.Name = "ValueCheckBox";
+            this.ValueCheckBox.Size = new System.Drawing.Size(113, 17);
+            this.ValueCheckBox.TabIndex = 4;
+            this.ValueCheckBox.Text = "Величина скидки";
+            this.ValueCheckBox.UseVisualStyleBackColor = true;
+            this.ValueCheckBox.CheckedChanged += new System.EventHandler(this.ValueCheckBox_CheckedChanged);
+            // 
             // SertificateDiscountNoPeriodСheckBox
             // 
             this.SertificateDiscountNoPeriodСheckBox.AutoSize = true;
@@ -68,6 +106,16 @@ namespace View
             this.SertificateDiscountNoPeriodСheckBox.TabIndex = 1;
             this.SertificateDiscountNoPeriodСheckBox.Text = "Бесрочная скидка по сертификату";
             this.SertificateDiscountNoPeriodСheckBox.UseVisualStyleBackColor = true;
+            // 
+            // ProcentDiscountWithPeriodСheckBox
+            // 
+            this.ProcentDiscountWithPeriodСheckBox.AutoSize = true;
+            this.ProcentDiscountWithPeriodСheckBox.Location = new System.Drawing.Point(6, 98);
+            this.ProcentDiscountWithPeriodСheckBox.Name = "ProcentDiscountWithPeriodСheckBox";
+            this.ProcentDiscountWithPeriodСheckBox.Size = new System.Drawing.Size(184, 17);
+            this.ProcentDiscountWithPeriodСheckBox.TabIndex = 3;
+            this.ProcentDiscountWithPeriodСheckBox.Text = "Временная процентная скидка";
+            this.ProcentDiscountWithPeriodСheckBox.UseVisualStyleBackColor = true;
             // 
             // SertificateDiscountWithPeriodСheckBox
             // 
@@ -89,54 +137,6 @@ namespace View
             this.ProcentDiscountNoPeriodСheckBox.Text = "Бессрочная процентная скидка";
             this.ProcentDiscountNoPeriodСheckBox.UseVisualStyleBackColor = true;
             // 
-            // ProcentDiscountWithPeriodСheckBox
-            // 
-            this.ProcentDiscountWithPeriodСheckBox.AutoSize = true;
-            this.ProcentDiscountWithPeriodСheckBox.Location = new System.Drawing.Point(6, 98);
-            this.ProcentDiscountWithPeriodСheckBox.Name = "ProcentDiscountWithPeriodСheckBox";
-            this.ProcentDiscountWithPeriodСheckBox.Size = new System.Drawing.Size(184, 17);
-            this.ProcentDiscountWithPeriodСheckBox.TabIndex = 3;
-            this.ProcentDiscountWithPeriodСheckBox.Text = "Временная процентная скидка";
-            this.ProcentDiscountWithPeriodСheckBox.UseVisualStyleBackColor = true;
-            // 
-            // ValueCheckBox
-            // 
-            this.ValueCheckBox.AutoSize = true;
-            this.ValueCheckBox.Location = new System.Drawing.Point(6, 121);
-            this.ValueCheckBox.Name = "ValueCheckBox";
-            this.ValueCheckBox.Size = new System.Drawing.Size(113, 17);
-            this.ValueCheckBox.TabIndex = 4;
-            this.ValueCheckBox.Text = "Величина скидки";
-            this.ValueCheckBox.UseVisualStyleBackColor = true;
-            this.ValueCheckBox.CheckedChanged += new System.EventHandler(this.ValueCheckBox_CheckedChanged);
-            // 
-            // ShopCheckBox
-            // 
-            this.ShopCheckBox.AutoSize = true;
-            this.ShopCheckBox.Location = new System.Drawing.Point(6, 144);
-            this.ShopCheckBox.Name = "ShopCheckBox";
-            this.ShopCheckBox.Size = new System.Drawing.Size(70, 17);
-            this.ShopCheckBox.TabIndex = 1;
-            this.ShopCheckBox.Text = "Магазин";
-            this.ShopCheckBox.UseVisualStyleBackColor = true;
-            this.ShopCheckBox.CheckedChanged += new System.EventHandler(this.ShopCheckBox_CheckedChanged);
-            // 
-            // DiscountValueTextBox
-            // 
-            this.DiscountValueTextBox.Location = new System.Drawing.Point(164, 119);
-            this.DiscountValueTextBox.Name = "DiscountValueTextBox";
-            this.DiscountValueTextBox.Size = new System.Drawing.Size(81, 20);
-            this.DiscountValueTextBox.TabIndex = 1;
-            this.DiscountValueTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.DiscountValueTextBox_KeyPress);
-            // 
-            // ShopComboBox
-            // 
-            this.ShopComboBox.FormattingEnabled = true;
-            this.ShopComboBox.Location = new System.Drawing.Point(82, 142);
-            this.ShopComboBox.Name = "ShopComboBox";
-            this.ShopComboBox.Size = new System.Drawing.Size(163, 21);
-            this.ShopComboBox.TabIndex = 1;
-            // 
             // SearchButton
             // 
             this.SearchButton.Location = new System.Drawing.Point(18, 195);
@@ -154,6 +154,8 @@ namespace View
             this.ClientSize = new System.Drawing.Size(281, 230);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.DiscountSearchGroupBox);
+            this.MaximumSize = new System.Drawing.Size(297, 269);
+            this.MinimumSize = new System.Drawing.Size(297, 269);
             this.Name = "SearchDiscountForm";
             this.Text = "Поиск";
             this.Load += new System.EventHandler(this.SearchDiscountForm_Load);

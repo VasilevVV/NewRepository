@@ -259,9 +259,9 @@ namespace View
                         Deserialize(fileStream);
                 }
 
+                _dataGridViewDiscountList.Clear();
                 foreach (IDiscount readDiscount in _discountList)
                 {
-                    _dataGridViewDiscountList.Clear();
                     _dataGridViewDiscountList.Add
                         (new DataGridViewDataDiscount(readDiscount));
                 }

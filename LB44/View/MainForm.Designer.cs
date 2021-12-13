@@ -50,8 +50,8 @@ namespace View
             this.PriceLabel = new System.Windows.Forms.Label();
             this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.СontrolGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataGridViewDataDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.discountInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewDataDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).BeginInit();
@@ -250,15 +250,16 @@ namespace View
             this.СontrolGroupBox.TabStop = false;
             this.СontrolGroupBox.Text = "Управление";
             // 
-            // dataGridViewDataDiscountBindingSource
-            // 
-            this.dataGridViewDataDiscountBindingSource.DataSource = typeof(View.DataGridViewDataDiscount);
-            // 
             // discountInformationDataGridViewTextBoxColumn
             // 
             this.discountInformationDataGridViewTextBoxColumn.DataPropertyName = "DiscountInformation";
             this.discountInformationDataGridViewTextBoxColumn.HeaderText = "DiscountInformation";
             this.discountInformationDataGridViewTextBoxColumn.Name = "discountInformationDataGridViewTextBoxColumn";
+            this.discountInformationDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // dataGridViewDataDiscountBindingSource
+            // 
+            this.dataGridViewDataDiscountBindingSource.DataSource = typeof(View.DataGridViewDataDiscount);
             // 
             // MainForm
             // 
@@ -270,7 +271,11 @@ namespace View
             this.Controls.Add(this.RandomDiscountButton);
             this.Controls.Add(this.DiscountGridGroupBox);
             this.Controls.Add(this.MainMenuStrip);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(413, 508);
+            this.MinimumSize = new System.Drawing.Size(413, 508);
             this.Name = "MainForm";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.Text = "СКИДКИ!";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.MainMenuStrip.ResumeLayout(false);
