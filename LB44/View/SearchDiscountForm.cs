@@ -33,6 +33,7 @@ namespace View
             DiscountValueTextBox.Enabled = false;
             ShopComboBox.Enabled = false;
 
+            // TODO: RSDN?
             // инициализация ShopComboBox.Items
             HashSet<string> ShopComboBoxItems = new HashSet<string>();
             foreach (IDiscount discount in _listDiscountSearch)
@@ -56,7 +57,9 @@ namespace View
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SearchDiscountForm_Load(object sender, EventArgs e)
-        {  }
+        {
+            // TODO: RSDN
+        }
 
         /// <summary>
         /// Кнопка поиска
@@ -82,6 +85,8 @@ namespace View
             {
                 switch (findDiscount)
                 {
+                    // TODO: Не очевидный код.
+                    //TODO: Срабатывать на найденный список скидок.
                     case SertificateDiscount findSertificateDiscountNoPeriod
                         when SertificateDiscountNoPeriodСheckBox.Checked &&
                         findSertificateDiscountNoPeriod.Period.DateTimeDiscountEnd 

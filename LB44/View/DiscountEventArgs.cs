@@ -17,6 +17,7 @@ namespace View
         /// </summary>
         public IDiscount SendingDiscount { get; }
 
+        //TODO: XML
         /// <summary>
         /// Конструктор для передачи скидки
         /// </summary>

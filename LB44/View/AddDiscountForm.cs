@@ -65,7 +65,9 @@ namespace View
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void AddDiscountForm_Load(object sender, EventArgs e)
-        { }
+        {
+            //TODO:
+        }
 
         /// <summary>
         /// Закрыть форму
@@ -139,6 +141,7 @@ namespace View
 
                     if (discountBase.Period.DateTimeDiscountEnd != DateTime.MaxValue)
                     {
+                        //TODO: Дубли
                         discountBase.Period.DateTimeDiscountEnd =
                         new DateTime
                         (EndDatePicker.Value.Year,
@@ -162,7 +165,6 @@ namespace View
                             );
                     }
                 }
-
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -220,7 +222,5 @@ namespace View
                 !string.IsNullOrEmpty(ShopTextBox.Text)
                 && float.TryParse(ValueTextBox.Text, out _);
         }
-
-
     }
 }

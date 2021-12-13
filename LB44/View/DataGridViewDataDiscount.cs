@@ -7,6 +7,7 @@ using DiscountsNamespace;
 
 namespace View
 {
+    //TODO: RSDN
     /// <summary>
     /// Класс для записи информации о скидки в DataGridView
     /// </summary>
