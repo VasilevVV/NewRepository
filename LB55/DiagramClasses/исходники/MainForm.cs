@@ -39,24 +39,16 @@ namespace View
         }
 
         /// <summary>
-		/// Cписок фигур для отображения информации
+		/// Cписок фигур
 		/// </summary>
-		private BindingList<DataGridViewDataDiscount> 
-            _dataGridViewDiscountList =
-            new BindingList<DataGridViewDataDiscount>();
+		private BindingList<IDiscount> _discountList =
+            new BindingList<IDiscount>();
 
         /// <summary>
-		/// Cписок фигур используется для общения между формами
-		/// </summary>
-		private List<IDiscount> _discountList =
-            new List<IDiscount>();
-
-        /// <summary>
-		/// Cписок фильтрованных фигур
-		/// </summary>
-		private BindingList<DataGridViewDataDiscount>
-            _dataGridViewDiscountListForSearch =
-            new BindingList<DataGridViewDataDiscount>();
+        /// Лист фильтрованных фигур
+        /// </summary>
+        private readonly BindingList<IDiscount> _listForSearch =
+            new BindingList<IDiscount>();
 
         /// <summary>
         /// Для файлов
@@ -69,7 +61,7 @@ namespace View
         /// </summary>
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DataGridTools.CreateTable(_dataGridViewDiscountList, DiscountDataGridView);
+            DataGridTools.CreateTable(_discountList, DiscountDataGridView);
         }
 
         /// <summary>
@@ -82,8 +74,6 @@ namespace View
             if (addDiscountForm.ShowDialog() == DialogResult.OK)
             {
                 _discountList.Add(addDiscountForm.DiscountData);
-                _dataGridViewDiscountList.Add
-                (new DataGridViewDataDiscount(addDiscountForm.DiscountData));
             }
         }
 
@@ -98,22 +88,12 @@ namespace View
             for (int i = 0; i < countOfRows; i++)
             {
                 _discountList.RemoveAt(DiscountDataGridView.SelectedRows[0].Index);
-                _dataGridViewDiscountList.RemoveAt
-               (DiscountDataGridView.SelectedRows[0].Index);
             }
         }
 
-        /// <summary>
-        /// Добавление рандомной скидки
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void RandomDiscountButton_Click(object sender, EventArgs e)
         {
-            IDiscount randomDiscount = RandomDiscount.GetRandomDiscount();
-            _discountList.Add(randomDiscount);
-            _dataGridViewDiscountList.Add
-               (new DataGridViewDataDiscount(randomDiscount));
+            _discountList.Add(RandomDiscount.GetRandomDiscount());
         }
 
         /// <summary>
@@ -136,11 +116,8 @@ namespace View
         /// <param name="e"></param>
         private void AddSearchFigureEvent(object sender, DiscountEventArgs e)
         {
-            IDiscount sendDiscount = e.SendingDiscount;
-            _dataGridViewDiscountListForSearch.Add
-                (new DataGridViewDataDiscount(sendDiscount));
-            DataGridTools.CreateTable
-                (_dataGridViewDiscountListForSearch, DiscountDataGridView);
+            _listForSearch.Add(e.SendingDiscount);
+            DataGridTools.CreateTable(_listForSearch, DiscountDataGridView);
             DropFilterButton.Enabled = true;
             DeleteDiscountButton.Enabled = false;
             SearchButton.Enabled = false;
@@ -156,14 +133,13 @@ namespace View
         private void DropFilterButton_Click(object sender, EventArgs e)
         {
             DiscountDataGridView.DataSource = null;
-            DataGridTools.CreateTable
-                (_dataGridViewDiscountList, DiscountDataGridView);
+            DataGridTools.CreateTable(_discountList, DiscountDataGridView);
             DropFilterButton.Enabled = false;
             DeleteDiscountButton.Enabled = true;
             SearchButton.Enabled = true;
             AddDiscountButton.Enabled = true;
             RandomDiscountButton.Enabled = true;
-            _dataGridViewDiscountListForSearch.Clear();
+            _listForSearch.Clear();
         }
 
         /// <summary>
@@ -179,6 +155,7 @@ namespace View
             {
                 priceAllDiscounts = _discountList[DiscountDataGridView.
                         SelectedRows[i].Index].GetPrice(priceAllDiscounts);
+
             }
             ResultPriceTextBox.Text = $"{priceAllDiscounts}";
         }
@@ -255,19 +232,10 @@ namespace View
                 using (FileStream fileStream = new FileStream(path,
                     FileMode.OpenOrCreate))
                 {
-                    _discountList = (List<IDiscount>)_serializer.
+                    _discountList = (BindingList<IDiscount>)_serializer.
                         Deserialize(fileStream);
                 }
-
-                foreach (IDiscount readDiscount in _discountList)
-                {
-                    _dataGridViewDiscountList.Clear();
-                    _dataGridViewDiscountList.Add
-                        (new DataGridViewDataDiscount(readDiscount));
-                }
-
-                DataGridTools.CreateTable
-                    (_dataGridViewDiscountList, DiscountDataGridView);
+                DataGridTools.CreateTable(_discountList, DiscountDataGridView);
                 MessageBox.Show("Файл успешно загружен.", "Загрузка завершена",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }

@@ -46,7 +46,7 @@ namespace View
             this.StartTimePicker = new System.Windows.Forms.DateTimePicker();
             this.EndTimePicker = new System.Windows.Forms.DateTimePicker();
             this.PeriodGroupBox = new System.Windows.Forms.GroupBox();
-            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.AddFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.DiscountChoiseGroupBox.SuspendLayout();
             this.ParametrsGroupBox.SuspendLayout();
             this.PeriodGroupBox.SuspendLayout();
@@ -113,7 +113,7 @@ namespace View
             this.ValueTextBox.Name = "ValueTextBox";
             this.ValueTextBox.Size = new System.Drawing.Size(114, 20);
             this.ValueTextBox.TabIndex = 5;
-            this.ToolTip1.SetToolTip(this.ValueTextBox, "Величина скидки может быть числом или десятичной дробью (через \',\')");
+            this.AddFormToolTip.SetToolTip(this.ValueTextBox, "Величина скидки может быть числом или десятичной дробью (через \',\')");
             // 
             // ParametrsGroupBox
             // 
@@ -217,12 +217,12 @@ namespace View
             this.PeriodGroupBox.TabStop = false;
             this.PeriodGroupBox.Text = "Время действия скидки";
             // 
-            // ToolTip1
+            // AddFormToolTip
             // 
-            this.ToolTip1.AutomaticDelay = 100;
-            this.ToolTip1.AutoPopDelay = 8000;
-            this.ToolTip1.InitialDelay = 100;
-            this.ToolTip1.ReshowDelay = 100;
+            this.AddFormToolTip.AutomaticDelay = 100;
+            this.AddFormToolTip.AutoPopDelay = 8000;
+            this.AddFormToolTip.InitialDelay = 100;
+            this.AddFormToolTip.ReshowDelay = 100;
             // 
             // AddDiscountForm
             // 
@@ -239,7 +239,7 @@ namespace View
             this.MinimizeBox = false;
             this.Name = "AddDiscountForm";
             this.Text = "Добавить";
-            this.ToolTip1.SetToolTip(this, "Для активации кнопки ОК должны быть корректно заполнены все поля");
+            this.AddFormToolTip.SetToolTip(this, "Для активации кнопки ОК должны быть корректно заполнены все поля");
             this.Load += new System.EventHandler(this.AddDiscountForm_Load);
             this.DiscountChoiseGroupBox.ResumeLayout(false);
             this.ParametrsGroupBox.ResumeLayout(false);
@@ -269,6 +269,6 @@ namespace View
         private System.Windows.Forms.DateTimePicker StartTimePicker;
         private System.Windows.Forms.DateTimePicker EndTimePicker;
         private System.Windows.Forms.GroupBox PeriodGroupBox;
-        private System.Windows.Forms.ToolTip ToolTip1;
+        private System.Windows.Forms.ToolTip AddFormToolTip;
     }
 }

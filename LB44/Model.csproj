@@ -42,16 +42,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DiscountsNamespace\DiscountBase.cs" />
-    <Compile Include="DiscountsNamespace\SertificateDiscountNoPeriod.cs" />
     <Compile Include="DiscountsNamespace\DiscountPeriod.cs" />
-    <Compile Include="DiscountsNamespace\SertificateDiscountWithPeriod.cs" />
     <Compile Include="DiscountsNamespace\IDiscount.cs" />
-    <Compile Include="DiscountsNamespace\IDiscountWithPeriod.cs" />
-    <Compile Include="DiscountsNamespace\ProcentDiscountNoPeriod.cs" />
-    <Compile Include="DiscountsNamespace\ProcentDiscountWithPeriod.cs" />
+    <Compile Include="DiscountsNamespace\ProcentDiscount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RandomDiscount.cs" />
+    <Compile Include="DiscountsNamespace\SertificateDiscount.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,7 +8,7 @@ namespace DiscountsNamespace
 	/// <summary>
 	/// абстрактный класс скидок
 	/// </summary>
-	public abstract class DiscountBase
+	public abstract class DiscountBase : IDiscount
 	{
 		/// <summary>
 		/// величина скидки
@@ -59,6 +59,36 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
+		/// период действия скидки
+		/// </summary>
+		private DiscountPeriod _period;
+
+		/// <summary>
+		/// период действия скидки
+		/// </summary>
+		public DiscountPeriod Period
+		{
+			get
+			{
+				return _period;
+			}
+			set
+			{
+				_period = value;
+			}
+		}
+
+
+		/// <summary>
+		/// конструктор, чтобы прост был
+		/// </summary>
+		public DiscountBase()
+		{
+			Period = new DiscountPeriod();
+		}
+
+
+		/// <summary>
 		/// проверка величины скидки
 		/// </summary>
 		/// <param name="discountCertificate">величина скидки</param>
@@ -74,16 +104,31 @@ namespace DiscountsNamespace
 		/// <summary>
 		/// Показывает информацию о скидке
 		/// </summary>
-		public virtual string Information
-		{
-			get
-			{
-				string shop = Shop ?? "неизвестно";
-				return $"В магазине '{shop}' предоставляется скидка " +
-					   $"размером {DiscountValue}";
-			}
+		public override string ToString()
+        {
+			string shop = Shop ?? "неизвестно";
+			return $"В магазине '{shop}' предоставляется скидка " +
+				   $"размером {DiscountValue}";
 		}
 
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="fullPrice"></param>
+		/// <returns></returns>
+        public virtual float GetPrice(float fullPrice)
+        {
+			Period.ChekPriceDecreaserForPeriod(ref _priceDecreaser);
+			return fullPrice - _priceDecreaser;
+		}
 
+		/// <summary>
+		/// Делает скидку неограниченной периодом времени
+		/// </summary>
+		public void DoInfiniteDiscount()
+		{
+			Period.DateTimeDiscountEnd = DateTime.MaxValue;
+			Period.DateTimeDiscountStart = DateTime.Now;
+		}
 	}
 }

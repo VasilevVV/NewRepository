@@ -25,7 +25,7 @@ namespace View
         /// Инициализация формы
         /// </summary>
         /// <param name="discountList"></param>
-        public SearchDiscountForm(List<IDiscount> discountList)
+        public SearchDiscountForm(BindingList<IDiscount> discountList)
         {
             InitializeComponent();
             _listDiscountSearch = discountList;
@@ -48,7 +48,7 @@ namespace View
         /// <summary>
         /// Лист фильтрованных скидок
         /// </summary>
-        private readonly List<IDiscount> _listDiscountSearch;
+        private readonly BindingList<IDiscount> _listDiscountSearch;
 
         /// <summary>
         /// Загрузка формы
@@ -56,7 +56,9 @@ namespace View
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SearchDiscountForm_Load(object sender, EventArgs e)
-        {  }
+        {
+
+        }
 
         /// <summary>
         /// Кнопка поиска
@@ -78,52 +80,44 @@ namespace View
                 return;
             }
 
-            foreach (IDiscount findDiscount in _listDiscountSearch)
+            foreach (IDiscount discount in _listDiscountSearch)
             {
-                switch (findDiscount)
+                switch (discount)
                 {
-                    case SertificateDiscount findSertificateDiscountNoPeriod
-                        when SertificateDiscountNoPeriodСheckBox.Checked &&
-                        findSertificateDiscountNoPeriod.Period.DateTimeDiscountEnd 
-                                                        == DateTime.MaxValue:
-                    case SertificateDiscount findSertificateDiscountWithPeriod
-                        when SertificateDiscountWithPeriodСheckBox.Checked &&
-                        findSertificateDiscountWithPeriod.Period.DateTimeDiscountEnd
-                                                        != DateTime.MaxValue:
-                    case ProcentDiscount findProcentDiscountNoPeriod
-                        when ProcentDiscountNoPeriodСheckBox.Checked &&
-                        findProcentDiscountNoPeriod.Period.DateTimeDiscountEnd
-                                                        == DateTime.MaxValue:
-                    case ProcentDiscount findProcentDiscountWithPeriod
-                        when ProcentDiscountWithPeriodСheckBox.Checked &&
-                        findProcentDiscountWithPeriod.Period.DateTimeDiscountEnd
-                                                        != DateTime.MaxValue:
+                    case SertificateDiscountNoPeriod _ 
+                        when SertificateDiscountNoPeriodСheckBox.Checked:
+                    case SertificateDiscountWithPeriod _ 
+                        when SertificateDiscountWithPeriodСheckBox.Checked:
+                    case ProcentDiscountNoPeriod _ 
+                        when ProcentDiscountNoPeriodСheckBox.Checked:
+                    case ProcentDiscountWithPeriod _ 
+                        when ProcentDiscountWithPeriodСheckBox.Checked:
                         {
                             count++;
                             SendDataFromFormEvent?.Invoke(this,
-                                new DiscountEventArgs(findDiscount));
+                                new DiscountEventArgs(discount));
                             break;
                         }
                 }
 
                 if (ValueCheckBox.Checked && 
-                    findDiscount is DiscountBase discountBaseForValue &&
+                    discount is DiscountBase discountBaseForValue &&
                     discountBaseForValue.DiscountValue.ToString().
                     StartsWith(DiscountValueTextBox.Text))
                 {
                     count++;
                     SendDataFromFormEvent?.Invoke(this,
-                        new DiscountEventArgs(findDiscount));
+                        new DiscountEventArgs(discount));
                 }
 
                 if (ShopCheckBox.Checked &&
-                    findDiscount is DiscountBase discountBaseForShop &&
+                    discount is DiscountBase discountBaseForShop &&
                     discountBaseForShop.Shop.
                     StartsWith(ShopComboBox.Text))
                 {
                     count++;
                     SendDataFromFormEvent?.Invoke(this,
-                        new DiscountEventArgs(findDiscount));
+                        new DiscountEventArgs(discount));
                 }
             }
 

@@ -44,23 +44,23 @@ namespace DiscountsNamespace
             {
                 case 0:
                     {
-                        ProcentDiscount discount =
-                            new ProcentDiscount();
+                        ProcentDiscountNoPeriod discount =
+                            new ProcentDiscountNoPeriod();
 
                         discount = 
-                            (ProcentDiscount)RandomParametrs
-                            (discount, ProcentDiscount._minProcent,
-                            ProcentDiscount._maxProcent);
+                            (ProcentDiscountNoPeriod)RandomParametrs
+                            (discount, ProcentDiscountNoPeriod._minProcent,
+                            ProcentDiscountNoPeriod._maxProcent);
 
                         return discount;
                     }
                 case 1:
                     {
-                        SertificateDiscount discount =
-                            new SertificateDiscount();
+                        SertificateDiscountNoPeriod discount =
+                            new SertificateDiscountNoPeriod();
 
                         discount =
-                            (SertificateDiscount)RandomParametrs
+                            (SertificateDiscountNoPeriod)RandomParametrs
                             (discount, 0, _maxSertificateDiscount);
 
                         return discount;
@@ -68,13 +68,13 @@ namespace DiscountsNamespace
                 case 2:
                     {
 
-                        ProcentDiscount discount =
-                            new ProcentDiscount();
+                        ProcentDiscountWithPeriod discount =
+                            new ProcentDiscountWithPeriod();
 
                         discount =
-                            (ProcentDiscount)RandomParametrs
-                            (discount, ProcentDiscount._minProcent,
-                            ProcentDiscount._maxProcent);
+                            (ProcentDiscountWithPeriod)RandomParametrs
+                            (discount, ProcentDiscountWithPeriod._minProcent,
+                            ProcentDiscountWithPeriod._maxProcent);
 
                         discount.Period =
                             GetRandomPeriodForDiscount(discount.Period);
@@ -83,11 +83,11 @@ namespace DiscountsNamespace
                     }
                 case 3:
                     {
-                        SertificateDiscount discount =
-                            new SertificateDiscount();
+                        SertificateDiscountWithPeriod discount =
+                            new SertificateDiscountWithPeriod();
 
                         discount =
-                            (SertificateDiscount)RandomParametrs
+                            (SertificateDiscountWithPeriod)RandomParametrs
                             (discount, 0, _maxSertificateDiscount);
 
                         discount.Period =
@@ -114,8 +114,6 @@ namespace DiscountsNamespace
         {
             randomDiscount.DiscountValue = _random.Next((int)minValue, (int)maxValue);
             randomDiscount.Shop = _shops[_random.Next(_shops.Length)];
-            randomDiscount.Period.DateTimeDiscountEnd = DateTime.MaxValue;
-            randomDiscount.Period.DateTimeDiscountStart = randomDiscount.Period.DateTimeEmergence;
 
             return randomDiscount;
         }
@@ -147,6 +145,7 @@ namespace DiscountsNamespace
                             );
             }
             period.DateTimeDiscountEnd = endDateTime;
+            period.DateTimeDiscountStart = period.DateTimeEmergence;
 
             return period;
         }

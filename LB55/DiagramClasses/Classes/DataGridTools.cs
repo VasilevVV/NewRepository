@@ -21,8 +21,7 @@ namespace View
         /// <param name="discounts">Список скидок</param>
         /// <param name="dataGridView">Форматируемый датагрид</param>
         /// <param name="dataGridView"></param>
-        public static void CreateTable
-            (BindingList<DataGridViewDataDiscount> discounts,
+        public static void CreateTable(BindingList<IDiscount> discounts,
             DataGridView dataGridView)
         {
             dataGridView.DataSource = null;

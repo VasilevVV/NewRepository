@@ -89,33 +89,25 @@ namespace View
             {
                 case 0:
                     {
-                        _discountData = new SertificateDiscount();
-                        if (_discountData is SertificateDiscount discount)
-                        {
-                            discount.DoInfiniteDiscount();
-                        }
+                        _discountData = new SertificateDiscountNoPeriod();
                         MakeVisible();
                         break;
                     }
                 case 1:
                     {
-                        _discountData = new SertificateDiscount();
+                        _discountData = new SertificateDiscountWithPeriod();
                         MakeVisible();
                         break;
                     }
                 case 2:
                     {
-                        _discountData = new ProcentDiscount();
-                        if (_discountData is ProcentDiscount discount)
-                        {
-                            discount.DoInfiniteDiscount();
-                        }
+                        _discountData = new ProcentDiscountNoPeriod();
                         MakeVisible();
                         break;
                     }
                 case 3:
                     {
-                        _discountData = new ProcentDiscount();
+                        _discountData = new ProcentDiscountWithPeriod();
                         MakeVisible();
                         break;
                     }
@@ -136,10 +128,11 @@ namespace View
                     discountBase.Shop = ShopTextBox.Text;
                     discountBase.DiscountValue =
                         float.Parse(ValueTextBox.Text);
+                }
 
-                    if (discountBase.Period.DateTimeDiscountEnd != DateTime.MaxValue)
-                    {
-                        discountBase.Period.DateTimeDiscountEnd =
+                if (_discountData is IDiscountWithPeriod discountWithPeriod)
+                {
+                    discountWithPeriod.Period.DateTimeDiscountEnd =
                         new DateTime
                         (EndDatePicker.Value.Year,
                         EndDatePicker.Value.Month,
@@ -150,19 +143,17 @@ namespace View
                         EndTimePicker.Value.Millisecond
                         );
 
-                        discountBase.Period.DateTimeDiscountStart =
-                            new DateTime
-                            (StartDatePicker.Value.Year,
-                            StartDatePicker.Value.Month,
-                            StartDatePicker.Value.Day,
-                            StartTimePicker.Value.Hour,
-                            StartTimePicker.Value.Minute,
-                            StartTimePicker.Value.Second,
-                            StartTimePicker.Value.Millisecond
-                            );
-                    }
+                    discountWithPeriod.Period.DateTimeDiscountStart =
+                        new DateTime
+                        (StartDatePicker.Value.Year,
+                        StartDatePicker.Value.Month,
+                        StartDatePicker.Value.Day,
+                        StartTimePicker.Value.Hour,
+                        StartTimePicker.Value.Minute,
+                        StartTimePicker.Value.Second,
+                        StartTimePicker.Value.Millisecond
+                        );
                 }
-
 
                 DialogResult = DialogResult.OK;
                 Close();
@@ -192,8 +183,7 @@ namespace View
             EndDatePicker.Visible = false;
             EndTimePicker.Visible = false;
 
-            if (_discountData is DiscountBase discountBase &&
-                discountBase.Period.DateTimeDiscountEnd != DateTime.MaxValue)
+            if (_discountData is IDiscountWithPeriod)
             {
                 StartDateTimeLabel.Visible = true;
                 StartDatePicker.Visible = true;

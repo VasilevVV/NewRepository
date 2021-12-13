@@ -35,6 +35,7 @@ namespace View
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DiscountDataGridView = new System.Windows.Forms.DataGridView();
+            this.iDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DiscountGridGroupBox = new System.Windows.Forms.GroupBox();
             this.AddDiscountButton = new System.Windows.Forms.Button();
             this.DeleteDiscountButton = new System.Windows.Forms.Button();
@@ -47,13 +48,17 @@ namespace View
             this.DiscountPriceLabel = new System.Windows.Forms.Label();
             this.CalculateButton = new System.Windows.Forms.Button();
             this.PriceLabel = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.СontrolGroupBox = new System.Windows.Forms.GroupBox();
+            this.dataGridViewDataDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.discountInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).BeginInit();
             this.DiscountGridGroupBox.SuspendLayout();
             this.CalculateGroupBox.SuspendLayout();
             this.СontrolGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDataDiscountBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // MainMenuStrip
@@ -91,11 +96,19 @@ namespace View
             // 
             // DiscountDataGridView
             // 
+            this.DiscountDataGridView.AutoGenerateColumns = false;
             this.DiscountDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DiscountDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.discountInformationDataGridViewTextBoxColumn});
+            this.DiscountDataGridView.DataSource = this.dataGridViewDataDiscountBindingSource;
             this.DiscountDataGridView.Location = new System.Drawing.Point(6, 19);
             this.DiscountDataGridView.Name = "DiscountDataGridView";
             this.DiscountDataGridView.Size = new System.Drawing.Size(360, 243);
             this.DiscountDataGridView.TabIndex = 1;
+            // 
+            // iDiscountBindingSource
+            // 
+            this.iDiscountBindingSource.DataSource = typeof(DiscountsNamespace.IDiscount);
             // 
             // DiscountGridGroupBox
             // 
@@ -165,7 +178,8 @@ namespace View
             this.PriceTextBox.Name = "PriceTextBox";
             this.PriceTextBox.Size = new System.Drawing.Size(105, 20);
             this.PriceTextBox.TabIndex = 8;
-            this.toolTip1.SetToolTip(this.PriceTextBox, "Необходимо ввести число больше 0 и выбрать одну или несколько скидок из списка");
+            this.MainFormToolTip.SetToolTip(this.PriceTextBox, "Необходимо ввести число больше 0, в том числе десятичные дроби (через \',\'), и выб" +
+        "рать одну или несколько скидок из списка");
             // 
             // CalculateGroupBox
             // 
@@ -217,11 +231,11 @@ namespace View
             this.PriceLabel.TabIndex = 9;
             this.PriceLabel.Text = "Введите цену:";
             // 
-            // toolTip1
+            // MainFormToolTip
             // 
-            this.toolTip1.AutoPopDelay = 5000;
-            this.toolTip1.InitialDelay = 200;
-            this.toolTip1.ReshowDelay = 100;
+            this.MainFormToolTip.AutoPopDelay = 5000;
+            this.MainFormToolTip.InitialDelay = 200;
+            this.MainFormToolTip.ReshowDelay = 100;
             // 
             // СontrolGroupBox
             // 
@@ -235,6 +249,16 @@ namespace View
             this.СontrolGroupBox.TabIndex = 10;
             this.СontrolGroupBox.TabStop = false;
             this.СontrolGroupBox.Text = "Управление";
+            // 
+            // dataGridViewDataDiscountBindingSource
+            // 
+            this.dataGridViewDataDiscountBindingSource.DataSource = typeof(View.DataGridViewDataDiscount);
+            // 
+            // discountInformationDataGridViewTextBoxColumn
+            // 
+            this.discountInformationDataGridViewTextBoxColumn.DataPropertyName = "DiscountInformation";
+            this.discountInformationDataGridViewTextBoxColumn.HeaderText = "DiscountInformation";
+            this.discountInformationDataGridViewTextBoxColumn.Name = "discountInformationDataGridViewTextBoxColumn";
             // 
             // MainForm
             // 
@@ -252,10 +276,12 @@ namespace View
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).EndInit();
             this.DiscountGridGroupBox.ResumeLayout(false);
             this.CalculateGroupBox.ResumeLayout(false);
             this.CalculateGroupBox.PerformLayout();
             this.СontrolGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDataDiscountBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -280,8 +306,11 @@ namespace View
         private System.Windows.Forms.Button CalculateButton;
         private System.Windows.Forms.Label PriceLabel;
         private System.Windows.Forms.TextBox ResultPriceTextBox;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip MainFormToolTip;
         private System.Windows.Forms.GroupBox СontrolGroupBox;
+        private System.Windows.Forms.BindingSource iDiscountBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn discountInformationDataGridViewTextBoxColumn;
+        private System.Windows.Forms.BindingSource dataGridViewDataDiscountBindingSource;
     }
 }
 

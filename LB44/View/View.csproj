@@ -53,6 +53,7 @@
       <DependentUpon>AddDiscountForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataGridTools.cs" />
+    <Compile Include="DataGridViewDataDiscount.cs" />
     <Compile Include="DiscountEventArgs.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -86,6 +87,8 @@
     <EmbeddedResource Include="SearchDiscountForm.resx">
       <DependentUpon>SearchDiscountForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\DataGridViewDataDiscount.datasource" />
+    <None Include="Properties\DataSources\DiscountsNamespace.IDiscount.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

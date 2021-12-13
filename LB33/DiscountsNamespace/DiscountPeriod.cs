@@ -124,7 +124,6 @@ namespace DiscountsNamespace
         /// <returns>Срок действия скидки в строке</returns>
         public override string ToString()
         {
-            string dateTimeEmergence = DateTimeEmergence.ToString();
             string dateTimeDiscountStart = DateTimeDiscountStart != DateTime.MinValue
                 ? DateTimeDiscountStart.ToString()
                 : "неизвестно";
@@ -133,8 +132,7 @@ namespace DiscountsNamespace
                 : "неизвестно";
 
             return $"Срок действия с {dateTimeDiscountStart} " +
-                   $"по {dateTimeDiscountEnd}. " +
-                   $"Скидка создана {dateTimeEmergence}.";
+                   $"по {dateTimeDiscountEnd}.";
         }
 
 

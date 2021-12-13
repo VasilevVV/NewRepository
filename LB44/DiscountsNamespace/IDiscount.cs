@@ -18,11 +18,5 @@ namespace DiscountsNamespace
 		/// <param name="fullPrice">исходна€ цена товара</param>
 		/// <returns>цена товара после применени€ скидки</returns>
 		float GetPrice(float fullPrice);
-
-
-		/// <summary>
-		/// ѕоказывает информацию о скидке
-		/// </summary>
-		string Information { get; }
 	}
 }

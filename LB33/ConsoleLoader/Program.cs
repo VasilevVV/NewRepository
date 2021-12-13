@@ -120,6 +120,17 @@ namespace ConsoleLoader
             return discountPeriod;
         }
 
+        struct Person
+        {
+            public string name;
+            public int age;
+
+            public void Print()
+            {
+                Console.WriteLine($"Имя: {name}  Возраст: {age}");
+            }
+        }
+
         /// <summary>
         /// процедура проверки программы
         /// </summary>
@@ -158,59 +169,61 @@ namespace ConsoleLoader
                {
                    case "1":
                        {
-                           Console.WriteLine("Отличный выбор: " +
+                            Console.WriteLine("Отличный выбор: " +
                                "бессрочная процентная скидка");
-                            ProcentDiscountNoPeriod discount = 
-                                               new ProcentDiscountNoPeriod();
-                           discount = 
-                             (ProcentDiscountNoPeriod)ReadDiscount(discount);
-                           discounts.Add(discount);
-                           Console.WriteLine($"\nДобавлено:\n{discount.Information}");
-                           DoAgainConsoleMessage();
-                           break;
+                            ProcentDiscount discount = 
+                                               new ProcentDiscount();
+                            discount = 
+                             (ProcentDiscount)ReadDiscount(discount);
+                            discount.DoInfiniteDiscount();
+                            discounts.Add(discount);
+                            Console.WriteLine($"\nДобавлено:\n{discount}");
+                            DoAgainConsoleMessage();
+                            break;
                        }
                    case "2":
                        {
-                           Console.WriteLine("Отличный выбор: " +
+                            Console.WriteLine("Отличный выбор: " +
                                "временная процентная скидка");
-                            ProcentDiscountWithPeriod discount = 
-                                             new ProcentDiscountWithPeriod();
-                           discount = (ProcentDiscountWithPeriod)
+                            ProcentDiscount discount = 
+                                             new ProcentDiscount();
+                            discount = (ProcentDiscount)
                                        ReadDiscount(discount);
-                           Console.WriteLine("");
-                           discount.Period = 
+                            Console.WriteLine("");
+                            discount.Period = 
                                       GetPeriodForDiscount(discount.Period);
-                           discounts.Add(discount);
-                           Console.WriteLine($"\nДобавлено:\n{discount.Information}");
-                           DoAgainConsoleMessage();
-                           break;
+                            discounts.Add(discount);
+                            Console.WriteLine($"\nДобавлено:\n{discount}");
+                            DoAgainConsoleMessage();
+                            break;
                        }
                    case "3":
                        {
-                           Console.WriteLine("Отличный выбор: " +
+                            Console.WriteLine("Отличный выбор: " +
                                "бессрочная скидка по сертификату");
-                            SertificateDiscountNoPeriod discount = 
-                                           new SertificateDiscountNoPeriod();
-                           discount = (SertificateDiscountNoPeriod)
+                            SertificateDiscount discount = 
+                                           new SertificateDiscount();
+                            discount = (SertificateDiscount)
                                        ReadDiscount(discount);
-                           discounts.Add(discount);
-                           Console.WriteLine($"\nДобавлено:\n{discount.Information}");
-                           DoAgainConsoleMessage();
-                           break;
+                            discount.DoInfiniteDiscount();
+                            discounts.Add(discount);
+                            Console.WriteLine($"\nДобавлено:\n{discount}");
+                            DoAgainConsoleMessage();
+                            break;
                        }
                    case "4":
                        {
                            Console.WriteLine("Отличный выбор: " +
                                "временная скидка по сертификату");
-                            SertificateDiscountWithPeriod discount = 
-                                         new SertificateDiscountWithPeriod();
-                           discount = (SertificateDiscountWithPeriod)
+                            SertificateDiscount discount = 
+                                         new SertificateDiscount();
+                           discount = (SertificateDiscount)
                                        ReadDiscount(discount);
                            Console.WriteLine("");
                            discount.Period = 
                                       GetPeriodForDiscount(discount.Period);
                            discounts.Add(discount);
-                           Console.WriteLine($"\nДобавлено:\n{discount.Information}");
+                           Console.WriteLine($"\nДобавлено:\n{discount}");
                            DoAgainConsoleMessage();
                            break;
                        }
@@ -240,7 +253,7 @@ namespace ConsoleLoader
                            {
                                 Counter++;
                                 Console.WriteLine($"\n{Counter} - " +
-                                    $"{listEnumerator.Current.Information}");
+                                    $"{listEnumerator.Current}");
                                 priceAllDiscounts = 
                                      listEnumerator.
                                      Current.GetPrice(priceAllDiscounts);

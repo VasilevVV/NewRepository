@@ -8,25 +8,17 @@ namespace DiscountsNamespace
 	/// <summary>
 	/// класс описывающий процентную скидку без срока действи€
 	/// </summary>
-	[Serializable]
-	public class ProcentDiscountNoPeriod : DiscountBase, IDiscount
+	public class ProcentDiscount : DiscountBase
 	{
-
-		/// <summary>
-		/// конструктор, чтобы прост был
-		/// </summary>
-		public ProcentDiscountNoPeriod()
-		{ }
-
 		/// <summary>
 		/// константа минимального процента
 		/// </summary>
-		internal const float _minProcent = 0.0F;
+		private const float _minProcent = 0.0F;
 
 		/// <summary>
 		/// константа максимального процента
 		/// </summary>
-		internal const float _maxProcent = 100.0F;
+		private const float _maxProcent = 100.0F;
 
 		/// <summary>
 		/// проверка величины процента
@@ -49,23 +41,22 @@ namespace DiscountsNamespace
 		/// </summary>
 		/// <param name="fullPrice">исходна€ цена товара</param>
 		/// <returns>цена товара после применени€ скидки</returns>
-		public virtual float GetPrice(float fullPrice)
+		public override float GetPrice(float fullPrice)
 		{
-			return fullPrice * (1 - _priceDecreaser / 100.0f);
+			_priceDecreaser = fullPrice * _priceDecreaser / 100.0f;
+			return base.GetPrice(fullPrice);
 		}
 
 		/// <summary>
 		/// ѕоказывает информацию о скидке
 		/// </summary>
-		public override string Information
+		public override string ToString()
 		{
-			get
-			{
-				return base.Information + " %.";
-			}
+			string period = Period.DateTimeDiscountEnd == DateTime.MaxValue
+				   ? ""
+				   : $" {Period}";
+			return base.ToString() + " %." + $"{period}";
 		}
-
-
 
 	}
 }
