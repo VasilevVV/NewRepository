@@ -7,17 +7,17 @@ namespace DiscountsNamespace
 {
 	//TODO: coder (V)
 	/// <summary>
-	/// абстрактный класс скидок
+	/// ����������� ����� ������
 	/// </summary>
 	public abstract class DiscountBase : IDiscount
 	{
 		/// <summary>
-		/// величина скидки
+		/// �������� ������
 		/// </summary>
 		private float _discountValue;
 
 		/// <summary>
-		/// величина скидки
+		/// �������� ������
 		/// </summary>
 		public float DiscountValue
 		{
@@ -34,18 +34,18 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// Уменьшатор цены
+		/// ���������� ����
 		/// </summary>
 		private protected float _priceDecreaser;
 
 
 		/// <summary>
-		/// магазин, предоставляющий скидку
+		/// �������, ��������������� ������
 		/// </summary>
 		private string _shop;
 
 		/// <summary>
-		/// публичный параметр магазин, предоставляющий скидку
+		/// ��������� �������� �������, ��������������� ������
 		/// </summary>
 		public string Shop
 		{
@@ -60,12 +60,12 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// период действия скидки
+		/// ������ �������� ������
 		/// </summary>
 		private DiscountPeriod _period;
 
 		/// <summary>
-		/// период действия скидки
+		/// ������ �������� ������
 		/// </summary>
 		public DiscountPeriod Period
 		{
@@ -81,7 +81,7 @@ namespace DiscountsNamespace
 
 
 		/// <summary>
-		/// конструктор, чтобы прост был
+		/// �����������, ����� ����� ���
 		/// </summary>
 		public DiscountBase()
 		{
@@ -90,33 +90,33 @@ namespace DiscountsNamespace
 
 
 		/// <summary>
-		/// проверка величины скидки
+		/// �������� �������� ������
 		/// </summary>
-		/// <param name="discountCertificate">величина скидки</param>
+		/// <param name="discountCertificate">�������� ������</param>
 		private protected virtual void CheckDiscount(float discount)
 		{
 			if (discount < 0)
 			{
-				throw new ArgumentException($"Величина скидки " +
-					$"{discount} должна быть положительным числом");
+				throw new ArgumentException($"�������� ������ " +
+					$"{discount} ������ ���� ������������� ������");
 			}
 		}
 
 		/// <summary>
-		/// Показывает информацию о скидке
+		/// ���������� ���������� � ������
 		/// </summary>
 		public override string ToString()
         {
-			string shop = Shop ?? "неизвестно";
-			return $"В магазине '{shop}' предоставляется скидка " +
-				   $"размером {DiscountValue}";
+			string shop = Shop ?? "����������";
+			return $"� �������� '{shop}' ��������������� ������ " +
+				   $"�������� {DiscountValue}";
 		}
 
 		/// <summary>
-		/// Расчет цены по скидке
+		/// ������ ���� �� ������
 		/// </summary>
-		/// <param name="fullPrice">цена товара</param>
-		/// <returns>Цена товара после применения скидки</returns>
+		/// <param name="fullPrice">���� ������</param>
+		/// <returns>���� ������ ����� ���������� ������</returns>
         public virtual float GetPrice(float fullPrice)
         {
 			Period.ChekPriceDecreaserForPeriod(ref _priceDecreaser);
@@ -124,7 +124,7 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// Делает скидку неограниченной периодом времени
+		/// ������ ������ �������������� �������� �������
 		/// </summary>
 		public void DoInfiniteDiscount()
 		{

@@ -84,11 +84,10 @@ namespace ConsoleLoader
             const string dataFormats = ("ДД.ММ.ГГГГ ЧЧ:ММ:СС\n" +
                                   "ДД.ММ.ГГГГ ЧЧ:ММ\n" +
                                   "ДД.ММ");
-            Action[] actionsArray = new Action[]
+            var actionsArray = new Action[]
             {
                 () =>
                 {
-                    //TODO: duplicate (V)
                     Console.WriteLine("Введите дату начала действия " +
                                       "скидки в форматах:\n" +
                                       dataFormats +
@@ -131,7 +130,7 @@ namespace ConsoleLoader
                "И НА ТУ, И НА ЭТУ, И НА ВОН ТУ!!!");
            DoAgainConsoleMessage();
 
-           List<IDiscount> discounts = new List<IDiscount>();
+           var discounts = new List<IDiscount>();
 
            while (true)
            {

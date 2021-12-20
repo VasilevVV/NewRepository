@@ -144,7 +144,6 @@ namespace View
                     }
                 }
 
-
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -201,7 +200,5 @@ namespace View
                 !string.IsNullOrEmpty(ShopTextBox.Text)
                 && float.TryParse(ValueTextBox.Text, out _);
         }
-
-
     }
 }
