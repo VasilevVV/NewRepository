@@ -10,17 +10,17 @@ using DiscountsNamespace;
 
 namespace View
 {
+    //TODO: RSDN (V)
     /// <summary>
     /// Класс для создания таблицы желаемого формата в DataGridView
     /// </summary>
-    class DataGridTools
+    public class DataGridTools
     {
         /// <summary>
         /// Метод создания таблицы желаемого формата
         /// </summary>
         /// <param name="discounts">Список скидок</param>
         /// <param name="dataGridView">Форматируемый датагрид</param>
-        /// <param name="dataGridView"></param>
         public static void CreateTable
             (BindingList<DataGridViewDataDiscount> discounts,
             DataGridView dataGridView)

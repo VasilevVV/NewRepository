@@ -1,4 +1,4 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
@@ -6,42 +6,41 @@ using System.IO;
 namespace DiscountsNamespace 
 {
 	/// <summary>
-	/// класс описывающий процентную скидку без срока действия
+	/// РєР»Р°СЃСЃ РѕРїРёСЃС‹РІР°СЋС‰РёР№ РїСЂРѕС†РµРЅС‚РЅСѓСЋ СЃРєРёРґРєСѓ Р±РµР· СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ
 	/// </summary>
-	[Serializable]
 	public class ProcentDiscount : DiscountBase
 	{
 		/// <summary>
-		/// константа минимального процента
+		/// РєРѕРЅСЃС‚Р°РЅС‚Р° РјРёРЅРёРјР°Р»СЊРЅРѕРіРѕ РїСЂРѕС†РµРЅС‚Р°
 		/// </summary>
 		internal const float _minProcent = 0.0F;
 
 		/// <summary>
-		/// константа максимального процента
+		/// РєРѕРЅСЃС‚Р°РЅС‚Р° РјР°РєСЃРёРјР°Р»СЊРЅРѕРіРѕ РїСЂРѕС†РµРЅС‚Р°
 		/// </summary>
 		internal const float _maxProcent = 100.0F;
 
 		/// <summary>
-		/// проверка величины процента
+		/// РїСЂРѕРІРµСЂРєР° РІРµР»РёС‡РёРЅС‹ РїСЂРѕС†РµРЅС‚Р°
 		/// </summary>
-		/// <param name="discountProcent">величина процента</param>
+		/// <param name="discountProcent">РІРµР»РёС‡РёРЅР° РїСЂРѕС†РµРЅС‚Р°</param>
 		private protected override void CheckDiscount(float discountProcent)
 		{
 			if ((discountProcent < _minProcent) ||
 				(discountProcent > _maxProcent))
 			{
-				throw new ArgumentException($"Процент скидки " +
-					$"{discountProcent} должен быть положительным " +
-					$"числом: от {_minProcent} " +
-					$"до {_maxProcent} включительно");
+				throw new ArgumentException($"РџСЂРѕС†РµРЅС‚ СЃРєРёРґРєРё " +
+					$"{discountProcent} РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј " +
+					$"С‡РёСЃР»РѕРј: РѕС‚ {_minProcent} " +
+					$"РґРѕ {_maxProcent} РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ");
 			}
 		}
 
 		/// <summary>
-		/// Расчет цены товара со скидкой (по сертификату)
+		/// Р Р°СЃС‡РµС‚ С†РµРЅС‹ С‚РѕРІР°СЂР° СЃРѕ СЃРєРёРґРєРѕР№ (РїРѕ СЃРµСЂС‚РёС„РёРєР°С‚Сѓ)
 		/// </summary>
-		/// <param name="fullPrice">исходная цена товара</param>
-		/// <returns>цена товара после применения скидки</returns>
+		/// <param name="fullPrice">РёСЃС…РѕРґРЅР°СЏ С†РµРЅР° С‚РѕРІР°СЂР°</param>
+		/// <returns>С†РµРЅР° С‚РѕРІР°СЂР° РїРѕСЃР»Рµ РїСЂРёРјРµРЅРµРЅРёСЏ СЃРєРёРґРєРё</returns>
 		public override float GetPrice(float fullPrice)
 		{
 			_priceDecreaser = fullPrice * _priceDecreaser / 100.0f;
@@ -49,7 +48,7 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// Показывает информацию о скидке
+		/// РџРѕРєР°Р·С‹РІР°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРєРёРґРєРµ
 		/// </summary>
 		public override string ToString()
 		{

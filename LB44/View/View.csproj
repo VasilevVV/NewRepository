@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="DataGridTools.cs" />
     <Compile Include="DataGridViewDataDiscount.cs" />
+    <Compile Include="DataTimePickersTools.cs" />
     <Compile Include="DiscountEventArgs.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

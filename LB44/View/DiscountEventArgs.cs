@@ -13,17 +13,18 @@ namespace View
     public class DiscountEventArgs : EventArgs
     {
         /// <summary>
-        /// Скидка для передачи
+        /// Скидки для передачи
         /// </summary>
-        public IDiscount SendingDiscount { get; }
+        public List<IDiscount> SendingDiscounts { get; }
 
+        //TODO: XML (V)
         /// <summary>
-        /// Конструктор для передачи скидки
+        /// Конструктор для передачи скидок
         /// </summary>
-        /// <param name="sendingFigure">Скидка</param>
-        public DiscountEventArgs(IDiscount sendingDiscount)
+        /// <param name="sendingDiscounts">Скидки</param>
+        public DiscountEventArgs(List<IDiscount> sendingDiscounts)
         {
-            SendingDiscount = sendingDiscount;
+            SendingDiscounts = sendingDiscounts;
         }
     }
 }

@@ -242,7 +242,6 @@ namespace View
             this.Name = "AddDiscountForm";
             this.Text = "Добавить";
             this.AddFormToolTip.SetToolTip(this, "Для активации кнопки ОК должны быть корректно заполнены все поля");
-            this.Load += new System.EventHandler(this.AddDiscountForm_Load);
             this.DiscountChoiseGroupBox.ResumeLayout(false);
             this.ParametrsGroupBox.ResumeLayout(false);
             this.ParametrsGroupBox.PerformLayout();

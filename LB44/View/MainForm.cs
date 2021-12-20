@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
 using DiscountsNamespace;
+using System.Text.RegularExpressions;
 
 namespace View
 {
@@ -136,9 +137,11 @@ namespace View
         /// <param name="e"></param>
         private void AddSearchFigureEvent(object sender, DiscountEventArgs e)
         {
-            IDiscount sendDiscount = e.SendingDiscount;
-            _dataGridViewDiscountListForSearch.Add
+            foreach (IDiscount sendDiscount in e.SendingDiscounts)
+            {
+                _dataGridViewDiscountListForSearch.Add
                 (new DataGridViewDataDiscount(sendDiscount));
+            }
             DataGridTools.CreateTable
                 (_dataGridViewDiscountListForSearch, DiscountDataGridView);
             DropFilterButton.Enabled = true;
@@ -191,8 +194,9 @@ namespace View
         private void ShowCalculateButton(object sender, EventArgs e)
         {
             CalculateButton.Enabled =
-                float.TryParse(PriceTextBox.Text, out float result) &&
-                result > 0.0f && !string.IsNullOrEmpty(PriceTextBox.Text);
+                Regex.IsMatch(PriceTextBox.Text.Trim(), 
+                @"^\d+,?\d+$|^\d+$", RegexOptions.None);
+            
         }
 
         /// <summary>

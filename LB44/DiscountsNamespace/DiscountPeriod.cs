@@ -9,7 +9,6 @@ namespace DiscountsNamespace
     /// <summary>
     /// класс описывающий период действия скидки
     /// </summary>
-    [Serializable]
     public class DiscountPeriod
     {
         /// <summary>

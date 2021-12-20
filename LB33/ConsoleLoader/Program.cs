@@ -120,24 +120,12 @@ namespace ConsoleLoader
             return discountPeriod;
         }
 
-        struct Person
-        {
-            public string name;
-            public int age;
-
-            public void Print()
-            {
-                Console.WriteLine($"Имя: {name}  Возраст: {age}");
-            }
-        }
-
         /// <summary>
         /// процедура проверки программы
         /// </summary>
         /// <param name="args"></param>
         static void Main(string[] args)
         {
-            
            Console.WriteLine("ТОЛЬКО СЕГОДНЯ, ТОЛЬКО СЕЙЧАС!!!" +
                "СКИДКИ, СКИДКИ, СКИДКИ!!! ВСЕМ СКИДКИ!!! " +
                "И НА ТУ, И НА ЭТУ, И НА ВОН ТУ!!!");
@@ -171,10 +159,9 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "бессрочная процентная скидка");
-                            ProcentDiscount discount = 
-                                               new ProcentDiscount();
-                            discount = 
-                             (ProcentDiscount)ReadDiscount(discount);
+                            //TODO: (V)
+                            var discount = (ProcentDiscount)
+                                       ReadDiscount(new ProcentDiscount());
                             discount.DoInfiniteDiscount();
                             discounts.Add(discount);
                             Console.WriteLine($"\nДобавлено:\n{discount}");
@@ -185,10 +172,9 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "временная процентная скидка");
-                            ProcentDiscount discount = 
-                                             new ProcentDiscount();
-                            discount = (ProcentDiscount)
-                                       ReadDiscount(discount);
+                            //TODO: (V)
+                            var discount = (ProcentDiscount)
+                                       ReadDiscount(new ProcentDiscount());
                             Console.WriteLine("");
                             discount.Period = 
                                       GetPeriodForDiscount(discount.Period);
@@ -201,10 +187,9 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "бессрочная скидка по сертификату");
-                            SertificateDiscount discount = 
-                                           new SertificateDiscount();
-                            discount = (SertificateDiscount)
-                                       ReadDiscount(discount);
+                            //TODO: (V)
+                            var discount = (SertificateDiscount)
+                                       ReadDiscount(new SertificateDiscount());
                             discount.DoInfiniteDiscount();
                             discounts.Add(discount);
                             Console.WriteLine($"\nДобавлено:\n{discount}");
@@ -213,27 +198,28 @@ namespace ConsoleLoader
                        }
                    case "4":
                        {
-                           Console.WriteLine("Отличный выбор: " +
+                            Console.WriteLine("Отличный выбор: " +
                                "временная скидка по сертификату");
-                            SertificateDiscount discount = 
-                                         new SertificateDiscount();
-                           discount = (SertificateDiscount)
+                            //TODO: (V)
+                            var discount = (SertificateDiscount)
+                                        ReadDiscount(new SertificateDiscount());
+                            discount = (SertificateDiscount)
                                        ReadDiscount(discount);
-                           Console.WriteLine("");
-                           discount.Period = 
+                            Console.WriteLine("");
+                            discount.Period = 
                                       GetPeriodForDiscount(discount.Period);
-                           discounts.Add(discount);
-                           Console.WriteLine($"\nДобавлено:\n{discount}");
-                           DoAgainConsoleMessage();
-                           break;
+                            discounts.Add(discount);
+                            Console.WriteLine($"\nДобавлено:\n{discount}");
+                            DoAgainConsoleMessage();
+                            break;
                        }
                    case "5":
                        {
-                           Console.WriteLine("Применим скидки. " +
+                            Console.WriteLine("Применим скидки. " +
                                              "Введите цену:");
-                           float originalPrice = 0.0f;
-                           while (originalPrice == 0.0f)
-                           {
+                            float originalPrice = 0.0f;
+                            while (originalPrice == 0.0f)
+                            {
                                try
                                {
                                    originalPrice = 
@@ -244,46 +230,38 @@ namespace ConsoleLoader
                                    Console.WriteLine($"{ex.Message}\n" +
                                                      $"Попробуйте снова.");
                                }
-                           }
-                           float priceAllDiscounts = originalPrice;
-                           List<IDiscount>.Enumerator listEnumerator = 
-                                discounts.GetEnumerator();
-                           int Counter = 0;
-                           while (listEnumerator.MoveNext())
-                           {
-                                Counter++;
-                                Console.WriteLine($"\n{Counter} - " +
-                                    $"{listEnumerator.Current}");
-                                priceAllDiscounts = 
-                                     listEnumerator.
-                                     Current.GetPrice(priceAllDiscounts);
-                                Console.WriteLine($"Цена после применения " +
+                            }
+                            float priceAllDiscounts = originalPrice;
+                            //TODO: RSDN (V)
+                            for (int i = 0; i < discounts.Count; i++)
+                            {
+                                discounts[i].GetPrice(priceAllDiscounts);
+                                Console.WriteLine($"\n{i + 1} - " +
+                                    $"{discounts[i]}\n" +
+                                    $"Цена после применения " +
                                     $"этой скидки: {priceAllDiscounts} рублей.");
-                           }
-                           listEnumerator.Dispose();
-                           Console.WriteLine($"\nОтлично!!!\n" +
+                            }
+                            Console.WriteLine($"\nОтлично!!!\n" +
                                $"После применения всех выбранных скидок " +
                                $"цена стала {priceAllDiscounts} рублей.\n" +
                                $"Список скидок будет очищен");
-                           discounts.Clear();
-                           DoAgainConsoleMessage();
-                           break;
+                            discounts.Clear();
+                            DoAgainConsoleMessage();
+                            break;
                        }
                    case "6":
                        {
-                           return;
+                            return;
                        }
                    default:
                        {
-                           Console.WriteLine("Попробуйте " +
+                            Console.WriteLine("Попробуйте " +
                                "что-нибудь другое");
-                           Console.WriteLine("");
-                           break;
+                            Console.WriteLine("");
+                            break;
                        }
                }
            }
-           
-
         }
     }
 }

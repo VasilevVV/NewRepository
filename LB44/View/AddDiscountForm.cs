@@ -59,13 +59,7 @@ namespace View
             }
         }
 
-        /// <summary>
-        /// Загрузка формы
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void AddDiscountForm_Load(object sender, EventArgs e)
-        { }
+        //TODO: (V) удален AddDiscountForm_Load
 
         /// <summary>
         /// Закрыть форму
@@ -139,27 +133,14 @@ namespace View
 
                     if (discountBase.Period.DateTimeDiscountEnd != DateTime.MaxValue)
                     {
+                        //TODO: Дубли (V)
                         discountBase.Period.DateTimeDiscountEnd =
-                        new DateTime
-                        (EndDatePicker.Value.Year,
-                        EndDatePicker.Value.Month,
-                        EndDatePicker.Value.Day,
-                        EndTimePicker.Value.Hour,
-                        EndTimePicker.Value.Minute,
-                        EndTimePicker.Value.Second,
-                        EndTimePicker.Value.Millisecond
-                        );
+                            DataTimePickersTools.GetDataTimeFromPickers
+                            (EndDatePicker, EndTimePicker);
 
                         discountBase.Period.DateTimeDiscountStart =
-                            new DateTime
-                            (StartDatePicker.Value.Year,
-                            StartDatePicker.Value.Month,
-                            StartDatePicker.Value.Day,
-                            StartTimePicker.Value.Hour,
-                            StartTimePicker.Value.Minute,
-                            StartTimePicker.Value.Second,
-                            StartTimePicker.Value.Millisecond
-                            );
+                            DataTimePickersTools.GetDataTimeFromPickers
+                            (StartDatePicker, StartTimePicker);
                     }
                 }
 
