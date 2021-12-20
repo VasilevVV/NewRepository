@@ -84,7 +84,7 @@ namespace View
             this.DiscountSearchGroupBox.Controls.Add(this.ProcentDiscountInfiniteСheckBox);
             this.DiscountSearchGroupBox.Location = new System.Drawing.Point(12, 12);
             this.DiscountSearchGroupBox.Name = "DiscountSearchGroupBox";
-            this.DiscountSearchGroupBox.Size = new System.Drawing.Size(252, 372);
+            this.DiscountSearchGroupBox.Size = new System.Drawing.Size(252, 338);
             this.DiscountSearchGroupBox.TabIndex = 0;
             this.DiscountSearchGroupBox.TabStop = false;
             this.DiscountSearchGroupBox.Text = "Найти скидку";
@@ -262,7 +262,7 @@ namespace View
             // 
             // SearchButton
             // 
-            this.SearchButton.Location = new System.Drawing.Point(12, 412);
+            this.SearchButton.Location = new System.Drawing.Point(18, 356);
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(239, 23);
             this.SearchButton.TabIndex = 1;
@@ -309,7 +309,7 @@ namespace View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(281, 495);
+            this.ClientSize = new System.Drawing.Size(281, 387);
             this.Controls.Add(this.SearchButton);
             this.Controls.Add(this.DiscountSearchGroupBox);
             this.MinimumSize = new System.Drawing.Size(297, 269);
