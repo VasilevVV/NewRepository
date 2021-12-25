@@ -33,7 +33,7 @@ namespace View
             MaximizeBox = false;
             DiscountValueTextBox.Enabled = false;
             ShopComboBox.Enabled = false;
-            // TODO: RSDN? (V)
+
             HashSet<string> shopComboBoxItems = new HashSet<string>();
             foreach (IDiscount discount in _listDiscountSearch)
             {
@@ -70,9 +70,7 @@ namespace View
         /// Лист фильтрованных скидок
         /// </summary>
         private readonly List<IDiscount> _listDiscountSearch;
-
-        // TODO: RSDN (V) SearchDiscountForm_Load удален
-
+        
         /// <summary>
         /// Кнопка поиска
         /// </summary>

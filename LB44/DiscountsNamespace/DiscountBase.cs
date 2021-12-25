@@ -5,7 +5,6 @@ using System.IO;
 
 namespace DiscountsNamespace 
 {
-	//TODO: coder (V)
 	/// <summary>
 	/// абстрактный класс скидок
 	/// </summary>

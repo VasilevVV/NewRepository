@@ -58,9 +58,7 @@ namespace View
                 return _discountData;
             }
         }
-
-        //TODO: (V) удален AddDiscountForm_Load
-
+        
         /// <summary>
         /// Закрыть форму
         /// </summary>
@@ -133,7 +131,6 @@ namespace View
 
                     if (discountBase.Period.DateTimeDiscountEnd != DateTime.MaxValue)
                     {
-                        //TODO: Дубли (V)
                         discountBase.Period.DateTimeDiscountEnd =
                             DataTimePickersTools.GetDataTimeFromPickers
                             (EndDatePicker, EndTimePicker);

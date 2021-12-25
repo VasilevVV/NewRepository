@@ -10,7 +10,6 @@ using DiscountsNamespace;
 
 namespace View
 {
-    //TODO: RSDN (V)
     /// <summary>
     /// Класс для создания таблицы желаемого формата в DataGridView
     /// </summary>
