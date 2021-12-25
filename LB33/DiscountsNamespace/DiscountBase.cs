@@ -119,8 +119,7 @@ namespace DiscountsNamespace
 		/// <returns>Цена товара после применения скидки</returns>
         public virtual float GetPrice(float fullPrice)
         {
-			Period.ChekPriceDecreaserForPeriod(ref _priceDecreaser);
-			return fullPrice - _priceDecreaser;
+			return fullPrice - Period.ChekPriceDecreaserForPeriod(_priceDecreaser);
 		}
 
 		/// <summary>

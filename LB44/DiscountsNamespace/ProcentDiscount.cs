@@ -43,7 +43,7 @@ namespace DiscountsNamespace
 		/// <returns>цена товара после применения скидки</returns>
 		public override float GetPrice(float fullPrice)
 		{
-			_priceDecreaser = fullPrice * _priceDecreaser / 100.0f;
+			_priceDecreaser = fullPrice * DiscountValue / 100.0f;
 			return base.GetPrice(fullPrice);
 		}
 

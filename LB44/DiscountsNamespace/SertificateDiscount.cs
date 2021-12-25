@@ -17,7 +17,7 @@ namespace DiscountsNamespace
 		/// <returns>цена товара после применения скидки</returns>
 		public override float GetPrice(float fullPrice)
 		{
-			if (_priceDecreaser <= fullPrice)
+			if (DiscountValue <= fullPrice)
 			{
 				return base.GetPrice(fullPrice);
 			}
