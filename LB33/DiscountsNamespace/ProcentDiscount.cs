@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
 
-namespace DiscountsNamespace 
+namespace Model.DiscountsNamespace 
 {
 	/// <summary>
 	/// класс описывающий процентную скидку без срока действия

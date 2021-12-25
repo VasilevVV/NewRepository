@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DiscountsNamespace;
+using Model.DiscountsNamespace;
 
 namespace ConsoleLoader
 {
@@ -158,7 +158,6 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "бессрочная процентная скидка");
-                            //TODO: (V)
                             var discount = (ProcentDiscount)
                                        ReadDiscount(new ProcentDiscount());
                             discount.DoInfiniteDiscount();
@@ -171,7 +170,6 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "временная процентная скидка");
-                            //TODO: (V)
                             var discount = (ProcentDiscount)
                                        ReadDiscount(new ProcentDiscount());
                             Console.WriteLine("");
@@ -186,7 +184,6 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "бессрочная скидка по сертификату");
-                            //TODO: (V)
                             var discount = (SertificateDiscount)
                                        ReadDiscount(new SertificateDiscount());
                             discount.DoInfiniteDiscount();
@@ -199,7 +196,6 @@ namespace ConsoleLoader
                        {
                             Console.WriteLine("Отличный выбор: " +
                                "временная скидка по сертификату");
-                            //TODO: (V)
                             var discount = (SertificateDiscount)
                                         ReadDiscount(new SertificateDiscount());
                             discount = (SertificateDiscount)

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.IO;
 
-namespace DiscountsNamespace 
+namespace Model.DiscountsNamespace 
 {
-	//TODO: coder (V)
 	/// <summary>
 	/// Базовый класс для скидок
 	/// </summary>
