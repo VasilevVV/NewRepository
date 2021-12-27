@@ -83,7 +83,7 @@ namespace Model.DiscountsNamespace
 		/// <summary>
 		/// конструктор, чтобы прост был
 		/// </summary>
-		public DiscountBase()
+        protected DiscountBase()
 		{
 			Period = new DiscountPeriod();
 		}

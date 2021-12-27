@@ -15,7 +15,7 @@ namespace Model
         /// <summary>
         /// Рандомайзер чисел
         /// </summary>
-        private readonly static Random _random = new Random();
+        private static readonly Random _random = new Random();
 
         /// <summary>
         /// Условный максимальный размер случайной скидки по сертификату
@@ -25,7 +25,7 @@ namespace Model
         /// <summary>
         /// Список магазинов
         /// </summary>
-        private readonly static string[] _shops =
+        private static readonly string[] _shops =
         {
             "ShopBook", "ShopLine", "ShopTech", "ShopCenter",
             "ShopLab", "DailyShop", "StarShop", "SunShop",

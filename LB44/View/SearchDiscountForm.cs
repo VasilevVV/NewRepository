@@ -157,22 +157,17 @@ namespace View
                     count++;
                     findDiscounts.Add(findDiscount);
                 }
-                if (EndDateCheckBox.Checked && StartDateCheckBox.Checked &&
-                    findDiscount is DiscountBase discountBaseForDate &&
-                    discountBaseForDate.Period.DateTimeDiscountEnd <=
-                    DataTimePickersTools.GetDataTimeFromPickers
-                    (EndDateFromPicker, EndTimeFromPicker) &&
-                    discountBaseForDate.Period.DateTimeDiscountStart <=
-                    DataTimePickersTools.GetDataTimeFromPickers
-                    (StartDateByPicker, StartDateByPicker) &&
-                    discountBaseForDate.Period.DateTimeDiscountStart >=
-                    DataTimePickersTools.GetDataTimeFromPickers
-                    (StartDateFromPicker, StartTimeFromPicker) &&
-                    discountBaseForDate.Period.DateTimeDiscountEnd <=
-                    DataTimePickersTools.GetDataTimeFromPickers
-                    (EndDateByPicker, EndTimeByPicker) &&
-                    discountBaseForDate.Period.DateTimeDiscountEnd !=
-                    DateTime.MaxValue)
+                if (EndDateCheckBox.Checked && StartDateCheckBox.Checked 
+                    && findDiscount is DiscountBase discountBaseForDate 
+                    && discountBaseForDate.Period.DateTimeDiscountEnd <=
+                        DataTimePickersTools.GetDataTimeFromPickers(EndDateFromPicker, EndTimeFromPicker) 
+                    && discountBaseForDate.Period.DateTimeDiscountStart <=
+                        DataTimePickersTools.GetDataTimeFromPickers(StartDateByPicker, StartDateByPicker) 
+                    && discountBaseForDate.Period.DateTimeDiscountStart >=
+                        DataTimePickersTools.GetDataTimeFromPickers(StartDateFromPicker, StartTimeFromPicker) 
+                    && discountBaseForDate.Period.DateTimeDiscountEnd <=
+                        DataTimePickersTools.GetDataTimeFromPickers(EndDateByPicker, EndTimeByPicker) 
+                    && discountBaseForDate.Period.DateTimeDiscountEnd != DateTime.MaxValue)
                 {
                     count++;
                     findDiscounts.Add(findDiscount);
@@ -199,6 +194,7 @@ namespace View
             EndDateCheckBox.Checked = false;
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Определения соответствия типа скидки и СheckBox-ов
         /// </summary>
@@ -301,8 +297,11 @@ namespace View
         /// <param name="e"></param>
         private void SertificateDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            EndDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
-            StartDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+            //TODO: Дубль
+            EndDateCheckBox.Enabled = 
+                ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+            StartDateCheckBox.Enabled = 
+                ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
         }
 
         /// <summary>
@@ -312,8 +311,11 @@ namespace View
         /// <param name="e"></param>
         private void ProcentDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            EndDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
-            StartDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+            //TODO: Дубль
+            EndDateCheckBox.Enabled = 
+                ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+            StartDateCheckBox.Enabled = 
+                ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
         }
         
     }

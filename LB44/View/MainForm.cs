@@ -285,7 +285,7 @@ namespace View
             }
         }
 
-
+        //TODO: XML
         private void DiscountDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             ResultPriceTextBox.Text = null;
