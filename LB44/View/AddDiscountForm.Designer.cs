@@ -54,6 +54,7 @@ namespace View
             // 
             // DiscountChoiceСomboBox
             // 
+            this.DiscountChoiceСomboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DiscountChoiceСomboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.DiscountChoiceСomboBox.FormattingEnabled = true;
             this.DiscountChoiceСomboBox.Items.AddRange(new object[] {
@@ -81,7 +82,8 @@ namespace View
             // 
             // OkAddDiscountButton
             // 
-            this.OkAddDiscountButton.Location = new System.Drawing.Point(32, 338);
+            this.OkAddDiscountButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.OkAddDiscountButton.Location = new System.Drawing.Point(32, 334);
             this.OkAddDiscountButton.Name = "OkAddDiscountButton";
             this.OkAddDiscountButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.OkAddDiscountButton.Size = new System.Drawing.Size(75, 23);
@@ -92,7 +94,8 @@ namespace View
             // 
             // CloseButton
             // 
-            this.CloseButton.Location = new System.Drawing.Point(193, 338);
+            this.CloseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CloseButton.Location = new System.Drawing.Point(193, 334);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);
             this.CloseButton.TabIndex = 3;
@@ -228,17 +231,18 @@ namespace View
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(304, 380);
+            this.ClientSize = new System.Drawing.Size(304, 376);
             this.ControlBox = false;
             this.Controls.Add(this.PeriodGroupBox);
             this.Controls.Add(this.ParametrsGroupBox);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.OkAddDiscountButton);
             this.Controls.Add(this.DiscountChoiseGroupBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(320, 419);
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(320, 419);
+            this.MinimumSize = new System.Drawing.Size(320, 300);
             this.Name = "AddDiscountForm";
             this.Text = "Добавить";
             this.AddFormToolTip.SetToolTip(this, "Для активации кнопки ОК должны быть корректно заполнены все поля");

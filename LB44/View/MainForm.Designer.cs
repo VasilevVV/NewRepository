@@ -35,7 +35,6 @@ namespace View
             this.OpenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.SaveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.DiscountDataGridView = new System.Windows.Forms.DataGridView();
-            this.iDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DiscountGridGroupBox = new System.Windows.Forms.GroupBox();
             this.AddDiscountButton = new System.Windows.Forms.Button();
             this.DeleteDiscountButton = new System.Windows.Forms.Button();
@@ -50,14 +49,15 @@ namespace View
             this.PriceLabel = new System.Windows.Forms.Label();
             this.MainFormToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.СontrolGroupBox = new System.Windows.Forms.GroupBox();
+            this.iDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.discountInformationDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewDataDiscountBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.MainMenuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).BeginInit();
             this.DiscountGridGroupBox.SuspendLayout();
             this.CalculateGroupBox.SuspendLayout();
             this.СontrolGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDataDiscountBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -96,6 +96,8 @@ namespace View
             // 
             // DiscountDataGridView
             // 
+            this.DiscountDataGridView.AllowUserToAddRows = false;
+            this.DiscountDataGridView.AllowUserToDeleteRows = false;
             this.DiscountDataGridView.AutoGenerateColumns = false;
             this.DiscountDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DiscountDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -103,12 +105,10 @@ namespace View
             this.DiscountDataGridView.DataSource = this.dataGridViewDataDiscountBindingSource;
             this.DiscountDataGridView.Location = new System.Drawing.Point(6, 19);
             this.DiscountDataGridView.Name = "DiscountDataGridView";
+            this.DiscountDataGridView.ReadOnly = true;
             this.DiscountDataGridView.Size = new System.Drawing.Size(360, 243);
             this.DiscountDataGridView.TabIndex = 1;
-            // 
-            // iDiscountBindingSource
-            // 
-            this.iDiscountBindingSource.DataSource = typeof(DiscountsNamespace.IDiscount);
+            this.DiscountDataGridView.SelectionChanged += new System.EventHandler(this.DiscountDataGridView_SelectionChanged);
             // 
             // DiscountGridGroupBox
             // 
@@ -250,6 +250,10 @@ namespace View
             this.СontrolGroupBox.TabStop = false;
             this.СontrolGroupBox.Text = "Управление";
             // 
+            // iDiscountBindingSource
+            // 
+            this.iDiscountBindingSource.DataSource = typeof(Model.DiscountsNamespace.IDiscount);
+            // 
             // discountInformationDataGridViewTextBoxColumn
             // 
             this.discountInformationDataGridViewTextBoxColumn.DataPropertyName = "DiscountInformation";
@@ -281,11 +285,11 @@ namespace View
             this.MainMenuStrip.ResumeLayout(false);
             this.MainMenuStrip.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DiscountDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).EndInit();
             this.DiscountGridGroupBox.ResumeLayout(false);
             this.CalculateGroupBox.ResumeLayout(false);
             this.CalculateGroupBox.PerformLayout();
             this.СontrolGroupBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.iDiscountBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDataDiscountBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

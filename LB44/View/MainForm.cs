@@ -10,8 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.Serialization.Formatters.Binary;
-using DiscountsNamespace;
+using Model;
+using Model.DiscountsNamespace;
 using System.Text.RegularExpressions;
+
 
 namespace View
 {
@@ -283,5 +285,10 @@ namespace View
             }
         }
 
+
+        private void DiscountDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            ResultPriceTextBox.Text = null;
+        }
     }
 }

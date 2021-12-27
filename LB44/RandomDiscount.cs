@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.DiscountsNamespace;
 
-namespace DiscountsNamespace
+namespace Model
 {
     /// <summary>
     /// Класс генерации случайной скидки

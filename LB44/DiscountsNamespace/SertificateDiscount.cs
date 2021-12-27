@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace DiscountsNamespace 
+namespace Model.DiscountsNamespace 
 {
 	/// <summary>
 	/// класс описывающий скидку без срока действия (по сертификату)
 	/// </summary>
+	[Serializable]
 	public class SertificateDiscount : DiscountBase
 	{
 		/// <summary>

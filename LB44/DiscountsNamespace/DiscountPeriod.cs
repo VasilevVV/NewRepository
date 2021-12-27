@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscountsNamespace
+namespace Model.DiscountsNamespace
 {
     /// <summary>
     /// класс описывающий период действия скидки
     /// </summary>
+    [Serializable]
     public class DiscountPeriod
     {
         /// <summary>

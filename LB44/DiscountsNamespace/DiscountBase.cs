@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace DiscountsNamespace 
+namespace Model.DiscountsNamespace 
 {
 	/// <summary>
 	/// абстрактный класс скидок
 	/// </summary>
+	[Serializable]
 	public abstract class DiscountBase : IDiscount
 	{
 		/// <summary>

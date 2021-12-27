@@ -31,6 +31,10 @@ namespace View
         {
             this.components = new System.ComponentModel.Container();
             this.DiscountSearchGroupBox = new System.Windows.Forms.GroupBox();
+            this.EndDateByLabel = new System.Windows.Forms.Label();
+            this.EndDateFromLabel = new System.Windows.Forms.Label();
+            this.EndTimeByPicker = new System.Windows.Forms.DateTimePicker();
+            this.EndDateByPicker = new System.Windows.Forms.DateTimePicker();
             this.StartTimeByPicker = new System.Windows.Forms.DateTimePicker();
             this.StartDateByLabel = new System.Windows.Forms.Label();
             this.StartDateByPicker = new System.Windows.Forms.DateTimePicker();
@@ -51,10 +55,6 @@ namespace View
             this.ProcentDiscountInfiniteСheckBox = new System.Windows.Forms.CheckBox();
             this.SearchButton = new System.Windows.Forms.Button();
             this.SearchFormToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.EndDateByPicker = new System.Windows.Forms.DateTimePicker();
-            this.EndTimeByPicker = new System.Windows.Forms.DateTimePicker();
-            this.EndDateFromLabel = new System.Windows.Forms.Label();
-            this.EndDateByLabel = new System.Windows.Forms.Label();
             this.DiscountSearchGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,6 +88,41 @@ namespace View
             this.DiscountSearchGroupBox.TabIndex = 0;
             this.DiscountSearchGroupBox.TabStop = false;
             this.DiscountSearchGroupBox.Text = "Найти скидку";
+            // 
+            // EndDateByLabel
+            // 
+            this.EndDateByLabel.AutoSize = true;
+            this.EndDateByLabel.Location = new System.Drawing.Point(27, 304);
+            this.EndDateByLabel.Name = "EndDateByLabel";
+            this.EndDateByLabel.Size = new System.Drawing.Size(21, 13);
+            this.EndDateByLabel.TabIndex = 2;
+            this.EndDateByLabel.Text = "По";
+            // 
+            // EndDateFromLabel
+            // 
+            this.EndDateFromLabel.AutoSize = true;
+            this.EndDateFromLabel.Location = new System.Drawing.Point(34, 275);
+            this.EndDateFromLabel.Name = "EndDateFromLabel";
+            this.EndDateFromLabel.Size = new System.Drawing.Size(14, 13);
+            this.EndDateFromLabel.TabIndex = 2;
+            this.EndDateFromLabel.Text = "C";
+            // 
+            // EndTimeByPicker
+            // 
+            this.EndTimeByPicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.EndTimeByPicker.Location = new System.Drawing.Point(164, 302);
+            this.EndTimeByPicker.Name = "EndTimeByPicker";
+            this.EndTimeByPicker.ShowUpDown = true;
+            this.EndTimeByPicker.Size = new System.Drawing.Size(81, 20);
+            this.EndTimeByPicker.TabIndex = 2;
+            // 
+            // EndDateByPicker
+            // 
+            this.EndDateByPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.EndDateByPicker.Location = new System.Drawing.Point(54, 302);
+            this.EndDateByPicker.Name = "EndDateByPicker";
+            this.EndDateByPicker.Size = new System.Drawing.Size(94, 20);
+            this.EndDateByPicker.TabIndex = 2;
             // 
             // StartTimeByPicker
             // 
@@ -182,6 +217,7 @@ namespace View
             // 
             // ShopComboBox
             // 
+            this.ShopComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ShopComboBox.FormattingEnabled = true;
             this.ShopComboBox.Location = new System.Drawing.Point(82, 142);
             this.ShopComboBox.Name = "ShopComboBox";
@@ -269,41 +305,6 @@ namespace View
             this.SearchButton.Text = "Искать";
             this.SearchButton.UseVisualStyleBackColor = true;
             this.SearchButton.Click += new System.EventHandler(this.SearchButton_Click);
-            // 
-            // EndDateByPicker
-            // 
-            this.EndDateByPicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.EndDateByPicker.Location = new System.Drawing.Point(54, 302);
-            this.EndDateByPicker.Name = "EndDateByPicker";
-            this.EndDateByPicker.Size = new System.Drawing.Size(94, 20);
-            this.EndDateByPicker.TabIndex = 2;
-            // 
-            // EndTimeByPicker
-            // 
-            this.EndTimeByPicker.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.EndTimeByPicker.Location = new System.Drawing.Point(164, 302);
-            this.EndTimeByPicker.Name = "EndTimeByPicker";
-            this.EndTimeByPicker.ShowUpDown = true;
-            this.EndTimeByPicker.Size = new System.Drawing.Size(81, 20);
-            this.EndTimeByPicker.TabIndex = 2;
-            // 
-            // EndDateFromLabel
-            // 
-            this.EndDateFromLabel.AutoSize = true;
-            this.EndDateFromLabel.Location = new System.Drawing.Point(34, 275);
-            this.EndDateFromLabel.Name = "EndDateFromLabel";
-            this.EndDateFromLabel.Size = new System.Drawing.Size(14, 13);
-            this.EndDateFromLabel.TabIndex = 2;
-            this.EndDateFromLabel.Text = "C";
-            // 
-            // EndDateByLabel
-            // 
-            this.EndDateByLabel.AutoSize = true;
-            this.EndDateByLabel.Location = new System.Drawing.Point(27, 304);
-            this.EndDateByLabel.Name = "EndDateByLabel";
-            this.EndDateByLabel.Size = new System.Drawing.Size(21, 13);
-            this.EndDateByLabel.TabIndex = 2;
-            this.EndDateByLabel.Text = "По";
             // 
             // SearchDiscountForm
             // 

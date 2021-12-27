@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DiscountsNamespace;
+using Model.DiscountsNamespace;
 
 namespace View
 {
@@ -30,13 +30,15 @@ namespace View
             ValueLabel.Visible = false;
             ValueTextBox.Visible = false;
 
-            PeriodGroupBox.Visible = true;
+            PeriodGroupBox.Visible = false;
             StartDateTimeLabel.Visible = false;
             StartDatePicker.Visible = false;
             StartTimePicker.Visible = false;
             EndDateTimeLabel.Visible = false;
             EndDatePicker.Visible = false;
             EndTimePicker.Visible = false;
+
+            Size = MinimumSize;
 
             OkAddDiscountButton.Enabled = false;
             ShopTextBox.TextChanged += ShowOKButton;
@@ -157,11 +159,14 @@ namespace View
         /// </summary>
         private void MakeVisible()
         {
+            Size = MinimumSize;
+
             ShopLabel.Visible = true;
             ShopTextBox.Visible = true;
             ValueLabel.Visible = true;
             ValueTextBox.Visible = true;
 
+            PeriodGroupBox.Visible = false;
             StartDateTimeLabel.Visible = false;
             StartDatePicker.Visible = false;
             StartTimePicker.Visible = false;
@@ -172,6 +177,9 @@ namespace View
             if (_discountData is DiscountBase discountBase &&
                 discountBase.Period.DateTimeDiscountEnd != DateTime.MaxValue)
             {
+                Size = MaximumSize;
+
+                PeriodGroupBox.Visible = true;
                 StartDateTimeLabel.Visible = true;
                 StartDatePicker.Visible = true;
                 StartTimePicker.Visible = true;
