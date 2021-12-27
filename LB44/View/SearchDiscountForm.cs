@@ -64,6 +64,9 @@ namespace View
             StartDateByLabel.Enabled = false;
             EndDateFromLabel.Enabled = false;
             EndDateByLabel.Enabled = false;
+
+            EndDateCheckBox.Enabled = false;
+            StartDateCheckBox.Enabled = false;
         }
 
         /// <summary>
@@ -94,8 +97,8 @@ namespace View
             }
             foreach (IDiscount findDiscount in _listDiscountSearch)
             {
-                // TODO: Не очевидный код.
-                // TODO: Срабатывать на найденный список скидок.
+                // TODO: Не очевидный код. (V)
+                // TODO: Срабатывать на найденный список скидок. (V)
                 if (findDiscount is ProcentDiscount procentDiscount)
                 {
                     DiscountTypeSearcher(procentDiscount, 
@@ -291,5 +294,27 @@ namespace View
             StartDateByLabel.Enabled = StartDateCheckBox.Checked;
         }
 
+        /// <summary>
+        /// Обработчик изменения свойства Check объекта SertificateDiscountPeriodСheckBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SertificateDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            EndDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+            StartDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+        }
+
+        /// <summary>
+        /// Обработчик изменения свойства Check объекта ProcentDiscountPeriodСheckBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProcentDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            EndDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+            StartDateCheckBox.Enabled = ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
+        }
+        
     }
 }

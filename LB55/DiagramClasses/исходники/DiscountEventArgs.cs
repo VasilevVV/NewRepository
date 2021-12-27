@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using DiscountsNamespace;
+using Model.DiscountsNamespace;
 
 namespace View
 {
@@ -13,17 +13,17 @@ namespace View
     public class DiscountEventArgs : EventArgs
     {
         /// <summary>
-        /// Скидка для передачи
+        /// Скидки для передачи
         /// </summary>
-        public IDiscount SendingDiscount { get; }
-
+        public List<IDiscount> SendingDiscounts { get; }
+        
         /// <summary>
-        /// Конструктор для передачи скидки
+        /// Конструктор для передачи скидок
         /// </summary>
-        /// <param name="sendingFigure">Скидка</param>
-        public DiscountEventArgs(IDiscount sendingDiscount)
+        /// <param name="sendingDiscounts">Скидки</param>
+        public DiscountEventArgs(List<IDiscount> sendingDiscounts)
         {
-            SendingDiscount = sendingDiscount;
+            SendingDiscounts = sendingDiscounts;
         }
     }
 }

@@ -275,6 +275,7 @@ namespace View
             this.ProcentDiscountPeriodСheckBox.TabIndex = 3;
             this.ProcentDiscountPeriodСheckBox.Text = "Временная процентная скидка";
             this.ProcentDiscountPeriodСheckBox.UseVisualStyleBackColor = true;
+            this.ProcentDiscountPeriodСheckBox.CheckedChanged += new System.EventHandler(this.ProcentDiscountPeriodСheckBox_CheckedChanged);
             // 
             // SertificateDiscountPeriodСheckBox
             // 
@@ -285,6 +286,7 @@ namespace View
             this.SertificateDiscountPeriodСheckBox.TabIndex = 1;
             this.SertificateDiscountPeriodСheckBox.Text = "Временная скидка по сертификату";
             this.SertificateDiscountPeriodСheckBox.UseVisualStyleBackColor = true;
+            this.SertificateDiscountPeriodСheckBox.CheckedChanged += new System.EventHandler(this.SertificateDiscountPeriodСheckBox_CheckedChanged);
             // 
             // ProcentDiscountInfiniteСheckBox
             // 
