@@ -281,36 +281,18 @@ namespace View
         }
 
         /// <summary>
-        /// Обработчик изменения свойства Check объекта SertificateDiscountPeriodСheckBox
+        /// Обработчик изменения свойства Check объекта SertificateDiscountPeriodСheckBox и ProcentDiscountPeriodСheckBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SertificateDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
+        private void DiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: Дубль
-            DateCheckBoxEnable();
-        }
-
-        /// <summary>
-        /// Обработчик изменения свойства Check объекта ProcentDiscountPeriodСheckBox
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ProcentDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            //TODO: Дубль 
-            DateCheckBoxEnable();
-        }
-        
-        /// <summary>
-        /// Визуализатор чекбоксов с датами
-        /// </summary>
-        private void DateCheckBoxEnable()
-        {
+            //TODO: Дубль (V)
             EndDateCheckBox.Enabled =
                 ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
             StartDateCheckBox.Enabled =
                 ProcentDiscountPeriodСheckBox.Checked || SertificateDiscountPeriodСheckBox.Checked;
         }
+
     }
 }
