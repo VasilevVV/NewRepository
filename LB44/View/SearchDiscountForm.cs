@@ -97,8 +97,6 @@ namespace View
             }
             foreach (IDiscount findDiscount in _listDiscountSearch)
             {
-                // TODO: Не очевидный код. (V)
-                // TODO: Срабатывать на найденный список скидок. (V)
                 if (findDiscount is ProcentDiscount procentDiscount)
                 {
                     DiscountTypeSearcher(procentDiscount, 
@@ -186,8 +184,7 @@ namespace View
             StartDateCheckBox.Checked = false;
             EndDateCheckBox.Checked = false;
         }
-
-        //TODO: RSDN (V)
+        
         /// <summary>
         /// Определения соответствия типа скидки и СheckBox-ов
         /// </summary>
@@ -290,7 +287,7 @@ namespace View
         /// <param name="e"></param>
         private void SertificateDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: Дубль (V)
+            //TODO: Дубль
             DateCheckBoxEnable();
         }
 
@@ -301,7 +298,7 @@ namespace View
         /// <param name="e"></param>
         private void ProcentDiscountPeriodСheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            //TODO: Дубль (V)
+            //TODO: Дубль 
             DateCheckBoxEnable();
         }
         

@@ -284,8 +284,7 @@ namespace View
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //TODO: XML (V)
+        
         /// <summary>
         /// Очищает результаты расчета при изменении выделенной скидки
         /// </summary>

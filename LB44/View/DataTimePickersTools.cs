@@ -12,7 +12,6 @@ namespace View
     /// </summary>
     public class DataTimePickersTools
     {
-        //TODO: Соответствие XML коду (V)
         /// <summary>
         /// Выполняет формирование DateTime из Picker-ов
         /// </summary>
