@@ -41,8 +41,9 @@ namespace View
             Size = MinimumSize;
 
             OkAddDiscountButton.Enabled = false;
-            ShopTextBox.TextChanged += ShowOKButton;
-            ValueTextBox.TextChanged += ShowOKButton;
+            ShopTextBox.TextChanged += ShowOkButton;
+            ValueTextBox.TextChanged += ShowOkButton;
+            ValueTextBox.TextChanged += ValueTextValidation;
         }
 
         /// <summary>
@@ -199,11 +200,29 @@ namespace View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ShowOKButton(object sender, EventArgs e)
+        private void ShowOkButton(object sender, EventArgs e)
         {
             OkAddDiscountButton.Enabled =
                 !string.IsNullOrEmpty(ShopTextBox.Text)
                 && float.TryParse(ValueTextBox.Text, out _);
+        }
+
+        /// <summary>
+        /// Проверка величины скидки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ValueTextValidation(object sender, EventArgs e)
+        {
+            if (!float.TryParse(ValueTextBox.Text, out _))
+            {
+                AddFormErrorProvider.SetError(ValueTextBox, "Величина скидки " +
+                    "должна быть числом или десятичной дробью (через ',')");
+            }
+            else
+            {
+                AddFormErrorProvider.Clear();
+            }
         }
     }
 }

@@ -47,9 +47,11 @@ namespace View
             this.EndTimePicker = new System.Windows.Forms.DateTimePicker();
             this.PeriodGroupBox = new System.Windows.Forms.GroupBox();
             this.AddFormToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.AddFormErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.DiscountChoiseGroupBox.SuspendLayout();
             this.ParametrsGroupBox.SuspendLayout();
             this.PeriodGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddFormErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // DiscountChoiceСomboBox
@@ -89,6 +91,7 @@ namespace View
             this.OkAddDiscountButton.Size = new System.Drawing.Size(75, 23);
             this.OkAddDiscountButton.TabIndex = 2;
             this.OkAddDiscountButton.Text = "OK";
+            this.AddFormToolTip.SetToolTip(this.OkAddDiscountButton, "Для активации кнопки ОК должны быть корректно заполнены все поля");
             this.OkAddDiscountButton.UseVisualStyleBackColor = true;
             this.OkAddDiscountButton.Click += new System.EventHandler(this.OkAddDiscountButton_Click);
             // 
@@ -227,6 +230,12 @@ namespace View
             this.AddFormToolTip.InitialDelay = 100;
             this.AddFormToolTip.ReshowDelay = 100;
             // 
+            // AddFormErrorProvider
+            // 
+            this.AddFormErrorProvider.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.NeverBlink;
+            this.AddFormErrorProvider.ContainerControl = this;
+            this.AddFormErrorProvider.RightToLeft = true;
+            // 
             // AddDiscountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -245,12 +254,12 @@ namespace View
             this.MinimumSize = new System.Drawing.Size(320, 300);
             this.Name = "AddDiscountForm";
             this.Text = "Добавить";
-            this.AddFormToolTip.SetToolTip(this, "Для активации кнопки ОК должны быть корректно заполнены все поля");
             this.DiscountChoiseGroupBox.ResumeLayout(false);
             this.ParametrsGroupBox.ResumeLayout(false);
             this.ParametrsGroupBox.PerformLayout();
             this.PeriodGroupBox.ResumeLayout(false);
             this.PeriodGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddFormErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +284,6 @@ namespace View
         private System.Windows.Forms.DateTimePicker EndTimePicker;
         private System.Windows.Forms.GroupBox PeriodGroupBox;
         private System.Windows.Forms.ToolTip AddFormToolTip;
+        private System.Windows.Forms.ErrorProvider AddFormErrorProvider;
     }
 }

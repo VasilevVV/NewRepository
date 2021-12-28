@@ -285,7 +285,12 @@ namespace View
             }
         }
 
-        //TODO: XML
+        //TODO: XML (V)
+        /// <summary>
+        /// Очищает результаты расчета при изменении выделенной скидки
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DiscountDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             ResultPriceTextBox.Text = null;

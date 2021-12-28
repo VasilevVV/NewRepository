@@ -12,24 +12,24 @@ namespace View
     /// </summary>
     public class DataTimePickersTools
     {
-        //TODO: Соответствие XML коду
+        //TODO: Соответствие XML коду (V)
         /// <summary>
         /// Выполняет формирование DateTime из Picker-ов
         /// </summary>
-        /// <param name="DatePicker">Picker с датой</param>
-        /// <param name="TimePicker">Picker с временем</param>
+        /// <param name="datePicker">Picker с датой</param>
+        /// <param name="timePicker">Picker с временем</param>
         /// <returns>Сформированная DateTime</returns>
         public static DateTime GetDataTimeFromPickers
-            (DateTimePicker DatePicker, DateTimePicker TimePicker)
+            (DateTimePicker datePicker, DateTimePicker timePicker)
         {
             return new DateTime
-                (DatePicker.Value.Year,
-                DatePicker.Value.Month,
-                DatePicker.Value.Day,
-                TimePicker.Value.Hour,
-                TimePicker.Value.Minute,
-                TimePicker.Value.Second,
-                TimePicker.Value.Millisecond);
+                (datePicker.Value.Year,
+                datePicker.Value.Month,
+                datePicker.Value.Day,
+                timePicker.Value.Hour,
+                timePicker.Value.Minute,
+                timePicker.Value.Second,
+                timePicker.Value.Millisecond);
         }
     }
 }
