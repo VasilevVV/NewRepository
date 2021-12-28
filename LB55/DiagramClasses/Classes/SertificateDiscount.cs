@@ -1,24 +1,24 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace DiscountsNamespace 
+namespace Model.DiscountsNamespace 
 {
 	/// <summary>
-	/// класс описывающий скидку без срока действия (по сертификату)
+	/// РєР»Р°СЃСЃ РѕРїРёСЃС‹РІР°СЋС‰РёР№ СЃРєРёРґРєСѓ Р±РµР· СЃСЂРѕРєР° РґРµР№СЃС‚РІРёСЏ (РїРѕ СЃРµСЂС‚РёС„РёРєР°С‚Сѓ)
 	/// </summary>
 	[Serializable]
 	public class SertificateDiscount : DiscountBase
 	{
 		/// <summary>
-		/// Расчет цены товара со скидкой (по сертификату)
+		/// Р Р°СЃС‡РµС‚ С†РµРЅС‹ С‚РѕРІР°СЂР° СЃРѕ СЃРєРёРґРєРѕР№ (РїРѕ СЃРµСЂС‚РёС„РёРєР°С‚Сѓ)
 		/// </summary>
-		/// <param name="fullPrice">исходная цена товара</param>
-		/// <returns>цена товара после применения скидки</returns>
+		/// <param name="fullPrice">РёСЃС…РѕРґРЅР°СЏ С†РµРЅР° С‚РѕРІР°СЂР°</param>
+		/// <returns>С†РµРЅР° С‚РѕРІР°СЂР° РїРѕСЃР»Рµ РїСЂРёРјРµРЅРµРЅРёСЏ СЃРєРёРґРєРё</returns>
 		public override float GetPrice(float fullPrice)
 		{
-			if (_priceDecreaser <= fullPrice)
+			if (DiscountValue <= fullPrice)
 			{
 				return base.GetPrice(fullPrice);
 			}
@@ -29,14 +29,14 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// Показывает информацию о скидке
+		/// РџРѕРєР°Р·С‹РІР°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРєРёРґРєРµ
 		/// </summary>
 		public override string ToString()
 		{
 			string period = Period.DateTimeDiscountEnd == DateTime.MaxValue
 				   ? ""
 				   : $" {Period}";
-			return base.ToString() + " руб." + $"{period}";
+			return base.ToString() + " СЂСѓР±." + $"{period}";
 		}
 	}
 }

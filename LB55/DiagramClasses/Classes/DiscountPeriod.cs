@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DiscountsNamespace
+namespace Model.DiscountsNamespace
 {
     /// <summary>
     /// класс описывающий период действия скидки
@@ -144,12 +144,16 @@ namespace DiscountsNamespace
         /// <param name="priceDecreaser">Уменьшатор цены</param>
         /// <returns>Тот же самый уменьшатор цены, 
         /// если метод вызывается в срок действия скидки</returns>
-        internal void ChekPriceDecreaserForPeriod(ref float priceDecreaser)
+        internal float ChekPriceDecreaserForPeriod(float priceDecreaser)
         {
             if ((DateTimeDiscountStart > DateTime.Now) ||
                 (DateTime.Now > DateTimeDiscountEnd))
             {
-                priceDecreaser = 0.0f;
+                return 0.0f;
+            }
+            else
+            {
+                return priceDecreaser;
             }
         }
 

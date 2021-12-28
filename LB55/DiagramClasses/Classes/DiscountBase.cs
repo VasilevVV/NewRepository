@@ -1,23 +1,23 @@
-using System;
+п»їusing System;
 using System.Collections.Generic;
 using System.Text;
 using System.IO;
 
-namespace DiscountsNamespace 
+namespace Model.DiscountsNamespace 
 {
 	/// <summary>
-	/// абстрактный класс скидок
+	/// Р°Р±СЃС‚СЂР°РєС‚РЅС‹Р№ РєР»Р°СЃСЃ СЃРєРёРґРѕРє
 	/// </summary>
 	[Serializable]
 	public abstract class DiscountBase : IDiscount
 	{
 		/// <summary>
-		/// величина скидки
+		/// РІРµР»РёС‡РёРЅР° СЃРєРёРґРєРё
 		/// </summary>
 		private float _discountValue;
 
 		/// <summary>
-		/// величина скидки
+		/// РІРµР»РёС‡РёРЅР° СЃРєРёРґРєРё
 		/// </summary>
 		public float DiscountValue
 		{
@@ -34,18 +34,18 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// Уменьшатор цены
+		/// РЈРјРµРЅСЊС€Р°С‚РѕСЂ С†РµРЅС‹
 		/// </summary>
 		private protected float _priceDecreaser;
 
 
 		/// <summary>
-		/// магазин, предоставляющий скидку
+		/// РјР°РіР°Р·РёРЅ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёР№ СЃРєРёРґРєСѓ
 		/// </summary>
 		private string _shop;
 
 		/// <summary>
-		/// публичный параметр магазин, предоставляющий скидку
+		/// РїСѓР±Р»РёС‡РЅС‹Р№ РїР°СЂР°РјРµС‚СЂ РјР°РіР°Р·РёРЅ, РїСЂРµРґРѕСЃС‚Р°РІР»СЏСЋС‰РёР№ СЃРєРёРґРєСѓ
 		/// </summary>
 		public string Shop
 		{
@@ -60,12 +60,12 @@ namespace DiscountsNamespace
 		}
 
 		/// <summary>
-		/// период действия скидки
+		/// РїРµСЂРёРѕРґ РґРµР№СЃС‚РІРёСЏ СЃРєРёРґРєРё
 		/// </summary>
 		private DiscountPeriod _period;
 
 		/// <summary>
-		/// период действия скидки
+		/// РїРµСЂРёРѕРґ РґРµР№СЃС‚РІРёСЏ СЃРєРёРґРєРё
 		/// </summary>
 		public DiscountPeriod Period
 		{
@@ -81,57 +81,54 @@ namespace DiscountsNamespace
 
 
 		/// <summary>
-		/// конструктор, чтобы прост был
+		/// РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ, С‡С‚РѕР±С‹ РїСЂРѕСЃС‚ Р±С‹Р»
 		/// </summary>
-		public DiscountBase()
+        protected DiscountBase()
 		{
 			Period = new DiscountPeriod();
 		}
 
 
 		/// <summary>
-		/// проверка величины скидки
+		/// РїСЂРѕРІРµСЂРєР° РІРµР»РёС‡РёРЅС‹ СЃРєРёРґРєРё
 		/// </summary>
-		/// <param name="discountCertificate">величина скидки</param>
+		/// <param name="discountCertificate">РІРµР»РёС‡РёРЅР° СЃРєРёРґРєРё</param>
 		private protected virtual void CheckDiscount(float discount)
 		{
 			if (discount < 0)
 			{
-				throw new ArgumentException($"Величина скидки " +
-					$"{discount} должна быть положительным числом");
+				throw new ArgumentException($"Р’РµР»РёС‡РёРЅР° СЃРєРёРґРєРё " +
+					$"{discount} РґРѕР»Р¶РЅР° Р±С‹С‚СЊ РїРѕР»РѕР¶РёС‚РµР»СЊРЅС‹Рј С‡РёСЃР»РѕРј");
 			}
 		}
 
 		/// <summary>
-		/// Показывает информацию о скидке
+		/// РџРѕРєР°Р·С‹РІР°РµС‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ СЃРєРёРґРєРµ
 		/// </summary>
 		public override string ToString()
         {
-			string shop = Shop ?? "неизвестно";
-			return $"В магазине '{shop}' предоставляется скидка " +
-				   $"размером {DiscountValue}";
+			string shop = Shop ?? "РЅРµРёР·РІРµСЃС‚РЅРѕ";
+			return $"Р’ РјР°РіР°Р·РёРЅРµ '{shop}' РїСЂРµРґРѕСЃС‚Р°РІР»СЏРµС‚СЃСЏ СЃРєРёРґРєР° " +
+				   $"СЂР°Р·РјРµСЂРѕРј {DiscountValue}";
 		}
 
 		/// <summary>
-		/// 
+		/// Р Р°СЃС‡РµС‚ С†РµРЅС‹ РїРѕ СЃРєРёРґРєРµ
 		/// </summary>
-		/// <param name="fullPrice"></param>
-		/// <returns></returns>
+		/// <param name="fullPrice">С†РµРЅР° С‚РѕРІР°СЂР°</param>
+		/// <returns>Р¦РµРЅР° С‚РѕРІР°СЂР° РїРѕСЃР»Рµ РїСЂРёРјРµРЅРµРЅРёСЏ СЃРєРёРґРєРё</returns>
         public virtual float GetPrice(float fullPrice)
         {
-			Period.ChekPriceDecreaserForPeriod(ref _priceDecreaser);
-			return fullPrice - _priceDecreaser;
+			return fullPrice - Period.ChekPriceDecreaserForPeriod(_priceDecreaser);
 		}
 
 		/// <summary>
-		/// Делает скидку неограниченной периодом времени
+		/// Р”РµР»Р°РµС‚ СЃРєРёРґРєСѓ РЅРµРѕРіСЂР°РЅРёС‡РµРЅРЅРѕР№ РїРµСЂРёРѕРґРѕРј РІСЂРµРјРµРЅРё
 		/// </summary>
 		public void DoInfiniteDiscount()
-        {
+		{
 			Period.DateTimeDiscountEnd = DateTime.MaxValue;
 			Period.DateTimeDiscountStart = DateTime.Now;
 		}
-
-
 	}
 }
